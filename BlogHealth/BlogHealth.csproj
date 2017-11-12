@@ -123,6 +123,7 @@
     <Content Include="HomeAsset\js\mdb.js" />
     <Content Include="HomeAsset\js\mdb.min.js" />
     <Content Include="HomeAsset\js\popper.min.js" />
+    <Content Include="Images\hv.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="HomeAsset\font\roboto\Roboto-Bold.eot" />

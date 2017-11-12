@@ -8750,7 +8750,7 @@ button:focus {
 .navbar.navbar-light .breadcrumb .nav-item.active > .nav-link,
 .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
     background-color: rgba(0, 0, 0, 0.1);
-    color: #00C851;
+    color: #2962ff;
 }
 
     .navbar.navbar-light .breadcrumb .nav-item.active > .nav-link:hover,

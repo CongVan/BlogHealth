@@ -22559,10 +22559,10 @@ input[type=range] {
             -webkit-align-self: flex-start;
             -ms-flex-item-align: start;
             align-self: flex-start;
-            display: -webkit-box;
-            display: -webkit-flex;
+            /*display: -webkit-box;*/
+            /*display: -webkit-flex;*/
             display: -ms-flexbox;
-            display: flex;
+            /*display: flex;*/
             position: relative
         }
 
@@ -22592,7 +22592,7 @@ input[type=range] {
         .stepper-vertical li .step-content {
             display: block;
             margin-top: 0;
-            margin-left: 50px;
+            margin-left: 35px; /*50px;*/
             padding: 15px
         }
 
@@ -22600,7 +22600,7 @@ input[type=range] {
                 font-size: .875rem
             }
 
-        .stepper-vertical li:not(:last-child):after {
+        /*.stepper-vertical li:not(:last-child):after {
             content: " ";
             position: absolute;
             width: 1px;
@@ -22609,7 +22609,7 @@ input[type=range] {
             left: 35px;
             top: 55px;
             background-color: rgba(0,0,0,.1)
-        }
+        }*/
 
 .author-box {
     padding: 3rem
