@@ -120,6 +120,7 @@
     <Content Include="HomeAsset\js\jquery-3.2.1.min.js" />
     <Content Include="HomeAsset\js\mdb.js" />
     <Content Include="HomeAsset\js\mdb.min.js" />
+    <Content Include="HomeAsset\js\Myscript.js" />
     <Content Include="HomeAsset\js\popper.min.js" />
     <Content Include="HomeAsset\js\ResizeSensor.js" />
     <Content Include="HomeAsset\js\theia-sticky-sidebar.js" />
