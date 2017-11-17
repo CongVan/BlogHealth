@@ -3,14 +3,17 @@ $(window).scroll(function (event) {
     var st = $(this).scrollTop();
     if (st > lastScrollTop) {
         // downscroll code
+       
         $('#nav-fix-top').removeClass('fixed-top');
         $('#nav-fix-top').removeClass(' animated fadeInDown');
     } else {
+     
         $('#nav-fix-top').addClass('fixed-top');
         $('#nav-fix-top').addClass('animated fadeInDown');
         if (st < 100) {
             $('#nav-fix-top').removeClass('fixed-top');
             $('#nav-fix-top').removeClass('animated fadeInDown');
+           
         }
         // upscroll code
     }
@@ -38,3 +41,9 @@ $(window).scroll(function (event) {
 //    //}
 
 //});
+
+$('.navbar .dropdown').hover(function () {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown(100);
+}, function () {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp(95)
+});

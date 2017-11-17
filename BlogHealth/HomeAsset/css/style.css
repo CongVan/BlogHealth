@@ -79,7 +79,7 @@ pre, textarea {
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Open Sans sans-serif";
     --font-family-monospace: "SFMono-Regular",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
 }
 
@@ -158,7 +158,7 @@ label, output {
 }
 
 html {
-    font-family: sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important /*sans-serif*/;
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
     -ms-overflow-style: scrollbar
@@ -15414,9 +15414,13 @@ a {
     src: url(../font/roboto/Roboto-Bold.eot?#iefix) format("embedded-opentype"),url(../font/roboto/Roboto-Bold.woff2) format("woff2"),url(../font/roboto/Roboto-Bold.woff) format("woff"),url(../font/roboto/Roboto-Bold.ttf) format("truetype");
     font-weight: 700
 }
-
+@font-face{
+    font-family:OpenSans;
+    src:url(../font/Opensans/OpenSans-Regular.ttf);
+    font-weight:500;
+}
 body {
-    font-family: Roboto,sans-serif
+    font-family: OpenSans!important;/*Roboto,sans-serif*/
 }
 
 .h1-responsive, .section-heading h1 {
@@ -31187,3 +31191,11 @@ img[alt=amex] {
 
 
 */
+ #nav-fix-top {
+        -webkit-animation-duration: .5s;
+        -webkit-animation-delay: .1s;
+        -moz-animation-duration: .5s;
+        -moz-animation-delay: .1s;
+        /*-webkit-animation-iteration-count: infinite;*/
+ }
+ 
