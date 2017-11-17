@@ -5,31 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
     <link href="~/HomeAsset/css/bootstrap.css" rel="stylesheet" />
     <link href="~/HomeAsset/css/mdb.css" rel="stylesheet" />
     <link href="~/HomeAsset/css/style.css" rel="stylesheet" />
     <link href="~/HomeAsset/font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    
-    @RenderSection("css",false)
+
+    @RenderSection("css", false)
 </head>
 <body>
     <header class="" id="header">
+        <div class="row">
+            <div class="col-lg-12 bg-white px-5 mb-1 py-1 grey lighten-4">
+                <div class="d-flex justify-content-end">
+                    <div class="mr-auto py-0">
+                        @*<!--Facebook-->
+                        <a href="https://www.facebook.com/caohieuchamcom/" target="_blank" class="icons-sm fb-ic ml-4 py-0" data-toggle="tooltip" data-placement="bottom" title="Chúng tôi trên facebook"> <i class="fa fa-facebook"> </i></a>
+                        <!--Twitter-->
+                        <a href="https://twitter.com/intent/tweet?text=https://caohieu.com/" target="_blank" class="icons-sm tw-ic ml-4 py-0" data-toggle="tooltip" data-placement="bottom" title="Chúng tôi trên twitter"><i class="fa fa-twitter"> </i></a>
+                        <!--Google +-->
+                        <a href="" class="icons-sm gplus-ic ml-4 py-0" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Chúng tôi trên google+"><i class="fa fa-google-plus"> </i></a>
+
+                        <!--Instagram-->
+                        <a href="https://www.instagram.com/lehieubt3/" target="_blank" class="icons-sm ins-ic ml-4 py-0" data-toggle="tooltip" data-placement="bottom" title="Chúng tôi trên instagram"><i class="fa fa-instagram"> </i></a>*@
+                        <span class="teal-text"><i class="fa fa-calendar"></i>&nbsp; Thứ 5, 15/15/2017</span>
+                    </div>
+                    <div class="pl-1 py-0 black-text">
+                        <a class="nav-link py-0 black-text" href="@Url.Action("Partner","Home")"><i class="fa fa-handshake-o"></i>Đối tác</a>
+
+                    </div>
+                    <div class="pl-1 py-0">
+                        <a class="nav-link py-0 black-text" href="#"><i class="fa fa-share-square-o"></i>Giới thiệu</a>
+                    </div>
+                    <div class="pl-1 py-0">
+                        <a class="nav-link py-0 black-text" href="#"><i class="fa fa-phone"></i>Liên hệ</a>
+                    </div>
+                    <div class="pl-1 pr-3 py-0">
+                        <a class="nav-link py-0 black-text" href="#" data-toggle="modal" data-target="#basicExample"><i class="fa fa-thumbs-o-up"></i>Đóng góp</strong> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light white black-text p-0" id="nav-fix-top" style="font-weight:400;">
+
+        <div class="mb-5">
+
+        </div>
+        <div class="mb-5">
+
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light white black-text py-0  px-5" id="nav-fix-top" style="font-weight:400;">
 
             <!-- Navbar brand -->
             <a class="navbar-brand" href="#">Navbar</a>
 
             <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuContent" aria-controls="navbarMenuContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarMenuContent">
 
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
@@ -56,13 +94,14 @@
                 </ul>
                 <!-- Links -->
                 <!-- Search form -->
-                <form class="form-inline" onkeypress="return event.keyCode != 13;" role="search" method="GET" autocomplete="off">
-                    <div class="form-group waves-light waves-effect waves-light">
-
-                        <input type="text" class="form-control mb-0" name="mdw_serach" placeholder="Search" id="mdw_main_search">
-                    </div>
-                    <div class="dropdown-wrapper"></div>
+                <form class="form-inline waves-effect hidden-md-down">
+                    <i class="fa fa-search prefix red-text"></i>
+                    <input class="form-control" type="text" placeholder="Tìm kiếm bài viết..." aria-label="Search">
+                    @*<button class="btn btn-outline-primary btn-sm my-0 waves-effect" type="submit"><i class="fa fa-search"></i></button>*@
                 </form>
+
+
+
             </div>
             <!-- Collapsible content -->
 
@@ -75,7 +114,7 @@
     <div class="container-fluid" id="main-content">
         @RenderBody()
         <hr />
-        
+
     </div>
     <!--Footer-->
     <footer class="page-footer indigo center-on-small-only pt-0">
@@ -131,8 +170,10 @@
     <script src="~/HomeAsset/js/theia-sticky-sidebar.js"></script>
 
     <script src="~/HomeAsset/js/Myscript.js"></script>
+    <script>
 
-    
-    @RenderSection("js",false)
+    </script>
+
+    @RenderSection("js", false)
 </body>
 </html>

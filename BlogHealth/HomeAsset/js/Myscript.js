@@ -1,12 +1,12 @@
 ﻿var lastScrollTop = 0;
 $(window).scroll(function (event) {
     var st = $(this).scrollTop();
-    if (st > lastScrollTop) {
+    if (st > lastScrollTop ) {
         // downscroll code
        
         $('#nav-fix-top').removeClass('fixed-top');
         $('#nav-fix-top').removeClass(' animated fadeInDown');
-    } else {
+    } else if (lastScrollTop!=0) {
      
         $('#nav-fix-top').addClass('fixed-top');
         $('#nav-fix-top').addClass('animated fadeInDown');
