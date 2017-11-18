@@ -46,4 +46,49 @@ $('.navbar .dropdown').hover(function () {
     $(this).find('.dropdown-menu').first().stop(true, true).slideDown(100);
 }, function () {
     $(this).find('.dropdown-menu').first().stop(true, true).slideUp(95)
+    });
+$('.reviewRate').click(function () {
+    $('.reviewRate').addClass('fa-star-o');
+    $('.reviewRate').removeClass('yellow-text fa-star');
+
+    var pos = parseInt($(this).data("pos"));
+    if (pos < 3) {
+        if (pos == 1) {
+            $('#titleRate').text("Dở tệ");
+        }
+        if (pos == 2) {
+            $('#titleRate').text("Tạm được");
+        }
+        $('#titleRate').removeClass('text-success');
+        $('#titleRate').addClass('text-danger');
+        //$('#iconRate').removeClass('fa-smile-o text-success');
+        //$('#iconRate').addClass('fa-frown-o text-danger');
+    } else {
+        if (pos == 3) {
+            $('#titleRate').text("Hay");
+        }
+        if (pos == 4) {
+            $('#titleRate').text("Rất hay");
+        }
+        if (pos == 5) {
+            $('#titleRate').text("Tuyệt vời");
+        }
+        $('#titleRate').removeClass('text-danger');
+        $('#titleRate').addClass('text-success');
+        //$('#iconRate').removeClass('fa-frown-o text-danger');
+        //$('#iconRate').addClass('fa-smile-o text-success');
+    }
+    for (var i = 1; i <= pos; i++) {
+        $('#star' + i).removeClass('fa-star-o');
+        $('#star' + i).addClass("yellow-text fa-star")
+    }
+    //if ($(this).hasClass("yellow-text fa-star")) {
+        
+    //    $(this).addClass('fa-star-o');
+    //    $(this).removeClass('yellow-text fa-star');
+    //} else {
+    //    $(this).removeClass('fa-star-o');
+    //    $(this).addClass('yellow-text fa-star');
+    //}
+    
 });

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,20 +30,20 @@
 
                         <!--Instagram-->
                         <a href="https://www.instagram.com/lehieubt3/" target="_blank" class="icons-sm ins-ic ml-4 py-0" data-toggle="tooltip" data-placement="bottom" title="Chúng tôi trên instagram"><i class="fa fa-instagram"> </i></a>*@
-                        <span class="teal-text"><i class="fa fa-calendar"></i>&nbsp; Thứ 5, 15/15/2017</span>
+                        <span class="teal-text"><i class="fa fa-calendar"></i>&nbsp;@DateTime.Now.ToString("dddd, dd/MM/yyyy", CultureInfo.CreateSpecificCulture("vi-VN"))</span>
                     </div>
                     <div class="pl-1 py-0 black-text">
-                        <a class="nav-link py-0 black-text" href="@Url.Action("Partner","Home")"><i class="fa fa-handshake-o"></i>Đối tác</a>
+                        <a class="nav-link py-0 teal-text" href="@Url.Action("Partner","Home")"><i class="fa fa-handshake-o"></i>Đối tác</a>
 
                     </div>
                     <div class="pl-1 py-0">
-                        <a class="nav-link py-0 black-text" href="#"><i class="fa fa-share-square-o"></i>Giới thiệu</a>
+                        <a class="nav-link py-0 teal-text" href="#"><i class="fa fa-share-square-o"></i>Giới thiệu</a>
                     </div>
                     <div class="pl-1 py-0">
-                        <a class="nav-link py-0 black-text" href="#"><i class="fa fa-phone"></i>Liên hệ</a>
+                        <a class="nav-link py-0 teal-text" href="#"><i class="fa fa-phone"></i>Liên hệ</a>
                     </div>
                     <div class="pl-1 pr-3 py-0">
-                        <a class="nav-link py-0 black-text" href="#" data-toggle="modal" data-target="#basicExample"><i class="fa fa-thumbs-o-up"></i>Đóng góp</strong> </a>
+                        <a class="nav-link py-0 teal-text" href="#" data-toggle="modal" data-target="#basicExample"><i class="fa fa-thumbs-o-up"></i>Đóng góp</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +56,7 @@
         <div class="mb-5">
 
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light white black-text py-0  px-5" id="nav-fix-top" style="font-weight:400;">
+        <nav class="navbar navbar-expand-lg navbar-light white black-text py-0  px-lg-5 px-xl-5 px-md-5 px-sm-0"  id="nav-fix-top" style="font-weight:400;">
 
             <!-- Navbar brand -->
             <a class="navbar-brand" href="#">Navbar</a>
@@ -94,10 +95,19 @@
                 </ul>
                 <!-- Links -->
                 <!-- Search form -->
-                <form class="form-inline waves-effect hidden-md-down">
-                    <i class="fa fa-search prefix red-text"></i>
-                    <input class="form-control" type="text" placeholder="Tìm kiếm bài viết..." aria-label="Search">
-                    @*<button class="btn btn-outline-primary btn-sm my-0 waves-effect" type="submit"><i class="fa fa-search"></i></button>*@
+                <form class="form-inline waves-effect waves-dark hidden-md-down ">
+                    @*<div class="sm-form  input-group">*@
+                        <i class="fa fa-search prefix red-text"></i>
+                        @*<span class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button">Hate it</button>
+                        </span>*@
+                        <input class="form-control" type="text" placeholder="Tìm kiếm bài viết..." aria-label="Search">
+                        @*<span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm" type="button">Tìm kiếm</button>
+                        </span>*@ 
+                    @*</div>*@
+                                   
+    @*<button class="btn btn-outline-primary btn-sm my-0 waves-effect" type="submit"><i class="fa fa-search"></i></button>*@
                 </form>
 
 
@@ -112,53 +122,511 @@
 
 
     <div class="container-fluid" id="main-content">
-        @RenderBody()
-        <hr />
+        <div class="row mt-3 ">
+            @RenderBody()
+            <div class="col-xl-3 rightSidebar">
+                <div class="row">
+                    <div class="col-xl-12 mb-2">
+                        <ul class="nav nav-tabs nav-justified p-2 white">
+                            <li class="nav-item  waves-effect waves-dark m-0">
+                                <a class="nav-link active p-1 blue darken-1" data-toggle="tab" href="#panelHot" role="tab">
+                                    <h5 class="text-white  section-heading h5 m-0">
+                                        <i class="fa fa-eye"></i>&nbsp; Xem nhiều nhất
+                                    </h5>
+                                </a>
+                            </li>
 
-    </div>
+                        </ul>
+
+                        <div class="tab-content card px-1">
+                            <!--Panel 1-->
+                            <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+
+                                <section class="section extra-margins pb-3 text-center text-lg-left">
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a href="#">
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 col-sm-12 col-xs-12 mb-1 pl-xl-0 pl-sm-5 ">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+
+
+                                    <hr class="mx-1">
+
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a>
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 mb-1 pl-0">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+
+
+                                    <hr class="mx-1">
+
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a>
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 mb-1 pl-0">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+                                    <hr class="mx-1">
+
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a>
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 mb-1 pl-0">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+                                    <hr class="mx-1">
+
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a>
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 mb-1 pl-0">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+                                    <hr class="mx-1">
+
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a>
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 mb-1 pl-0">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+                                    <hr class="mx-1">
+
+
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-5 mb-1">
+                                            <!--Featured image-->
+                                            <div class="view overlay hm-white-slight z-depth-1-half">
+                                                <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                                <a>
+                                                    <div class="mask"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!--Grid column-->
+                                        <!--Grid column-->
+                                        <div class="col-lg-7 mb-1 pl-0">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="text-muted red-text"><i class="fa fa-heart"></i>&nbsp; Sức khỏe</small>
+                                                <small class="text-muted"><i class="fa fa-calendar"></i> 10/10/2017</small>
+                                            </div>
+                                            <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6>
+                                            <div class="d-flex flex-row-reverse">
+                                                <small class="text-muted mx-3"><i class="fa fa-comment-o"></i>100</small>
+                                                <small class="text-muted"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+
+                                </section>
+                            </div>
+                            <!--/.Panel 1-->
+
+                        </div>
+                    </div>
+                    <div class="col-xl-12 mb-2">
+                        <ul class="nav nav-tabs nav-justified p-2 white">
+                            <li class="nav-item  waves-effect waves-dark m-0">
+                                <a class="nav-link active p-1 blue darken-1" data-toggle="tab" href="#panelSocial" role="tab">
+                                    <h5 class="text-white section-heading h5 m-0">
+
+                                        <i class="fa fa-users "></i>&nbsp; Mạng xã hội
+
+
+                                    </h5>
+                                </a>
+                                <div class="row">
+                                    <div class="progress primary-color-dark">
+                                        <div class="indeterminate"></div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content card px-1">
+
+                            <div class="tab-pane fade in show active " id="panelSocial" role="tabpanel">
+                                <div class="text-center">
+                                    <!--Facebook-->
+                                    <button type="button" class="btn btn-fb btn-lg" data-toggle="tooltip" data-placement="bottom" title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </button>
+                                    <span class="counter">22</span>
+
+                                    <!--Google +-->
+                                    <button type="button" class="btn btn-gplus btn-lg" data-toggle="tooltip" data-placement="bottom" title="Google plus">
+                                        <i class="fa fa-google-plus"></i>
+                                    </button>
+                                    <span class="counter">22</span>
+
+                                    <!--Instagram-->
+                                    <button type="button" class="btn btn-ins btn-lg" data-toggle="tooltip" data-placement="bottom" title="Intagram">
+                                        <i class="fa fa-instagram"></i>
+                                    </button>
+                                    <span class="counter">22</span>
+
+                                    <!--Youtube-->
+                                    <button type="button" class="btn btn-yt btn-lg" data-toggle="tooltip" data-placement="bottom" title="Youtube">
+                                        <i class="fa fa-youtube"></i>
+                                    </button>
+                                    <span class="counter">22</span>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-xl-12 mb-2">
+                        <ul class="nav nav-tabs nav-justified p-2 white">
+                            <li class="nav-item  waves-effect waves-dark m-0">
+                                <a class="nav-link active p-1 blue darken-1" data-toggle="tab" href="#panelSocial" role="tab">
+                                    <h5 class="text-white section-heading h5 m-0">
+
+                                        <i class="fa fa-comments"></i>&nbsp;Top bình luận
+
+
+                                    </h5>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content card px-1">
+
+                            <div class="tab-pane fade in show active " id="panelSocial" role="tabpanel">
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-12 text-left">
+
+                                        <!-- Stepers Wrapper -->
+                                        <ul class="stepper stepper-vertical px-0">
+
+                                            <!-- First Step -->
+                                            <li class="completed card mb-1 p-1">
+                                                <a href="#!" class="p-0">
+                                                    <span class="circle">1</span>
+                                                    <span class="label "><i class="fa fa-user-circle text-danger"></i>&nbsp;Tên tài khoản</span>
+                                                </a>
+                                                <div class="step-content p-0">
+                                                    <a href="#" class="p-0"><i class="fa fa-hand-o-right text-danger"></i>&nbsp;homedy trong Khi Đa Cấp thành Thánh trong sân chơi Tài Chính</a>
+                                                </div>
+                                            </li>
+
+                                            <!-- Second Step -->
+                                            <li class="completed card mb-1 p-1">
+                                                <a href="#!" class="p-0">
+                                                    <span class="circle">2</span>
+                                                    <span class="label "><i class="fa fa-user-circle text-danger"></i>&nbsp;Tên tài khoản</span>
+                                                </a>
+                                                <div class="step-content p-0">
+                                                    <a href="#" class="p-0"><i class="fa fa-hand-o-right text-danger"></i>&nbsp;homedy trong Khi Đa Cấp thành Thánh trong sân chơi Tài Chính</a>
+                                                </div>
+                                            </li>
+
+                                            <!-- Third Step -->
+                                            <li class="completed card mb-1 p-1">
+                                                <a href="#!" class="p-0">
+                                                    <span class="circle">3</span>
+                                                    <span class="label "><i class="fa fa-user-circle text-danger"></i>&nbsp;Tên tài khoản</span>
+                                                </a>
+                                                <div class="step-content p-0">
+                                                    <a href="#" class="p-0"><i class="fa fa-hand-o-right text-danger"></i>&nbsp;homedy trong Khi Đa Cấp thành Thánh trong sân chơi Tài Chính</a>
+                                                </div>
+                                            </li>
+
+                                            <!-- Fourth Step -->
+                                            <li class="completed card mb-1 p-1">
+                                                <a href="#!" class="p-0">
+                                                    <span class="circle">4</span>
+                                                    <span class="label "><i class="fa fa-user-circle text-danger"></i>&nbsp;Tên tài khoản</span>
+                                                </a>
+                                                <div class="step-content p-0">
+                                                    <a href="#" class="p-0"><i class="fa fa-hand-o-right text-danger"></i>&nbsp;homedy trong Khi Đa Cấp thành Thánh trong sân chơi Tài Chính</a>
+                                                </div>
+                                            </li>
+                                            <li class="completed card mb-1 p-1">
+                                                <a href="#!" class="p-0">
+                                                    <span class="circle">5</span>
+                                                    <span class="label "><i class="fa fa-user-circle text-danger"></i>&nbsp;Tên tài khoản</span>
+                                                </a>
+                                                <div class="step-content p-0">
+                                                    <a href="#" class="p-0"><i class="fa fa-hand-o-right text-danger"></i>&nbsp;homedy trong Khi Đa Cấp thành Thánh trong sân chơi Tài Chính</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!-- /.Stepers Wrapper -->
+
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            <hr />
+
+        </div>
     <!--Footer-->
-    <footer class="page-footer indigo center-on-small-only pt-0">
+    <footer class="page-footer center-on-small-only stylish-color-dark">
 
         <!--Footer Links-->
         <div class="container">
-
-            <!--First row-->
             <div class="row">
 
                 <!--First column-->
-                <div class="col-md-12">
-
-                    <div class="footer-socials mb-5 flex-center">
-
-                        <!--Facebook-->
-                        <a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
-                        <!--Twitter-->
-                        <a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mr-md-4"> </i></a>
-                        <!--Google +-->
-                        <a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-4"> </i></a>
-                        <!--Linkedin-->
-                        <a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-4"> </i></a>
-                        <!--Instagram-->
-                        <a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-4"> </i></a>
-                        <!--Pinterest-->
-                        <a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text"> </i></a>
-                    </div>
+                <div class="col-md-4">
+                    <h5 class="title mb-4 mt-3 font-bold">Footer Content</h5>
+                    <p>
+                        Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+                        amet, consectetur adipisicing elit.
+                    </p>
                 </div>
-                <!--/First column-->
+                <!--/.First column-->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!--Second column-->
+                <div class="col-md-2 mx-auto">
+                    <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                    <ul>
+                        <li><a href="#!">Link 1</a></li>
+                        <li><a href="#!">Link 2</a></li>
+                        <li><a href="#!">Link 3</a></li>
+                        <li><a href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <!--/.Second column-->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!--Third column-->
+                <div class="col-md-2 mx-auto">
+                    <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                    <ul>
+                        <li><a href="#!">Link 1</a></li>
+                        <li><a href="#!">Link 2</a></li>
+                        <li><a href="#!">Link 3</a></li>
+                        <li><a href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <!--/.Third column-->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!--Fourth column-->
+                <div class="col-md-2 mx-auto">
+                    <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                    <ul>
+                        <li><a href="#!">Link 1</a></li>
+                        <li><a href="#!">Link 2</a></li>
+                        <li><a href="#!">Link 3</a></li>
+                        <li><a href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <!--/.Fourth column-->
             </div>
-            <!--/First row-->
         </div>
-        <!--/Footer Links-->
+        <!--/.Footer Links-->
+
+        <hr>
+
+       
+
+        
+
+        <!--Social buttons-->
+        <div class="social-section text-center">
+            <ul>
+
+                <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+
+            </ul>
+        </div>
+        <!--/.Social buttons-->
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © 2016 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+                © 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+
             </div>
         </div>
-        <!--/Copyright-->
+        <!--/.Copyright-->
 
     </footer>
-    <!--/Footer-->
+    <!--/.Footer-->
 
 
     <script src="~/HomeAsset/js/jquery-3.2.1.js"></script>
@@ -171,6 +639,21 @@
 
     <script src="~/HomeAsset/js/Myscript.js"></script>
     <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            //$('.leftSidebar, .rightSidebar').theiaStickySidebar({
+            //    'additionalMarginTop': 0,
+            //    'containerSelector': '#MainContent',
+            //    'sidebarBehavior': 'stick-to-top',
+            //});
+            //$(".leftSidebar").stick_in_parent();
+
+            //var elements = $('.leftSidebar');
+            //Stickyfill.add(elements);
+            //var sidebar = document.getElementById('sidebar');
+            //Stickyfill.add(sidebar);
+            //$('.leftSidebar').stickyfloat({ duration: 400 });
+        });
 
     </script>
 
