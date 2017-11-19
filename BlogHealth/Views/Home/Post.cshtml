@@ -22,7 +22,7 @@
 </div>
 
 <div class="col-xl-9  pl-lg-4 pl-xl-4 pr-lg-2 pr-xl-2">
-    <div class="card">
+    <div class="card mb-2">
         <div class="card-body">
             <div class="card-title text-danger text-center">
                 <h2> Cựu sáng lập Thế Giới Di Động mơ có 1.000 shop giày, bán hàng như Zara</h2>
@@ -172,15 +172,66 @@
 
             
 
-            <hr />
+           
             <div class="col-md-12 mb-r">
+                <!--Modal: Register Form-->
+                <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog cascading-modal" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Header-->
+                            <div class="modal-header light-blue darken-3 white-text">
+                                <h4 class="title"><i class="fa fa-comment-o"></i> Thông tin người bình luận</h4>
+                                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-user prefix"></i>
+                                    <input type="text" id="form33" class="form-control">
+                                    <label for="form33">Họ tên <small class="text-danger "> &nbsp;(bắt buộc)</small></label>
+                                </div>
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="text" id="form32" class="form-control">
+                                    <label for="form32">Email<small class="text-danger ">&nbsp;(bắt buộc)</small></label>
+                                </div>
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-edge prefix"></i>
+                                    <input type="text" id="form34" class="form-control">
+                                    <label for="form34">Website</label>
+                                </div>
+
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-primary">Gửi bình luận<i class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+
+                            </div>
+                            <!--Footer-->
+                            @*<div class="modal-footer">
+                                <div class="options text-center text-md-right mt-1">
+                                    <p>Already have an account? <a href="#">Log In</a></p>
+                                </div>
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>*@
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--Modal: Register Form-->
                 <section class="section text-center">
 
 
-                    <section class="text-left">
+ 
                         <!--Leave a reply form-->
                         <div class="reply-form">
-                            <h4 class="">Để lại bình luận</h4>
+                            <div class="divider-new  px-5 m-0">
+                                <h2 class="h5-responsive"> Để lại bình luận</h2>
+                            </div>
+                           
                             <div class="d-flex justify-content-center">
                                 <div class="px-2 py-0"> Đánh giá:</div>
                                 <div class="px-2 py-0">
@@ -217,32 +268,19 @@
                                 <br>
 
                             </h4>
-                            <form>
+                          
                                 <div class="row">
-                                    <div class="col-xl-6 ">
-                                        <div class="md-form">
-                                            <i class="fa fa-user prefix blue-grey-text"></i>
-                                            <input id="replyForm-name" class="form-control" type="text">
-                                            <label for="replyForm-name" class="">Tên của bạn <span class="red-text">(*)</span></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 ">
-                                        <div class="md-form">
-                                            <i class="fa fa-envelope prefix blue-grey-text"></i>
-                                            <input id="replyForm-email" class="form-control" type="text">
-                                            <label for="replyForm-email" class="">Email của bạn <span class="red-text">(*)</span></label>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-xl-9">
                                         <div class="md-form">
                                             <i class="fa fa-pencil prefix blue-grey-text"></i>
                                             <textarea type="text" id="replyForm-mess" class="md-textarea"></textarea>
-                                            <label for="replyForm-mess" class="">Bạn nghĩ gì về bài viết <span class="red-text">(*)</span></label>
+                                            <label for="replyForm-mess" class="">Bạn nghĩ gì về bài viết...</label>
                                         </div>
                                     </div>
                                     <div class="col-xl-3">
                                         <div class="text-center">
-                                            <button class="btn btn-primary waves-effect waves-light">Bình luận</button>
+                                            <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modalRegister">Bình luận</button>
                                         </div>
                                     </div>
                                 </div>
@@ -250,18 +288,21 @@
 
 
 
-                            </form>
+                          
 
                         </div>
                         <!--/.Leave a reply form-->
-                    </section>
+                 
                 </section>
             </div>
 
         </div>
         <div class="container-fluid">
             <div class="col-lg-12">
-                <h5><i class="fa fa-comments"></i>Danh sách bình luận</h5>
+                <div class="divider-new px-5 m-0">
+                    <h2 class="h5-responsive"><i class="fa fa-comments"></i>&nbsp; Danh sách bình luận</h2>
+                </div>
+                
                 <!--Newsfeed-->
                 <div class="mdb-feed">
                     <!--First news-->
@@ -382,172 +423,206 @@
                 </div>
                 <!--Newsfeed-->
             </div>
-        </div>
-        
-        <!--Section: Magazine v.2-->
-        <section class="section magazine-section">
-
-            <!--Section heading-->
-            <h2 class="section-heading h1 my-5">Section title</h2>
-
-            <!--Section description-->
-            <p class="section-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <!--Grid row-->
-            <div class="row text-left">
-
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12">
-
-                    <!--Featured news-->
-                    <div class="single-news">
-
-                        <!--Image-->
-                        <div class="view overlay hm-white-slight z-depth-1-half">
-                            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(118).jpg" class="img-fluid" alt="Wider sample post image">
-                            <a>
-                                <div class="mask"></div>
-                            </a>
-                        </div>
-
-                        <!--Excerpt-->
-                        <div class="news-data">
-                            <a href="" class="deep-orange-text"><h6><i class="fa fa-cutlery"></i><strong> Culinary</strong></h6></a>
-                            <p><strong><i class="fa fa-clock-o"></i> 27/02/2016</strong></p>
-                        </div>
-
-                        <h3><a><strong>This is title of the news.</strong></a></h3>
-
-                        <p align="justify">
-                            Sed ut perspiciatis unde voluptatem omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae explicabo. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-
+            <div class="col-lg-12">
+                <section class="section magazine-section">
+                    <div class="divider-new px-5 mx-0 my-2">
+                        <h2 class="h5-responsive"><i class="fa fa-random"></i>&nbsp; Bài viết liên quan</h2>
                     </div>
-                    <!--/Featured news-->
+                    <!--Grid row-->
+                    <div class="row text-left">
 
-                </div>
-                <!--Grid column-->
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12">
-
-                    <!--Small news-->
-                    <div class="single-news">
-
-                        <div class="row">
-                            <div class="col-md-3">
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12">
+                            <!--Featured news-->
+                            <div class="single-news ">
 
                                 <!--Image-->
-                                <div class="view overlay hm-white-slight z-depth-1-half">
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(50).jpg" class="img-fluid" alt="Minor sample post image">
+                                <div class="view overlay hm-white-slight z-depth-1-half mb-2">
+                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(118).jpg" class="img-fluid" alt="Wider sample post image">
                                     <a>
                                         <div class="mask"></div>
                                     </a>
                                 </div>
-                            </div>
 
-                            <!--Excerpt-->
-                            <div class="col-md-9">
-                                <p><strong>26/02/2016</strong></p>
-                                <a>
-                                    Duis aute irure dolor in reprehenderit in voluptate.
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
+                                <!--Excerpt-->
+                                <div class="news-data mb-5">
+                                    <a href="" class="deep-orange-text"><h6><i class="fa fa-cutlery"></i><strong> Culinary</strong></h6></a>
+                                    <p><strong><i class="fa fa-calendar"></i> 27/02/2016</strong></p>
+                                </div>
+
+                                <h3 class="m-0"><a><strong>This is title of the news.This is title of the news.This is title of the news.</strong></a></h3>
+
+                                <p align="justify">
+                                    Sed ut perspiciatis unde voluptatem omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae explicabo. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                </p>
+
                             </div>
+                            <!--/Featured news-->
 
                         </div>
-                    </div>
-                    <!--/Small news-->
-                    <!--Small news-->
-                    <div class="single-news">
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12">
 
-                        <div class="row">
-                            <div class="col-md-3">
+                            <!--Small news-->
+                            <div class="single-news mb-2">
 
-                                <!--Image-->
-                                <div class="view overlay hm-white-slight z-depth-1-half">
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" class="img-fluid" alt="Minor sample post image">
-                                    <a>
-                                        <div class="mask"></div>
-                                    </a>
+                                <div class="row">
+                                    <div class="col-md-3 px-0">
+
+                                        <!--Image-->
+                                        <div class="view overlay hm-white-slight z-depth-1-half">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(50).jpg" class="img-fluid" alt="Minor sample post image">
+                                            <a>
+                                                <div class="mask"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!--Excerpt-->
+                                    <div class="col-md-9 ">
+                                        <div class="news-data m-0 ">
+                                            <a href="" class="deep-orange-text"><h6 class="m-0 "><i class="fa fa-cutlery"></i><strong> Culinary</strong></h6></a>
+                                            <p class="m-0 "><strong><i class="fa fa-calendar"></i> 27/02/2016</strong></p>
+                                        </div>
+                                        <a class="mb-0" style="float:left">
+                                            Duis aute irure dolor in reprehenderit in voluptate.Duis aute irure dolor in reprehenderit in voluptate.
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
+                            <!--/Small news-->
+                            <!--Small news-->
+                            <div class="single-news mb-2">
 
-                            <!--Excerpt-->
-                            <div class="col-md-9">
-                                <p><strong>25/02/2016</strong></p>
-                                <a>
-                                    Duis aute irure dolor in reprehenderit in voluptate.
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-3  px-0">
 
-                        </div>
-                    </div>
-                    <!--/Small news-->
-                    <!--Small news-->
-                    <div class="single-news">
+                                        <!--Image-->
+                                        <div class="view overlay hm-white-slight z-depth-1-half">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" class="img-fluid" alt="Minor sample post image">
+                                            <a>
+                                                <div class="mask"></div>
+                                            </a>
+                                        </div>
+                                    </div>
 
-                        <div class="row">
-                            <div class="col-md-3">
+                                    <!--Excerpt-->
+                                    <div class="col-md-9">
+                                        <div class="news-data m-0 ">
+                                            <a href="" class="deep-orange-text"><h6 class="m-0 "><i class="fa fa-cutlery"></i><strong> Culinary</strong></h6></a>
+                                            <p class="m-0 "><strong><i class="fa fa-calendar"></i> 27/02/2016</strong></p>
+                                        </div>
+                                        <a class="" style="float:left">
+                                            Duis aute irure dolor in reprehenderit in voluptate.Duis aute irure dolor in reprehenderit in voluptate.
+                                        </a>
+                                    </div>
 
-                                <!--Image-->
-                                <div class="view overlay hm-white-slight z-depth-1-half">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/food.jpg" class="img-fluid" alt="Minor sample post image">
-                                    <a>
-                                        <div class="mask"></div>
-                                    </a>
                                 </div>
                             </div>
+                            <!--/Small news-->
+                            <!--Small news-->
+                            <div class="single-news mb-2">
 
-                            <!--Excerpt-->
-                            <div class="col-md-9">
-                                <p><strong>24/02/2016</strong></p>
-                                <a>
-                                    Duis aute irure dolor in reprehenderit in voluptate.
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-3  px-0">
 
-                        </div>
-                    </div>
-                    <!--/Small news-->
-                    <!--Small news-->
-                    <div class="single-news">
+                                        <!--Image-->
+                                        <div class="view overlay hm-white-slight z-depth-1-half">
+                                            <img src="https://mdbootstrap.com/img/Photos/Others/food.jpg" class="img-fluid" alt="Minor sample post image">
+                                            <a>
+                                                <div class="mask"></div>
+                                            </a>
+                                        </div>
+                                    </div>
 
-                        <div class="row">
-                            <div class="col-md-3">
+                                    <!--Excerpt-->
+                                    <div class="col-md-9">
+                                        <div class="news-data m-0 ">
+                                            <a href="" class="deep-orange-text"><h6 class="m-0 "><i class="fa fa-cutlery"></i><strong> Culinary</strong></h6></a>
+                                            <p class="m-0 "><strong><i class="fa fa-calendar"></i> 27/02/2016</strong></p>
+                                        </div>
+                                        <a class="" style="float:left">
+                                            Duis aute irure dolor in reprehenderit in voluptate.Duis aute irure dolor in reprehenderit in voluptate.
+                                        </a>
+                                    </div>
 
-                                <!--Image-->
-                                <div class="view overlay hm-white-slight z-depth-1-half">
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(26).jpg" class="img-fluid" alt="Minor sample post image">
-                                    <a>
-                                        <div class="mask"></div>
-                                    </a>
                                 </div>
                             </div>
+                            <!--/Small news-->
+                            <!--Small news-->
+                            <div class="single-news mb-2">
 
-                            <!--Excerpt-->
-                            <div class="col-md-9">
-                                <p><strong>23/02/2016</strong></p>
-                                <a>
-                                    Duis aute irure dolor in reprehenderit in voluptate.
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
+                                <div class="row">
+                                    <div class="col-md-3  px-0">
+
+                                        <!--Image-->
+                                        <div class="view overlay hm-white-slight z-depth-1-half">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(26).jpg" class="img-fluid" alt="Minor sample post image">
+                                            <a>
+                                                <div class="mask"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!--Excerpt-->
+                                    <div class="col-md-9">
+                                        <div class="news-data m-0 ">
+                                            <a href="" class="deep-orange-text"><h6 class="m-0 "><i class="fa fa-cutlery"></i><strong> Culinary</strong></h6></a>
+                                            <p class="m-0 "><strong><i class="fa fa-calendar"></i> 27/02/2016</strong></p>
+                                        </div>
+                                        <a class="" style="float:left">
+                                            Duis aute irure dolor in reprehenderit in voluptate.Duis aute irure dolor in reprehenderit in voluptate.
+                                        </a>
+                                    </div>
+
+                                </div>
                             </div>
+                            <!--/Small news-->
 
                         </div>
+                        <!--Grid column-->
+
                     </div>
-                    <!--/Small news-->
+                    <!--Grid row-->
 
-                </div>
-                <!--Grid column-->
-
+                </section>
             </div>
-            <!--Grid row-->
-
-        </section>
-        <!--Section: Magazine v.2-->
+        </div>
+      
+        
+    </div>
+    <div class="card ">
+        
         <div class="container-fluid">
+            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modalRegister">Register Form</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="progress primary-color-dark">
                     <div class="indeterminate"></div>
@@ -1379,6 +1454,5 @@
             </div>
         </div>
     </div>
-
 </div>
 
