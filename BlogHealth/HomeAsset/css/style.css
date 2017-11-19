@@ -31198,4 +31198,6 @@ img[alt=amex] {
         -moz-animation-delay: .1s;
         /*-webkit-animation-iteration-count: infinite;*/
  }
- 
+.MyTitle:hover {
+    color: #c62828 !important;
+}

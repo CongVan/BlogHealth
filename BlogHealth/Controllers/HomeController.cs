@@ -22,6 +22,7 @@ namespace BlogHealth.Controllers
         }
         public ActionResult Posts()
         {
+         
             return View();
         }
     }
