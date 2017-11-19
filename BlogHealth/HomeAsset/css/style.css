@@ -31186,10 +31186,8 @@ img[alt=amex] {
 .dwqa-container .rounded {
     margin-bottom: 2rem
 }
-/*
+/***************************************************************
     CONFIG STYLE ANIMATION NAVBAR
-
-
 */
  #nav-fix-top {
         -webkit-animation-duration: .5s;
@@ -31201,3 +31199,4 @@ img[alt=amex] {
 .MyTitle:hover {
     color: #c62828 !important;
 }
+          
