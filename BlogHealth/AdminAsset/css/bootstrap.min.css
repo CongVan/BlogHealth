@@ -4290,10 +4290,11 @@ tbody.collapse.show {
 
 .breadcrumb-item + .breadcrumb-item::before {
     display: inline-block;
-    padding-right: .5rem;
-    padding-left: .5rem;
+    /*padding-right: .5rem;
+    padding-left: .5rem;*/
     color: #868e96;
-    content: "/"
+    /*content: "/"*/
+    content:"";
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {

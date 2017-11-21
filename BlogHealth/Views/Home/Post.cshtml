@@ -141,22 +141,22 @@
             </p>
             <div class="">
                 <i class="fa fa-tags fa-2x red-text"></i>
-                <div class="chip mb-0 mr-0">
+                <div class="chip mb-0 mr-1">
                     <a>Tag1</a>
                 </div>
-                <div class="chip mb-0 mr-0">
+                <div class="chip mb-0 mr-1">
                     <a>Tag1</a>
                 </div>
-                <div class="chip mb-0 mr-0">
+                <div class="chip mb-0 mr-1">
                     <a>Tag1</a>
                 </div>
             </div>
-            
 
-            
 
-           
-            <div class="col-md-12 mb-r">
+
+
+
+            <div class="col-md-12">
                 <!--Modal: Register Form-->
                 <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">
@@ -195,11 +195,11 @@
                             </div>
                             <!--Footer-->
                             @*<div class="modal-footer">
-                                <div class="options text-center text-md-right mt-1">
-                                    <p>Already have an account? <a href="#">Log In</a></p>
-                                </div>
-                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-                            </div>*@
+                                    <div class="options text-center text-md-right mt-1">
+                                        <p>Already have an account? <a href="#">Log In</a></p>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                                </div>*@
                         </div>
                         <!--/.Content-->
                     </div>
@@ -208,111 +208,103 @@
                 <section class="section text-center">
 
 
- 
-                        <!--Leave a reply form-->
-                        <div class="reply-form">
-                            <div class="divider-new  px-5 m-0">
-                                <h2 class="h5-responsive"> Để lại bình luận</h2>
+
+                    <!--Leave a reply form-->
+                    <div class="reply-form mb-0">
+                        <div class="divider-new  px-5 m-0">
+                            <h2 class="h5-responsive"><strong>ĐỂ LẠI BÌNH LUẬN</strong></h2>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <div class="px-2 py-0"> Đánh giá:</div>
+                            <div class="px-2 py-0">
+                                <i class="fa fa-star-o reviewRate " id="star1" data-pos="1" data-toggle="tooltip" data-placement="bottom" title="Dở tệ"></i>
+                                <i class="fa fa-star-o reviewRate " id="star2" data-pos="2" data-toggle="tooltip" data-placement="bottom" title="Tạm được"></i>
+                                <i class="fa fa-star-o reviewRate " id="star3" data-pos="3" data-toggle="tooltip" data-placement="bottom" title="Hay"></i>
+                                <i class="fa fa-star-o reviewRate " id="star4" data-pos="4" data-toggle="tooltip" data-placement="bottom" title="Rất hay"></i>
+                                <i class="fa fa-star-o reviewRate " id="star5" data-pos="5" data-toggle="tooltip" data-placement="bottom" title="Xuất sắc"></i>
                             </div>
-                           
-                            <div class="d-flex justify-content-center">
-                                <div class="px-2 py-0"> Đánh giá:</div>
-                                <div class="px-2 py-0">
-                                    <i class="fa fa-star-o reviewRate " id="star1" data-pos="1" data-toggle="tooltip" data-placement="bottom" title="Dở tệ"></i>
-                                    <i class="fa fa-star-o reviewRate " id="star2" data-pos="2" data-toggle="tooltip" data-placement="bottom" title="Tạm được"></i>
-                                    <i class="fa fa-star-o reviewRate " id="star3" data-pos="3" data-toggle="tooltip" data-placement="bottom" title="Hay"></i>
-                                    <i class="fa fa-star-o reviewRate " id="star4" data-pos="4" data-toggle="tooltip" data-placement="bottom" title="Rất hay"></i>
-                                    <i class="fa fa-star-o reviewRate " id="star5" data-pos="5" data-toggle="tooltip" data-placement="bottom" title="Xuất sắc"></i>
-                                </div>
-                                @*<div class="px-2 py-0">
+                            @*<div class="px-2 py-0">
                                     <i class="fa " id="iconRate"></i> <strong><span class="" id="titleRate"></span></strong>
                                 </div>*@
 
-                            </div>
-
-
-
-                            <h4>
-
-                                <span>
-                                    <!--Facebook-->
-                                    <button type="button" class="btn btn-fb waves-effect waves-light">
-                                        <i class="fa fa-facebook left"></i> Chia sẻ Facebook
-                                    </button>
-                                    <!--Twitter-->
-                                    <button type="button" class="btn btn-tw waves-effect waves-light">
-                                        <i class="fa fa-twitter left"></i> Chia sẻ Twitter
-                                    </button>
-                                    <!--Google +-->
-                                    <button type="button" class="btn btn-gplus waves-effect waves-light">
-                                        <i class="fa fa-google-plus left"></i>Chia sẻ Google+
-                                    </button>
-                                </span>
-                                <br>
-
-                            </h4>
-                          
-                                <div class="row">
-                                    
-                                    <div class="col-xl-9">
-                                        <div class="md-form">
-                                            <i class="fa fa-pencil prefix blue-grey-text"></i>
-                                            <textarea type="text" id="replyForm-mess" class="md-textarea"></textarea>
-                                            <label for="replyForm-mess" class="">Bạn nghĩ gì về bài viết...</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <div class="text-center">
-                                            <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#modalRegister">Bình luận</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-                          
-
                         </div>
-                        <!--/.Leave a reply form-->
-                 
+
+
+
+                        <h4 class="mb-0">
+
+                            <span>
+                                <!--Facebook-->
+                                <button type="button" class="btn btn-fb waves-effect waves-light btn-md">
+                                    <i class="fa fa-facebook left"></i> Chia sẻ Facebook
+                                </button>
+                                <!--Twitter-->
+                                <button type="button" class="btn btn-tw waves-effect waves-light btn-md">
+                                    <i class="fa fa-twitter left"></i> Chia sẻ Twitter
+                                </button>
+                                <!--Google +-->
+                                <button type="button" class="btn btn-gplus waves-effect waves-light btn-md">
+                                    <i class="fa fa-google-plus left"></i>Chia sẻ Google+
+                                </button>
+                            </span>
+                            <br>
+
+                        </h4>
+
+                        <div class="row px-5 mb-0">
+
+                            <div class="col-xl-12">
+                                <div class="md-form mb-0">
+                                    <i class="fa fa-pencil prefix blue-text"></i>
+                                    <textarea type="text" id="replyForm-mess" class="md-textarea" placeholder="Bạn nghĩ gì về bài viết..."></textarea>
+                                    @*<label for="replyForm-mess" class="">Bạn nghĩ gì về bài viết...</label>*@
+                                    <button class="btn btn-primary waves-effect waves-light btn-md" data-toggle="modal" data-target="#modalRegister">Bình luận</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--/.Leave a reply form-->
+
                 </section>
             </div>
 
         </div>
         <div class="container-fluid">
             <div class="col-lg-12">
-                <div class="divider-new px-5 m-0">
-                    <h2 class="h5-responsive"><i class="fa fa-comments"></i>&nbsp; Danh sách bình luận</h2>
+                <div class=" px-5 m-0">
+                    <h2 class="h5-responsive"><strong><i class="fa fa-comments"></i>&nbsp; DANH SÁCH BÌNH LUẬN</strong></h2>
+                    
                 </div>
-                
+
                 <!--Newsfeed-->
                 <div class="mdb-feed">
                     <!--First news-->
                     <div class="news">
-                      
-                                <div class="label">
-                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1-mini.jpg" class="rounded-circle z-depth-1-half">
-                                </div>
-                                <!--Excert-->
-                                <div class="excerpt">
-                                    <!--Brief-->
-                                    <div class="brief">
-                                        <a class="name">John Doe</a><div class="date"><i class="fa fa-clock-o"></i> 10:10AM 12/12/2017</div>
-                                    </div>
-                                    <div class="added-text" style="max-width:unset!important">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero inventore, iste quas libero eius? Vitae sint neque animi alias sunt dolor, accusantium ducimus, non placeat voluptate.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero inventore, iste quas libero eius? Vitae sint neque animi alias sunt dolor, accusantium ducimus, non placeat voluptate.
-                                    </div>
-                                    <!--Feed footer-->
-                                    <div class="feed-footer">
-                                        <a class="like blue-text"><span>Trả lời</span></a>
-                                        <a class="like blue-text ml-2"><i class="fa fa-thumbs-o-up pr-0"></i>9&nbsp;<span>Thích</span></a>
-                                    </div>
-                                </div>
-                            
+
+                        <div class="label">
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1-mini.jpg" class="rounded-circle z-depth-1-half">
+                        </div>
+                        <!--Excert-->
+                        <div class="excerpt">
+                            <!--Brief-->
+                            <div class="brief">
+                                <a class="name">John Doe</a><div class="date"><i class="fa fa-clock-o"></i> 10:10AM 12/12/2017</div>
+                            </div>
+                            <div class="added-text" style="max-width:unset!important">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero inventore, iste quas libero eius? Vitae sint neque animi alias sunt dolor, accusantium ducimus, non placeat voluptate.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero inventore, iste quas libero eius? Vitae sint neque animi alias sunt dolor, accusantium ducimus, non placeat voluptate.
+                            </div>
+                            <!--Feed footer-->
+                            <div class="feed-footer">
+                                <a class="like blue-text"><span>Trả lời</span></a>
+                                <a class="like blue-text ml-2"><i class="fa fa-thumbs-o-up pr-0"></i>9&nbsp;<span>Thích</span></a>
+                            </div>
+                        </div>
+
                         <!--Label-->
-                       
+
                     </div>
                     <!--First news-->
                     <!--Second news-->
@@ -409,7 +401,7 @@
             <div class="col-lg-12">
                 <section class="section magazine-section">
                     <div class="divider-new px-5 mx-0 my-2">
-                        <h2 class="h5-responsive"><i class="fa fa-random"></i>&nbsp; Bài viết liên quan</h2>
+                        <h2 class="h5-responsive"><strong> <i class="fa fa-random"></i>&nbsp; CÓ THỂ BẠN QUAN TÂM</strong></h2>
                     </div>
                     <!--Grid row-->
                     <div class="row text-left">
@@ -573,9 +565,9 @@
                 </section>
             </div>
         </div>
-      
-        
+
+
     </div>
-   
+
 </div>
 
