@@ -121,7 +121,7 @@
 
             </nav>
 
-            <nav class="navbar navbar-expand-md navbar-dark double-nav red darken-2 fixed-top">
+            <nav class="navbar navbar-expand-md navbar-dark double-nav red darken-2 fixed-top hidden-lg hidden-md ">
                
                 <!-- SideNav slide-out button -->
                 <div class="float-right">
@@ -130,11 +130,11 @@
                     </a>
                 </div>
             </nav>
-            <div id="slide-out" class="side-nav  fixed red darken-2" style="transform: translateX(100%);">
-                <ul class="custom-scrollbar list-unstyled">
+            <div id="slide-out" class="side-nav  fixed blue-gradient darken-2  hidden-lg hidden-md" style="transform: translateX(-100%);">
+                <ul class="custom-scrollbar list-unstyled scrollbar scrollbar-danger" >
                     <!-- Logo -->
                     <li class="logo-sn waves-effect">
-                        <div class=" text-center">
+                        <div class="text-center">
                             <a href="#" class="pl-0">
                                 <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="">
                             </a>
@@ -206,8 +206,32 @@
                                     <i class="fa fa-envelope-o"></i> Contact me
                                     <i class="fa fa-angle-down rotate-icon"></i>
                                 </a>
-                                <div class="collapsible-body">
+                                <div class="collapsible-body" >
                                     <ul>
+                                        <li>
+                                            <a href="#" class="waves-effect">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">Write a message</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">Write a message</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">Write a message</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="waves-effect">Write a message</a>
+                                        </li>
                                         <li>
                                             <a href="#" class="waves-effect">FAQ</a>
                                         </li>
@@ -267,9 +291,9 @@
         <div class="row mt-3 ">
             @RenderBody()
 
-            <div class="col-xl-3 rightSidebar ">
-                <div class="row">
-                    <div class="col-xl-12 mb-2">
+            <div class="col-xl-3  "  >@*id="scroller-anchor"*@
+                <div class="row rightsidebar" > @*id="scroller"*@
+                    <div class="col-xl-12 mb-2" >
                         <ul class="nav nav-tabs nav-justified p-2 white">
                             <li class="nav-item  waves-effect waves-dark m-0">
                                 <a class="nav-link active p-1 blue darken-1" data-toggle="tab" href="#panelHot" role="tab">
@@ -762,24 +786,59 @@
     <!--/.Footer-->
     @*<script src="~/HomeAsset/js/jquery-3.2.1.js"></script>
 
-        <script src="~/HomeAsset/js/popper.min.js"></script>
-        <script src="~/HomeAsset/js/bootstrap.js"></script>
-        <script src="~/HomeAsset/js/mdb.js"></script>
-        <script src="~/HomeAsset/js/ResizeSensor.js"></script>
-        <script src="~/HomeAsset/js/theia-sticky-sidebar.js"></script>*@
+    <script src="~/HomeAsset/js/jquery-3.2.1.js"></script>
+    @*<script src="~/HomeAsset/js/jquery-3.2.1.min.js"></script>*@
+    @*<script src="~/HomeAsset/js/popper.min.js"></script>
+    <script src="~/HomeAsset/js/bootstrap.js"></script>
+    <script src="~/HomeAsset/js/mdb.js"></script>
+    <script src="~/HomeAsset/js/ResizeSensor.js"></script>
+    *@
     <script src="~/AdminAsset/js/jquery-3.2.1.min.js"></script>
     <script src="~/AdminAsset/js/popper.min.js"></script>
     <script src="~/AdminAsset/js/bootstrap.min.js"></script>
     <script src="~/AdminAsset/js/mdb.min.js"></script>
-    <script src="~/HomeAsset/js/Myscript.js"></script>
+
+   
+    @*<script src="~/HomeAsset/js/Myscript.js"></script>*@
+    <script src="~/AdminAsset/js/Myscript.js"></script>
+   
     <script>
+        
+            //var length = $('#left').height() - $('#sidebar').height() + $('#left').offset().top;
+
+            //$(window).scroll(function () {
+
+            //    var scroll = $(this).scrollTop();
+            //    var height = $('#sidebar').height() + 'px';
+
+            //    if (scroll < $('#left').offset().top) {
+
+            //        $('#sidebar').css({
+            //            'position': 'absolute',
+            //            'top': '0'
+            //        });
+
+            //    } else if (scroll > length) {
+
+            //        $('#sidebar').css({
+            //            'position': 'absolute',
+            //            'bottom': '0',
+            //            'top': 'auto'
+            //        });
+
+            //    } else {
+
+            //        $('#sidebar').css({
+            //            'position': 'fixed',
+            //            'top': '0',
+            //            'height': height
+            //        });
+            //    }
+            //});
+       
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
-            //$('.leftSidebar, .rightSidebar').theiaStickySidebar({
-            //    'additionalMarginTop': 0,
-            //    'containerSelector': '#MainContent',
-            //    'sidebarBehavior': 'stick-to-top',
-            //});
+           
             //$(".leftSidebar").stick_in_parent();
 
             //var elements = $('.leftSidebar');
@@ -788,7 +847,8 @@
             //Stickyfill.add(sidebar);
             //$('.leftSidebar').stickyfloat({ duration: 400 });
             $(".button-collapse").sideNav();
-
+            //moveScroller();
+            
         });
 
     </script>
