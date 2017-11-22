@@ -122,7 +122,6 @@
     <Content Include="AdminAsset\js\Myscript.js" />
     <Content Include="AdminAsset\js\popper.min.js" />
     <Content Include="AdminAsset\js\ResizeSensor.js" />
-    <Content Include="AdminAsset\js\theia-sticky-sidebar.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="HomeAsset\css\bootstrap.css" />
