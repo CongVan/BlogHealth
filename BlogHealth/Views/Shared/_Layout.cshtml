@@ -22,7 +22,7 @@
     <header>
         <div class="container-fluid" id="header">
             <div class="row hidden-md-down">
-                <div class="col-lg-12 bg-white px-5 mb-1 py-1 grey lighten-4">
+                <div class="col-lg-12  px-5 mb-1 py-1 info-color">
                     <div class="d-flex justify-content-end">
                         <div class="mr-auto py-0">
                             @*<!--Facebook-->
@@ -34,32 +34,31 @@
 
                                 <!--Instagram-->
                                 <a href="https://www.instagram.com/lehieubt3/" target="_blank" class="icons-sm ins-ic ml-4 py-0" data-toggle="tooltip" data-placement="bottom" title="Chúng tôi trên instagram"><i class="fa fa-instagram"> </i></a>*@
-                            <span class="teal-text"><i class="fa fa-calendar"></i>&nbsp;@DateTime.Now.ToString("dddd, dd/MM/yyyy", CultureInfo.CreateSpecificCulture("vi-VN"))</span>
+                            <span class="white-text"><small><i class="fa fa-calendar"></i>&nbsp;@DateTime.Now.ToString("dddd, dd/MM/yyyy", CultureInfo.CreateSpecificCulture("vi-VN"))</small></span>
                         </div>
-                        <div class="pl-1 py-0 black-text">
-                            <a class="nav-link py-0 teal-text" href="@Url.Action("Partner","Home")"><i class="fa fa-handshake-o"></i>Đối tác</a>
+                        <div class="pl-1 py-0 nav-item">
+                            <a class="nav-link py-0 white-text" ><small> <i class="fa fa-handshake-o"></i>Đối tác</small></a>
 
                         </div>
-                        <div class="pl-1 py-0">
-                            <a class="nav-link py-0 teal-text" href="#"><i class="fa fa-share-square-o"></i>Giới thiệu</a>
+                        <div class="pl-1 py-0 nav-item">
+                            <a class="nav-link py-0 white-text" href="#"><small><i class="fa fa-share-square-o"></i>Giới thiệu</small></a>
                         </div>
-                        <div class="pl-1 py-0">
-                            <a class="nav-link py-0 teal-text" href="#"><i class="fa fa-phone"></i>Liên hệ</a>
+                        <div class="pl-1 py-0 nav-item">
+                            <a class="nav-link py-0 white-text" href="#"><small><i class="fa fa-phone"></i>Liên hệ</small></a>
                         </div>
-                        <div class="pl-1 pr-3 py-0">
-                            <a class="nav-link py-0 teal-text" href="#" data-toggle="modal" data-target="#basicExample"><i class="fa fa-thumbs-o-up"></i>Đóng góp</a>
+                        <div class="pl-1 pr-3 py-0 nav-item">
+                            <a class="nav-link py-0 white-text" href="#"><small><i class="fa fa-thumbs-o-up"></i>Đóng góp</small></a>
                         </div>
                     </div>
                 </div>
             </div>
             <!--Navbar-->
 
-            <div class="mb-5">
-
+            <div class="my-5">
+                1
             </div>
-            <div class="mb-5">
-
-            </div>
+            
+            
             <nav class="navbar navbar-expand-lg hidden-md-down navbar-light white black-text py-0  px-lg-5 px-xl-5 px-md-5 px-sm-0" id="nav-fix-top" style="font-weight:400;">
 
                 <!-- Navbar brand -->
@@ -318,7 +317,7 @@
                                     <!--Grid column-->
                                     <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
                                         <!--Featured image-->
-                                        <div class="view overlay hm-white-slight">
+                                        <div class="view overlay hm-black-light">
                                             @*<img src="~/Images/3-35-324x235.png" />*@
                                             <img src="~/Images/3-35-324x235.png" class="img-fluid" alt="First sample image">
                                             <a href="#">
@@ -687,7 +686,7 @@
 
         </div>
     </div>
-    <hr />
+    
 
 </div>
 <!--Footer-->
