@@ -21,6 +21,8 @@ $(window).scroll(function (event) {
     lastScrollTop = st;
 });
 
+
+
 //$(window).scroll(function () {
 //    if ($(this).scrollTop() > 400) {
 //        $('#nav-fix-top').addClass('fixed-top');

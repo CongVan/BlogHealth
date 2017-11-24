@@ -158,6 +158,7 @@
     <Content Include="HomeAsset\js\Myscript.js" />
     <Content Include="HomeAsset\js\popper.min.js" />
     <Content Include="HomeAsset\js\ResizeSensor.js" />
+    <Content Include="HomeAsset\js\ResizeSensor1.js" />
     <Content Include="HomeAsset\js\theia-sticky-sidebar.js" />
     <Content Include="Images\3-35-324x235.png" />
     <Content Include="Images\hv.jpg" />
