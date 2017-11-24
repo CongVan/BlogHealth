@@ -3,7 +3,8 @@ $(window).scroll(function (event) {
     var st = $(this).scrollTop();
     if (st > lastScrollTop ) {
         // downscroll code
-       
+        var t = $('#SideBar').innerHeight();
+       // $("#SideBar").css('height',)
         $('#nav-fix-top').removeClass('fixed-top');
         $('#nav-fix-top').removeClass(' animated fadeInDown');
     } else if (lastScrollTop!=0) {
