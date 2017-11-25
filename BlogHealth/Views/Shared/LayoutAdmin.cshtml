@@ -1,0 +1,363 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <!-- Font Awesome -->
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">*@
+    <!-- Bootstrap core CSS -->
+    @*<link href="css/bootstrap.min.css" rel="stylesheet">*@
+
+    <!-- Material Design Bootstrap -->
+    @*<link href="css/mdb.min.css" rel="stylesheet">*@
+
+    <!-- Your custom styles (optional) -->
+    @*<link href="css/style.css" rel="stylesheet">*@
+    <link href="~/AdminAsset/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/AdminAsset/css/mdb.min.css" rel="stylesheet" />
+    <link href="~/AdminAsset/css/style.css" rel="stylesheet" />
+    <link href="~/HomeAsset/font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @RenderSection("css", false)
+</head>
+<body class="fixed-sn">
+
+    <!--Main Navigation-->
+    <header>
+        
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-md navbar-dark double-nav  fixed-top scrolling-navbar success-color">
+
+            <!-- SideNav slide-out button -->
+            <div class="float-left mr-5">
+                <a href="#" data-activates="slide-out" class="button-collapse">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+
+            <!-- Breadcrumb-->
+            @*<div class="breadcrumb-dn mr-auto">
+                <p>Material Design for Bootstrap</p>
+            </div>*@
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto mr-auto hidden-md-down">
+                <li class="nav-item active ml-1">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ml-1">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item ml-1">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown ml-1">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu dropdown-success p-1" aria-labelledby="navbarDropdownMenuLink" style="font-weight:400!important">
+                        <a class="dropdown-item p-1" href="#">Action</a>
+                        <a class="dropdown-item p-1" href="#">Another action</a>
+                        <a class="dropdown-item p-1" href="#">Something else here</a>
+                    </div>
+                </li>
+
+            </ul>
+            @*<ul class="nav navbar-nav nav-flex-icons mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fa fa-envelope"></i>
+                        <span class="clearfix d-none d-sm-inline-block">Contact</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fa fa-gear"></i>
+                        <span class="clearfix d-none d-sm-inline-block">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                        <span class="clearfix d-none d-sm-inline-block">Account</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="position: absolute;">
+                        <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>*@
+
+        </nav>
+        <!--/.Navbar-->
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav fixed position-fixed success-color-dark" style="">
+            <ul class="custom-scrollbar list-unstyled">
+                <!-- Logo -->
+                <li class="logo-sn waves-effect">
+                    <div class=" text-center">
+                        <a href="#" class="pl-0">
+                            <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="">
+                        </a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!--Search Form-->
+                <li>
+                    <form class="search-form" role="search">
+                        <div class="form-group waves-light waves-effect waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </li>
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="">
+                            <a class="collapsible-header waves-effect arrow-r">
+                                <i class="fa fa-chevron-right"></i> Submit blog
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="waves-effect">Submit listing</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Registration form</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a class="collapsible-header waves-effect arrow-r">
+                                <i class="fa fa-hand-pointer-o"></i> Instruction
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="waves-effect">For bloggers</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">For authors</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="collapsible-header waves-effect arrow-r">
+                                <i class="fa fa-eye"></i> About
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="waves-effect">Introduction</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Monthly meetings</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="collapsible-header waves-effect arrow-r">
+                                <i class="fa fa-envelope-o"></i> Contact me
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="waves-effect">FAQ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Write a message</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">FAQ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Write a message</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">FAQ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Write a message</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">FAQ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect">Write a message</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+
+            <!-- Mask -->
+            <div class="sidenav-bg mask-strong"></div>
+
+        </div>
+        <!--/. Sidebar navigation -->
+        
+    </header>
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main>
+        
+        <div class="container-fluid">
+            @RenderBody()
+           
+
+        </div>
+    </main>
+    <!--Main layout-->
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2015 Copyright:
+                <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    @*<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>*@
+    <script src="~/AdminAsset/js/jquery-3.2.1.min.js"></script>
+    <script src="~/AdminAsset/js/popper.min.js"></script>
+    <script src="~/AdminAsset/js/bootstrap.min.js"></script>
+    <script src="~/AdminAsset/js/mdb.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    @*<script type="text/javascript" src="js/popper.min.js"></script>*@
+    <!-- Bootstrap core JavaScript -->
+    @*<script type="text/javascript" src="js/bootstrap.min.js"></script>*@
+    <!-- MDB core JavaScript -->
+    @*<script type="text/javascript" src="js/mdb.min.js"></script>*@
+
+    <!-- Initializations -->
+    <script>
+        $('.navbar .dropdown').hover(function () {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideDown(80);
+        }, function () {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideUp(80)
+        });
+        // SideNav Initialization
+        $(".button-collapse").sideNav({
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        });
+     
+        //$('.button-collapse').sideNav('show');
+        // Material Select Initialization
+        $(document).ready(function () {
+            $('.mdb-select').material_select();
+        });
+
+        // Data Picker Initialization
+        $('.datepicker').pickadate();
+
+        // Tooltip Initialization
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    @* <div class="drag-target" style="left: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>*@
+
+    <!-- Charts -->
+    <script>
+        // Minimalist chart
+        $(function () {
+            $('.min-chart#chart-sales').easyPieChart({
+                barColor: "#4caf50",
+                onStep: function (from, to, percent) {
+                    $(this.el).find('.percent').text(Math.round(percent));
+                }
+            });
+        });
+
+        // Main chart
+        var ctxL = document.getElementById("lineChart").getContext('2d');
+        var myLineChart = new Chart(ctxL, {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    fillColor: "#fff",
+                    backgroundColor: 'rgba(255, 255, 255, .3)',
+                    borderColor: 'rgba(255, 99, 132)',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                }]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: "#fff",
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            display: true,
+                            color: "rgba(255,255,255,.25)"
+                        },
+                        ticks: {
+                            fontColor: "#fff",
+                        },
+                    }],
+                    yAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: true,
+                            color: "rgba(255,255,255,.25)"
+                        },
+                        ticks: {
+                            fontColor: "#fff",
+                        },
+                    }],
+                }
+            }
+        });
+    </script>
+
+    <!-- Alerts -->
+    <script>
+
+        $(function () {
+            $('#folder-1').click(function () {
+                toastr.error("Folder 1 has been clicked!", "Folder 1", {
+                    "positionClass": "toast-top-right",
+                });
+            });
+            $('#folder-2').click(function () {
+                // make it not dissappear
+                toastr.info("Folder 2 has been clicked!", "Folder 2", );
+            });
+            $('#folder-3').click(function () {
+                // make it not dissappear
+                toastr.info("Folder 3 has been clicked!", "Folder 3", );
+            });
+        });
+    </script>
+
+
+    <div class="hiddendiv common"></div>
+</body>
+</html>
