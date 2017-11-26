@@ -7975,7 +7975,7 @@ button:focus {
     .navbar.navbar-light .breadcrumb .nav-item .nav-link:hover, .navbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
         /*color: rgba(0,0,0,.75);*/
         background-color: #e53935;
-        color: #FFF;
+        color: #FFF!important;
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
         /*background: linear-gradient(40deg,#45cafc,#303f9f);*/
     }

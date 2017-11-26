@@ -22,13 +22,13 @@
     <link href="~/HomeAsset/font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     @RenderSection("css", false)
 </head>
-<body class="fixed-sn">
+<body class="fixed-sn white-skin">
 
     <!--Main Navigation-->
     <header>
         
         <!--Navbar-->
-        <nav class="navbar navbar-expand-md navbar-dark double-nav  fixed-top scrolling-navbar success-color">
+        <nav class="navbar navbar-expand-md navbar-dark double-nav  fixed-top scrolling-navbar primary-color">
 
             <!-- SideNav slide-out button -->
             <div class="float-left mr-5">
@@ -43,7 +43,7 @@
             </div>*@
 
             <!-- Links -->
-            <ul class="navbar-nav mr-auto mr-auto hidden-md-down">
+            <ul class="navbar-nav mr-auto mr-auto hidden-md-down black-text">
                 <li class="nav-item active ml-1">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -94,7 +94,7 @@
         </nav>
         <!--/.Navbar-->
         <!-- Sidebar navigation -->
-        <div id="slide-out" class="side-nav fixed position-fixed success-color-dark" style="">
+        <div id="slide-out" class="side-nav fixed position-fixed" style="">
             <ul class="custom-scrollbar list-unstyled">
                 <!-- Logo -->
                 <li class="logo-sn waves-effect">
@@ -213,10 +213,17 @@
     </header>
     <!--Main Navigation-->
     <!--Main layout-->
-    <main>
+    <main class="px-1 mx-1" >
         
-        <div class="container-fluid">
-            @RenderBody()
+        <div class="container mx-0 px-0">
+            <div class="row">
+                
+                <div class="col-md-12">
+                    @RenderBody()
+
+                </div>
+            </div>
+            
            
 
         </div>
@@ -253,6 +260,38 @@
 
     <!-- Initializations -->
     <script>
+        // If fixed sidenav, bring menu out
+        if ($('#slide-out').hasClass('fixed')) {
+            if (window.innerWidth > 1440) {
+                $('#slide-out').css('transform', 'translateX(0)');
+            }
+        }
+
+        // Window resize to reset on large screens fixed
+        if ($('#slide-out').hasClass('fixed')) {
+            $(window).resize(function () {
+                if (window.innerWidth > 1440) {
+                    // Close menu if window is resized bigger than 992 and user has fixed sidenav
+                    if ($('#sidenav-overlay').length != 0 && menuOut) {
+                        removeMenu(true);
+                    }
+                    else {
+                        // menu_id.removeAttr('style');
+                        $('#slide-out').css('transform', 'translateX(0%)');
+                        // menu_id.css('width', options.menuWidth);
+                    }
+                }
+                else if (menuOut === false) {
+                    if (options.edge === 'left') {
+                        $('#slide-out').css('transform', 'translateX(-100%)');
+                    } else {
+                        $('#slide-out').css('transform', 'translateX(100%)');
+                    }
+
+                }
+
+            });
+        }
         $('.navbar .dropdown').hover(function () {
             $(this).find('.dropdown-menu').first().stop(true, true).slideDown(80);
         }, function () {
@@ -263,7 +302,7 @@
             edge: 'left', // Choose the horizontal origin
             closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
         });
-     
+        $('.collapsible').collapsible();
         //$('.button-collapse').sideNav('show');
         // Material Select Initialization
         $(document).ready(function () {
