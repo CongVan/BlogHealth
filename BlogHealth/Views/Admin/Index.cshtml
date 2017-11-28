@@ -716,6 +716,13 @@
 @section js{
 <script>
     
-    CKEDITOR.replace('contentPost');
+    CKEDITOR.replace('contentPost',
+        {
+            filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?type=Images',
+     filebrowserUploadUrl: '/ckfinder/connector?command=QuickUpload&type=Files',
+     filebrowserImageUploadUrl: '/ckfinder/connector?command=QuickUpload&type=Images'
+        }
+    );
     </script>    
 }
