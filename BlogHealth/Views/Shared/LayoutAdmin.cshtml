@@ -26,85 +26,26 @@
 
     <!--Main Navigation-->
     <header>
-        
-        <!--Navbar-->
-        <nav class="navbar navbar-expand-md navbar-dark double-nav  fixed-top scrolling-navbar primary-color">
-
-            <!-- SideNav slide-out button -->
-            <div class="float-left mr-5">
-                <a href="#" data-activates="slide-out" class="button-collapse">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </div>
-
-            <!-- Breadcrumb-->
-            @*<div class="breadcrumb-dn mr-auto">
-                <p>Material Design for Bootstrap</p>
-            </div>*@
-
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto mr-auto hidden-md-down black-text">
-                <li class="nav-item active ml-1">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ml-1">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item ml-1">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-
-                <!-- Dropdown -->
-                <li class="nav-item dropdown ml-1">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu dropdown-success p-1" aria-labelledby="navbarDropdownMenuLink" style="font-weight:400!important">
-                        <a class="dropdown-item p-1" href="#">Action</a>
-                        <a class="dropdown-item p-1" href="#">Another action</a>
-                        <a class="dropdown-item p-1" href="#">Something else here</a>
-                    </div>
-                </li>
-
-            </ul>
-            @*<ul class="nav navbar-nav nav-flex-icons mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light">
-                        <i class="fa fa-envelope"></i>
-                        <span class="clearfix d-none d-sm-inline-block">Contact</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light">
-                        <i class="fa fa-gear"></i>
-                        <span class="clearfix d-none d-sm-inline-block">Settings</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i>
-                        <span class="clearfix d-none d-sm-inline-block">Account</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="position: absolute;">
-                        <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                        <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                        <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>*@
-
-        </nav>
-        <!--/.Navbar-->
         <!-- Sidebar navigation -->
-        <div id="slide-out" class="side-nav fixed position-fixed" style="">
-            <ul class="custom-scrollbar list-unstyled">
+        <div id="slide-out" class="side-nav sn-bg-4 fixed mdb-sidenav" style="transform: translateX(-100%);">
+            <ul class="custom-scrollbar list-unstyled" style="max-height:100vh;">
                 <!-- Logo -->
-                <li class="logo-sn waves-effect">
-                    <div class=" text-center">
-                        <a href="#" class="pl-0">
-                            <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="">
-                        </a>
+                <li>
+                    <div class="logo-wrapper waves-light waves-effect waves-light">
+                        <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
                     </div>
                 </li>
                 <!--/. Logo -->
+                <!--Social-->
+                <li>
+                    <ul class="social">
+                        <li><a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
+                        <li><a href="#" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
+                        <li><a href="#" class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
+                        <li><a href="#" class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
+                    </ul>
+                </li>
+                <!--/Social-->
                 <!--Search Form-->
                 <li>
                     <form class="search-form" role="search">
@@ -117,12 +58,9 @@
                 <!-- Side navigation links -->
                 <li>
                     <ul class="collapsible collapsible-accordion">
-                        <li class="">
-                            <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fa fa-chevron-right"></i> Submit blog
-                                <i class="fa fa-angle-down rotate-icon"></i>
-                            </a>
-                            <div class="collapsible-body" style="display: none;">
+                        <li>
+                            <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
                                 <ul>
                                     <li>
                                         <a href="#" class="waves-effect">Submit listing</a>
@@ -133,12 +71,9 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="">
-                            <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fa fa-hand-pointer-o"></i> Instruction
-                                <i class="fa fa-angle-down rotate-icon"></i>
-                            </a>
-                            <div class="collapsible-body" style="display: none;">
+                        <li>
+                            <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
                                 <ul>
                                     <li>
                                         <a href="#" class="waves-effect">For bloggers</a>
@@ -150,10 +85,7 @@
                             </div>
                         </li>
                         <li>
-                            <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fa fa-eye"></i> About
-                                <i class="fa fa-angle-down rotate-icon"></i>
-                            </a>
+                            <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
@@ -166,10 +98,7 @@
                             </div>
                         </li>
                         <li>
-                            <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fa fa-envelope-o"></i> Contact me
-                                <i class="fa fa-angle-down rotate-icon"></i>
-                            </a>
+                            <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
@@ -203,19 +132,48 @@
                 </li>
                 <!--/. Side navigation links -->
             </ul>
-
-            <!-- Mask -->
             <div class="sidenav-bg mask-strong"></div>
-
         </div>
         <!--/. Sidebar navigation -->
-        
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+                <p>Material Design for Bootstrap</p>
+            </div>
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.Navbar -->
     </header>
     <!--Main Navigation-->
     <!--Main layout-->
-    <main class="px-1 mx-1" >
+    <main class="" >
         
-        <div class="container mx-0 px-0">
+        <div class="container">
             <div class="row">
                 
                 <div class="col-md-12">
@@ -260,38 +218,11 @@
 
     <!-- Initializations -->
     <script>
-        // If fixed sidenav, bring menu out
-        if ($('#slide-out').hasClass('fixed')) {
-            if (window.innerWidth > 1440) {
-                $('#slide-out').css('transform', 'translateX(0)');
-            }
-        }
-
-        // Window resize to reset on large screens fixed
-        if ($('#slide-out').hasClass('fixed')) {
-            $(window).resize(function () {
-                if (window.innerWidth > 1440) {
-                    // Close menu if window is resized bigger than 992 and user has fixed sidenav
-                    if ($('#sidenav-overlay').length != 0 && menuOut) {
-                        removeMenu(true);
-                    }
-                    else {
-                        // menu_id.removeAttr('style');
-                        $('#slide-out').css('transform', 'translateX(0%)');
-                        // menu_id.css('width', options.menuWidth);
-                    }
-                }
-                else if (menuOut === false) {
-                    if (options.edge === 'left') {
-                        $('#slide-out').css('transform', 'translateX(-100%)');
-                    } else {
-                        $('#slide-out').css('transform', 'translateX(100%)');
-                    }
-
-                }
-
-            });
-        }
+        
+        //$('#btnshownavbar').hover(function(){
+        //    alert('hover');
+        //    //$('.button-collapse').sideNav('show');
+        //});
         $('.navbar .dropdown').hover(function () {
             $(this).find('.dropdown-menu').first().stop(true, true).slideDown(80);
         }, function () {
