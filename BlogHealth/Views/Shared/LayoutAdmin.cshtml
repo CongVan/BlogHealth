@@ -22,13 +22,13 @@
     <link href="~/HomeAsset/font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     @RenderSection("css", false)
 </head>
-<body class="fixed-sn white-skin">
+<body class="fixed-sn black-skin">
 
     <!--Main Navigation-->
     <header>
         <!-- Sidebar navigation -->
-        <div id="slide-out" class="side-nav sn-bg-4 fixed mdb-sidenav" style="transform: translateX(-100%);">
-            <ul class="custom-scrollbar list-unstyled" style="max-height:100vh;">
+        <div id="slide-out" class="side-nav  fixed mdb-sidenav" style="transform: translateX(-100%);">
+            <ul class="custom-scrollbar list-unstyled scrollbar scrollbar-danger">
                 <!-- Logo -->
                 <li>
                     <div class="logo-wrapper waves-light waves-effect waves-light">
@@ -204,17 +204,13 @@
     <!--/.Footer-->
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    @*<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>*@
+
     <script src="~/AdminAsset/js/jquery-3.2.1.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/AdminAsset/js/popper.min.js"></script>
     <script src="~/AdminAsset/js/bootstrap.min.js"></script>
     <script src="~/AdminAsset/js/mdb.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    @*<script type="text/javascript" src="js/popper.min.js"></script>*@
-    <!-- Bootstrap core JavaScript -->
-    @*<script type="text/javascript" src="js/bootstrap.min.js"></script>*@
-    <!-- MDB core JavaScript -->
-    @*<script type="text/javascript" src="js/mdb.min.js"></script>*@
+    
 
     <!-- Initializations -->
     <script>
@@ -327,7 +323,6 @@
         });
     </script>
 
-
-    <div class="hiddendiv common"></div>
+    @RenderSection("js",false)
 </body>
 </html>
