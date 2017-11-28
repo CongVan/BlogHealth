@@ -731,7 +731,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ckfinder\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
