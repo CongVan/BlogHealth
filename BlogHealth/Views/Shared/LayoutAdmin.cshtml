@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -18,11 +17,15 @@
     @*<link href="css/style.css" rel="stylesheet">*@
     <link href="~/AdminAsset/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/AdminAsset/css/mdb.min.css" rel="stylesheet" />
+    <link href="~/Kendo/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Kendo/css/kendo.bootstrap-v4.min.css" rel="stylesheet" />
     <link href="~/AdminAsset/css/style.css" rel="stylesheet" />
+
+
     <link href="~/HomeAsset/font/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     @RenderSection("css", false)
 </head>
-<body class="fixed-sn black-skin">
+<body class="fixed-sn navy-blue-skin">
 
     <!--Main Navigation-->
     <header>
@@ -32,18 +35,18 @@
                 <!-- Logo -->
                 <li>
                     <div class="logo-wrapper waves-light waves-effect waves-light">
-                        <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
+                        @*<a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>*@
                     </div>
                 </li>
                 <!--/. Logo -->
                 <!--Social-->
                 <li>
-                    <ul class="social">
+                    @*<ul class="social">
                         <li><a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
                         <li><a href="#" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
                         <li><a href="#" class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
                         <li><a href="#" class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
-                    </ul>
+                    </ul>*@
                 </li>
                 <!--/Social-->
                 <!--Search Form-->
@@ -59,11 +62,11 @@
                 <li>
                     <ul class="collapsible collapsible-accordion">
                         <li>
-                            <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-cogs"></i> Hệ thống<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
-                                        <a href="#" class="waves-effect">Submit listing</a>
+                                        <a href="@Url.Action("Categories","Admin")" class="waves-effect"><i class="fa fa-list"></i> Danh mục</a>
                                     </li>
                                     <li>
                                         <a href="#" class="waves-effect">Registration form</a>
@@ -210,7 +213,10 @@
     <script src="~/AdminAsset/js/popper.min.js"></script>
     <script src="~/AdminAsset/js/bootstrap.min.js"></script>
     <script src="~/AdminAsset/js/mdb.min.js"></script>
-    
+
+    <script src="~/Kendo/js/kendo.all.min.js"></script>
+    <script src="~/Kendo/js/jszip.min.js"></script>
+    <script src="~/Kendo/js/kendo.all.min.js"></script>
     <script src="~/ckfinder/ckfinder.js"></script>
     @*<script src="~/ckfinder/ckfinder_v1.js"></script>*@
     <!-- Initializations -->
@@ -222,6 +228,7 @@
         //});
         $('.navbar .dropdown').hover(function () {
             $(this).find('.dropdown-menu').first().stop(true, true).slideDown(80);
+        
         }, function () {
             $(this).find('.dropdown-menu').first().stop(true, true).slideUp(80)
         });

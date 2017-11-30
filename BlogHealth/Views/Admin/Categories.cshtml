@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section css{
+<style>
+    .k-window-titlebar{
+        padding:0!important;
+    }
+    .k-widget .k-window{
+        width:800px!important;
+    }
+    </style>    
+}
+@section js{
+    <script id="popup-editor" type="text/x-kendo-template">
+        <div class="row">
+         
+            <div class="col-md-6">
+                <div class="md-form">
+                  
+                    <input type="email" id="form81" class="form-control " name="Name">
+       
+                </div>
+            </div>
+
+            <!--Second column-->
+            <div class="col-md-6">
+                <div class="md-form">
+                   
+                    <input type="password" id="form82" class="form-control " name="Color">
+                 
+                </div>
+            </div>
+        </div>
+    
+</script>
+    <script>
+        $('#gridCategories').kendoTreeList({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "/Admin/GetCategories",
+                    update: function (e) { },
+                    destroy: function (e) { },
+                    //parameterMap: function (options, operation) {
+                    //    if (operation !== "read" && options.models) {
+                    //        return { models: kendo.stringify(options.models) };
+                    //    }
+                    //}
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                batch: true,
+                schema: {
+                    model: {
+                        id: "ID",
+                        parentId: "ParentID",
+                        fields: {
+                            ParentID: { field: "ParentID", nullable: true, type: "number" },
+                            ID: { field: "ID", type: "number" },
+                            Name: { field: "Name", type: "string", nullable: false },
+                        },
+
+                        expanded: true,
+                    }
+                },
+                pageSize: 20,
+            },
+            height: 400,
+            editable: {
+                mode: "popup",
+                template: kendo.template($("#popup-editor").html())
+            },
+            groupable: false,
+            sortable: true,
+            pageable: {
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5,
+            },
+            autoBind: true,
+            columns: [
+               
+                { field: "Name", title: "Tiêu đề", width: 40 },
+                { field: "Priority", title: "Thứ tự", width: 20 },
+                { field: "Color", title: "Màu", width: 20 },
+                {
+                    title: "Thao tác", command: [{ name: "edit", text: "Sửa" },
+                    { name: "destroy", text: "Xóa" }], width: 60
+                },
+            ],
+            save: function (e) {
+                console.log("save");
+                console.log(e);
+                var slug = bodauTiengViet(e.model.Name);
+                $.ajax({
+                    url: '/Admin/UpdateCategories',
+                    data: { ID: e.model.ID, Name: e.model.Name, Slug: slug },
+                    type: 'post',
+                    success: function (data) {
+                        if (data == 1) {
+                            alert('Cập nhật thành công!');
+                            $('#gridCategories').data('kendoTreeList').dataSource.read();
+                            $('#gridCategories').data('kendoTreeList').refresh();
+                        } else {
+                            alert('Cập nhật thất bại!');
+                        }
+                    },
+                    error: function () {
+                        alert("Error Update Categories!");
+                    }
+                });
+            },
+            remove: function (e) {
+                console.log("remove");
+                console.log(e);
+                $.ajax({
+                    url: '/Admin/DeleteCategories?ID=' + e.model.ID,
+                    type: 'post',
+                    success: function (data) {
+                        if (data == 1) {
+                            alert('Xóa thành công!');
+                        } else {
+                            alert('Xóa thất bại!');
+                        }
+                    },
+                    error: function () {
+                        alert("Error Delete Categories!");
+                    }
+                });
+            }
+        });
+    </script>
+}
+<div class="card card-cascade">
+
+    <!--Card image-->
+    <div class="view gradient-card-header blue-gradient p-1">
+        <h2 class="h2-responsive">Danh mục</h2>
+
+    </div>
+    <!--/Card image-->
+    <!--Card content-->
+    <div class="card-body text-left">
+        <div id="gridCategories">
+
+        </div>
+        @*<form>
+            <!--First row-->
+            <div class="row">
+                <!--First column-->
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="email" id="form81" class="form-control validate">
+                        <label for="form81" data-error="wrong" data-success="right">Type your email</label>
+                    </div>
+                </div>
+
+                <!--Second column-->
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="password" id="form82" class="form-control validate">
+                        <label for="form82" data-error="wrong" data-success="right">Type your password</label>
+                    </div>
+                </div>
+            </div>
+            <!--/.First row-->
+            <!--Second row-->
+            <div class="row">
+                <!--First column-->
+                <div class="col-md-12">
+
+                    <div class="md-form">
+                        <textarea type="text" id="contentPost" class="md-textarea"></textarea>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Second row-->
+            <!--Third row-->
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-4">
+                    <div class="md-form">
+                        <input type="text" id="form41" class="form-control">
+                        <label for="form41" class="">Example label</label>
+                    </div>
+                </div>
+
+                <!--Second column-->
+                <div class="col-md-4">
+                    <div class="md-form">
+                        <input type="text" id="form51" class="form-control">
+                        <label for="form51" class="">Example label</label>
+                    </div>
+                </div>
+
+                <!--Third column-->
+                <div class="col-md-4">
+                    <div class="md-form">
+                        <input type="text" id="form61" class="form-control">
+                        <label for="form61" class="">Example label</label>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Third row-->
+        </form>*@
+
+    </div>
+    <!--/.Card content-->
+
+</div>
