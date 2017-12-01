@@ -25,5 +25,27 @@ namespace BlogHealth.Controllers
             }
 
         }
+        public ActionResult UpdateCategories(Categories model)
+        {
+            using (var ctx = new BlogHealthEntities())
+            {
+                var cate = ctx.Categories.Where(c => c.ID == model.ID).FirstOrDefault();
+                if (cate != null)
+                {
+                    cate.Name = model.Name;
+                    cate.Priority = model.Priority;
+                    cate.Slug = model.Slug;
+                    cate.Color = model.Color;
+                    ctx.Entry(cate).State = System.Data.Entity.EntityState.Modified;
+                    ctx.SaveChanges();
+                    return Json("1", JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json("0", JsonRequestBehavior.AllowGet);
+                }
+            }
+                
+        }
     }
 }

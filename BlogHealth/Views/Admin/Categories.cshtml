@@ -73,8 +73,8 @@
             },
             height: 400,
             editable: {
-                mode: "popup",
-                template: kendo.template($("#popup-editor").html())
+                mode: "inline",
+                //template: kendo.template($("#popup-editor").html())
             },
             groupable: false,
             sortable: true,
@@ -87,11 +87,12 @@
             columns: [
                
                 { field: "Name", title: "Tiêu đề", width: 40 },
+                { field: "Slug", title: "Slug", width: 40 },
                 { field: "Priority", title: "Thứ tự", width: 20 },
-                { field: "Color", title: "Màu", width: 20 },
+                { field: "Color", title: "Màu", width: 40, editor: ColorDropdownList, },
                 {
-                    title: "Thao tác", command: [{ name: "edit", text: "Sửa" },
-                    { name: "destroy", text: "Xóa" }], width: 60
+                    title: "Thao tác", command: [{ name: "edit", text: "Chỉnh sửa", className: "btn-outline-blue", },
+                    { name: "destroy", text: "Xóa", className: "btn-outline-danger", }], width: 60
                 },
             ],
             save: function (e) {
@@ -100,7 +101,7 @@
                 var slug = bodauTiengViet(e.model.Name);
                 $.ajax({
                     url: '/Admin/UpdateCategories',
-                    data: { ID: e.model.ID, Name: e.model.Name, Slug: slug },
+                    data: { ID: e.model.ID, Name: e.model.Name, Slug: slug ,Color:e.model.Color,Priority:e.model.Priority,},
                     type: 'post',
                     success: function (data) {
                         if (data == 1) {
@@ -135,9 +136,43 @@
                 });
             }
         });
+        function ColorDropdownList(container, options) {
+            $('<input required name="' + options.field + '"/>')
+                .appendTo(container)
+                .kendoDropDownList({
+                    autoBind: true,
+                    dataTextField: "Text",
+                    dataValueField: "Color",
+                    dataSource: [
+                        { Text: "Đỏ", Color: "red-text" },
+                        { Text: "Xanh lá cây", Color: "green-text" },
+                        { Text: "Xanh da trời", Color: "blue-text" },
+                        { Text: "Vàng", Color: "yellow-text" },
+                    ]
+                    //    {
+                    //    type: "json",
+                    //    transport: {
+                    //        read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Categories"
+                    //    }
+                    //}
+                });
+        }
+        function bodauTiengViet(str) {
+            str = str.toLowerCase();
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+            str = str.replace(/đ/g, 'd');
+            str = str.replace(/\W+/g, ' ');
+            str = str.replace(/\s/g, '-');
+            return str;
+        }
     </script>
 }
-<div class="card card-cascade">
+<div class="card card-cascade ">
 
     <!--Card image-->
     <div class="view gradient-card-header blue-gradient p-1">
