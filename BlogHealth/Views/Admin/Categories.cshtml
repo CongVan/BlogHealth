@@ -170,7 +170,38 @@
             str = str.replace(/\s/g, '-');
             return str;
         }
-       
+        $('#btnAddView').on('click', function () {
+            $('#formAddCategory').find('input[name="Parent"]').kendoDropDownList({
+                dataTextField: "Name",
+                dataValueField: "ID",
+                autoClose: false,
+                dataSource: {
+                    type: "json",
+                       transport: {
+                           read: "/Admin/GetCategories"
+                     }
+                },
+                optionLabel: "Chọn mục cha...",
+            });
+            $('#formAddCategory').find('input[name="Color"]').kendoDropDownList({
+                dataTextField: "Text",
+                dataValueField: "Color",
+                autoClose: false,
+                dataSource:[
+                        { Text: "Đỏ", Color: "red-text" },
+                        { Text: "Xanh lá cây", Color: "green-text" },
+                        { Text: "Xanh da trời", Color: "blue-text" },
+                        { Text: "Vàng", Color: "yellow-text" },
+                ],
+                //    {
+                //    type: "json",
+                //    transport: {
+                //        read: "/Admin/GetCategories"
+                //    }
+                //},
+               
+            });
+        });
     </script>
 }
 <div class="card card-cascade ">
@@ -182,7 +213,7 @@
     <!--/Card image-->
     <!--Card content-->
     <div class="card-body text-left">
-        <button class="btn btn-indigo btn-sm btn-rounded waves-effect waves-light"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>
+        <button class="btn btn-indigo btn-sm btn-rounded waves-effect waves-light" id="btnAddView"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>
     
 
             @*<div class="text-center">
@@ -204,36 +235,39 @@
                     <!--Body-->
                     <div class="modal-body">
                         <div class="text-left">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="md-form">
+                            <div class="row" id="formAddCategory">
+                                <div class="col-md-12 mb-1">
+                                    <div class="md-form  mb-1">
 
-                                        <input type="text" name="Parent" placeholder="Danh mục cha" class="form-control">
+                                        <input type="text" name="Parent" placeholder="Danh mục cha" class="form-control" title="Nêu thêm cha khỏi chọn cái này.">
 
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="md-form">
+                                <div class="col-md-12 mb-1">
+                                    <div class="md-form  mb-1">
                                        
                                         <input type="text" name="Name" placeholder="Tiêu đề" class="form-control">
                                       
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="md-form">
+                                <div class="col-md-12 mb-1">
+                                    <div class="md-form  mb-1">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <input type="text" name="Priority" placeholder="Thứ tự" class="form-control mr-3">
+                                            </div>
+                                            <div class="col-md-5 mt-3">
+                                                <input type="text" name="Color" placeholder="Màu sắc" class="form-control">
+                                            </div>
+                                        </div>
+                                        
                                         @*<i class="fa fa-lock prefix"></i>*@
-                                        <input type="text" name="Color" placeholder="Thứ tự" class="form-control">
-
-                                    </div>
-                                </div>
-                               
-                                <div class="col-md-12">
-                                    <div class="md-form">
-                                        @*<i class="fa fa-lock prefix"></i>*@
-                                        <input type="text" name="Color" placeholder="Màu sắc" class="form-control">
+                                        
                                         
                                     </div>
                                 </div>
+                               
+                                
                             </div>
                         </div>
                     </div>
