@@ -86,13 +86,13 @@
             autoBind: true,
             columns: [
                
-                { field: "Name", title: "Tiêu đề", width: 40 },
-                { field: "Slug", title: "Slug", width: 40 },
-                { field: "Priority", title: "Thứ tự", width: 20 },
-                { field: "Color", title: "Màu", width: 40, editor: ColorDropdownList, },
+                { field: "Name", title: "Tiêu đề", width: 40, headerAttributes: { "class": "white-text primary-color-dark" }, },
+                { field: "Slug", title: "Slug", width: 40, headerAttributes: { "class": "white-text primary-color-dark" } },
+                { field: "Priority", title: "Thứ tự", width: 20, headerAttributes: { "class": "white-text primary-color-dark" } },
+                { field: "Color", title: "Màu", width: 40, editor: ColorDropdownList, headerAttributes: { "class": "white-text primary-color-dark" } },
                 {
                     title: "Thao tác", command: [{ name: "edit", text: "Chỉnh sửa", className: "btn-outline-blue", },
-                    { name: "destroy", text: "Xóa", className: "btn-outline-danger", }], width: 60
+                    { name: "destroy", text: "Xóa", className: "btn-outline-danger", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
                 },
             ],
             save: function (e) {
@@ -124,7 +124,7 @@
                     url: '/Admin/DeleteCategories?ID=' + e.model.ID,
                     type: 'post',
                     success: function (data) {
-                        if (data == 1) {
+                        if (data.result == 1 && data.error=="") {
                             alert('Xóa thành công!');
                         } else {
                             alert('Xóa thất bại!');
@@ -170,6 +170,7 @@
             str = str.replace(/\s/g, '-');
             return str;
         }
+       
     </script>
 }
 <div class="card card-cascade ">
@@ -177,81 +178,148 @@
     <!--Card image-->
     <div class="view gradient-card-header blue-gradient p-1">
         <h2 class="h2-responsive">Danh mục</h2>
-
     </div>
     <!--/Card image-->
     <!--Card content-->
     <div class="card-body text-left">
-        <div id="gridCategories">
+        <button class="btn btn-indigo btn-sm btn-rounded waves-effect waves-light"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>
+    
+
+            @*<div class="text-center">
+                <a href="" class="btn btn-default ">Launch Modal Success <i class="fa fa-eye ml-1"></i></a>
+            </div>*@
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-notify modal-info " role="document" >
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header py-1">
+                        <h6 class="heading lead">Thêm danh mục</h6>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">×</span>
+                        </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="text-left">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="md-form">
+
+                                        <input type="text" name="Parent" placeholder="Danh mục cha" class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="md-form">
+                                       
+                                        <input type="text" name="Name" placeholder="Tiêu đề" class="form-control">
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="md-form">
+                                        @*<i class="fa fa-lock prefix"></i>*@
+                                        <input type="text" name="Color" placeholder="Thứ tự" class="form-control">
+
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-12">
+                                    <div class="md-form">
+                                        @*<i class="fa fa-lock prefix"></i>*@
+                                        <input type="text" name="Color" placeholder="Màu sắc" class="form-control">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-info btn-rounded btn-sm waves-effect waves-light"><i class="fa fa-check"></i>&nbsp; Hoàn tất</button>
+                        <button type="button" class="btn btn-outline-primary btn-rounded btn-sm  waves-effect " data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</button>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+            <!--Modal: mdb-abandonedCart-hard-->
+            
+
+            <div id="gridCategories">
+
+            </div>
+            @*<form>
+                <!--First row-->
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="email" id="form81" class="form-control validate">
+                            <label for="form81" data-error="wrong" data-success="right">Type your email</label>
+                        </div>
+                    </div>
+
+                    <!--Second column-->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="form82" class="form-control validate">
+                            <label for="form82" data-error="wrong" data-success="right">Type your password</label>
+                        </div>
+                    </div>
+                </div>
+                <!--/.First row-->
+                <!--Second row-->
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="contentPost" class="md-textarea"></textarea>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--/.Second row-->
+                <!--Third row-->
+                <div class="row">
+
+                    <!--First column-->
+                    <div class="col-md-4">
+                        <div class="md-form">
+                            <input type="text" id="form41" class="form-control">
+                            <label for="form41" class="">Example label</label>
+                        </div>
+                    </div>
+
+                    <!--Second column-->
+                    <div class="col-md-4">
+                        <div class="md-form">
+                            <input type="text" id="form51" class="form-control">
+                            <label for="form51" class="">Example label</label>
+                        </div>
+                    </div>
+
+                    <!--Third column-->
+                    <div class="col-md-4">
+                        <div class="md-form">
+                            <input type="text" id="form61" class="form-control">
+                            <label for="form61" class="">Example label</label>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.Third row-->
+            </form>*@
 
         </div>
-        @*<form>
-            <!--First row-->
-            <div class="row">
-                <!--First column-->
-                <div class="col-md-6">
-                    <div class="md-form">
-                        <i class="fa fa-envelope prefix"></i>
-                        <input type="email" id="form81" class="form-control validate">
-                        <label for="form81" data-error="wrong" data-success="right">Type your email</label>
-                    </div>
-                </div>
-
-                <!--Second column-->
-                <div class="col-md-6">
-                    <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
-                        <input type="password" id="form82" class="form-control validate">
-                        <label for="form82" data-error="wrong" data-success="right">Type your password</label>
-                    </div>
-                </div>
-            </div>
-            <!--/.First row-->
-            <!--Second row-->
-            <div class="row">
-                <!--First column-->
-                <div class="col-md-12">
-
-                    <div class="md-form">
-                        <textarea type="text" id="contentPost" class="md-textarea"></textarea>
-
-                    </div>
-
-                </div>
-            </div>
-            <!--/.Second row-->
-            <!--Third row-->
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-md-4">
-                    <div class="md-form">
-                        <input type="text" id="form41" class="form-control">
-                        <label for="form41" class="">Example label</label>
-                    </div>
-                </div>
-
-                <!--Second column-->
-                <div class="col-md-4">
-                    <div class="md-form">
-                        <input type="text" id="form51" class="form-control">
-                        <label for="form51" class="">Example label</label>
-                    </div>
-                </div>
-
-                <!--Third column-->
-                <div class="col-md-4">
-                    <div class="md-form">
-                        <input type="text" id="form61" class="form-control">
-                        <label for="form61" class="">Example label</label>
-                    </div>
-                </div>
-
-            </div>
-            <!--/.Third row-->
-        </form>*@
-
-    </div>
     <!--/.Card content-->
 
 </div>

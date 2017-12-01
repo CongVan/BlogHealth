@@ -47,5 +47,35 @@ namespace BlogHealth.Controllers
             }
                 
         }
+        public ActionResult DeleteCategories(int? ID)
+        {
+            if (!ID.HasValue)
+            {
+                return Json(new { result = 0, error = "ID không tồn tại" }, JsonRequestBehavior.AllowGet);
+            }
+           using(var ctx= new BlogHealthEntities())
+            {
+                var cate = ctx.Categories.Where(c => c.ID == ID).FirstOrDefault();
+                try
+                {
+                    if (cate != null)
+                    {
+                        ctx.Categories.Remove(cate);
+                        ctx.SaveChanges();
+                        return Json(new { result = 1, error = "" }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { result = 0, error = "Lỗi" }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { result = 0, error = ex.Message }, JsonRequestBehavior.AllowGet);
+                }
+
+              
+            }     
+        }
     }
 }
