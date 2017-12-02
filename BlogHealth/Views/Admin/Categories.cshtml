@@ -11,6 +11,21 @@
     .k-widget .k-window{
         width:800px!important;
     }
+    /*.k-grid .k-state-selected {
+        background-color: #00695c !important;
+        color: #000000;
+    }
+
+    .k-grid .k-alt.k-state-selected {
+        background-color: #00695c !important;
+        color: #000000;
+    }*/
+    .k-grid table tr:hover {
+        background-color: rgba(37,207,207,.8) !important;
+        /*box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);*/
+        /*border:#42a5f5 1px solid!important;*/
+    }
+    
     </style>    
 }
 @section js{
@@ -78,6 +93,7 @@
             },
             groupable: false,
             sortable: true,
+            selectable: true,
             pageable: {
                 refresh: true,
                 pageSizes: true,
@@ -86,13 +102,21 @@
             autoBind: true,
             columns: [
                
-                { field: "Name", title: "Tiêu đề", width: 40, headerAttributes: { "class": "white-text primary-color-dark" }, },
+                {
+                    field: "Name", title: "Tiêu đề", width: 40,
+                    headerAttributes: { "class": "white-text primary-color-dark" },
+                    template: "#if (data.Level==1) {#<span class='font-weight-bold'>#: data.Name #<span> #}else {# <span class='font-weight-normal'>#: data.Name #<span> #} #",
+                },
                 { field: "Slug", title: "Slug", width: 40, headerAttributes: { "class": "white-text primary-color-dark" } },
                 { field: "Priority", title: "Thứ tự", width: 20, headerAttributes: { "class": "white-text primary-color-dark" } },
-                { field: "Color", title: "Màu", width: 40, editor: ColorDropdownList, headerAttributes: { "class": "white-text primary-color-dark" } },
                 {
-                    title: "Thao tác", command: [{ name: "edit", text: "Chỉnh sửa", className: "btn-outline-blue", },
-                    { name: "destroy", text: "Xóa", className: "btn-outline-danger", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
+                    field: "Color", title: "Màu", width: 40,
+                    editor: ColorDropdownList, headerAttributes: { "class": "white-text primary-color-dark" },
+                    template: "<span class='#: data.Color # font-weight-normal'>#: data.Color #<span>",
+                },
+                {
+                    title: "Thao tác", command: [{ name: "edit", text: "Chỉnh sửa", className: "btn-outline-blue btn-rounded", },
+                        { name: "destroy", text: "Xóa", className: "btn-outline-danger btn-rounded", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
                 },
             ],
             save: function (e) {
@@ -105,33 +129,55 @@
                     type: 'post',
                     success: function (data) {
                         if (data == 1) {
-                            alert('Cập nhật thành công!');
+                            toastr.success("Cập nhật thành công!", "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
+                            //alert('Cập nhật thành công!');
                             $('#gridCategories').data('kendoTreeList').dataSource.read();
                             $('#gridCategories').data('kendoTreeList').refresh();
                         } else {
-                            alert('Cập nhật thất bại!');
+                           // alert('Cập nhật thất bại!');
+                            toastr.error("Cập nhật thất bại!", "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
                         }
                     },
                     error: function () {
-                        alert("Error Update Categories!");
+                        //alert("Error Update Categories!");
+                        toastr.error("Lỗi", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
                     }
                 });
             },
             remove: function (e) {
                 console.log("remove");
                 console.log(e);
+                if (!confirm("Xác nhận xóa !")) {
+                    return;
+                }
+
                 $.ajax({
                     url: '/Admin/DeleteCategories?ID=' + e.model.ID,
                     type: 'post',
                     success: function (data) {
-                        if (data.result == 1 && data.error=="") {
-                            alert('Xóa thành công!');
+                        if (data.result == 1 && data.error == "") {
+                            toastr.success("Xóa thành công!", "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
+                          //  alert('Xóa thành công!');
                         } else {
-                            alert('Xóa thất bại!');
+                            toastr.error("Xóa thất bại!", "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
+                           // alert('');
                         }
                     },
                     error: function () {
-                        alert("Error Delete Categories!");
+                        toastr.error("Lỗi", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                        //alert("Error Delete Categories!");
                     }
                 });
             }
@@ -143,11 +189,18 @@
                     autoBind: true,
                     dataTextField: "Text",
                     dataValueField: "Color",
+                    template:"<span class='#: data.Color # '>#: data.Color #<span>",
                     dataSource: [
-                        { Text: "Đỏ", Color: "red-text" },
-                        { Text: "Xanh lá cây", Color: "green-text" },
-                        { Text: "Xanh da trời", Color: "blue-text" },
-                        { Text: "Vàng", Color: "yellow-text" },
+                        { Text: "red-text", Color: "red-text" },{ Text: "pink-text", Color: "pink-text" },
+                        { Text: "purple-text", Color: "purple-text" }, { Text: "deep-purple-text", Color: "deep-purple-text" },
+                        { Text: "indigo-text", Color: "indigo-text" }, { Text: "blue-text", Color: "blue-text" },
+                        { Text: "light-blue-text", Color: "light-blue-text" }, { Text: "cyan-text", Color: "cyan-text" },
+                        { Text: "teal-text", Color: "teal-text" }, { Text: "green-text", Color: "green-text" },
+                        { Text: "light-green-text", Color: "light-green-text" }, { Text: "lime-text", Color: "lime-text" },
+                        { Text: "yellow-text", Color: "yellow-text" }, { Text: "amber-text", Color: "amber-text" },
+                        { Text: "orange-text", Color: "orange-text" }, { Text: "deep-orange-text", Color: "deep-orange-text" },
+                        { Text: "brown-text", Color: "brown-text" }, { Text: "grey-text", Color: "grey-text" },
+                        { Text: "blue-grey-text", Color: "blue-grey-text" },
                     ]
                     //    {
                     //    type: "json",
@@ -171,27 +224,35 @@
             return str;
         }
         $('#btnAddView').on('click', function () {
-            $('#formAddCategory').find('input[name="Parent"]').kendoDropDownList({
+          
+            $('#formAddCategory input[name="Parent"]').kendoDropDownList({
                 dataTextField: "Name",
                 dataValueField: "ID",
                 autoClose: false,
                 dataSource: {
                     type: "json",
                        transport: {
-                           read: "/Admin/GetCategories"
+                           read: "/Admin/GetCategories?kind=2"
                      }
                 },
                 optionLabel: "Chọn mục cha...",
             });
-            $('#formAddCategory').find('input[name="Color"]').kendoDropDownList({
+            $('#formAddCategory input[name="Color"]').kendoDropDownList({
                 dataTextField: "Text",
                 dataValueField: "Color",
+                template: "<span class='#: data.Color # '>#: data.Color #<span>",
                 autoClose: false,
                 dataSource:[
-                        { Text: "Đỏ", Color: "red-text" },
-                        { Text: "Xanh lá cây", Color: "green-text" },
-                        { Text: "Xanh da trời", Color: "blue-text" },
-                        { Text: "Vàng", Color: "yellow-text" },
+                    { Text: "red-text", Color: "red-text" }, { Text: "pink-text", Color: "pink-text" },
+                    { Text: "purple-text", Color: "purple-text" }, { Text: "deep-purple-text", Color: "deep-purple-text" },
+                    { Text: "indigo-text", Color: "indigo-text" }, { Text: "blue-text", Color: "blue-text" },
+                    { Text: "light-blue-text", Color: "light-blue-text" }, { Text: "cyan-text", Color: "cyan-text" },
+                    { Text: "teal-text", Color: "teal-text" }, { Text: "green-text", Color: "green-text" },
+                    { Text: "light-green-text", Color: "light-green-text" }, { Text: "lime-text", Color: "lime-text" },
+                    { Text: "yellow-text", Color: "yellow-text" }, { Text: "amber-text", Color: "amber-text" },
+                    { Text: "orange-text", Color: "orange-text" }, { Text: "deep-orange-text", Color: "deep-orange-text" },
+                    { Text: "brown-text", Color: "brown-text" }, { Text: "grey-text", Color: "grey-text" },
+                    { Text: "blue-grey-text", Color: "blue-grey-text" },
                 ],
                 //    {
                 //    type: "json",
@@ -200,7 +261,52 @@
                 //    }
                 //},
                
+            }); 
+            $('#formAddCategory input[name="Priority"]').kendoNumericTextBox({
+                decimals: 0,
+                min: 1,
+                max:100,
             });
+        });
+        $('#btnSubmitAdd').on('click', function () {
+            var Parent = $('#formAddCategory input[name="Parent"]').val();
+            var Name = $('#formAddCategory input[name="Name"]').val();
+            var Priority = $('#formAddCategory input[name="Priority"]').val();
+            var Color = $('#formAddCategory input[name="Color"]').val();
+            var Level = Parent != "" ? 2 : 1;
+            if (Name == "") {
+                toastr.error("Nhập tiêu đề danh mục!", "Thông báo", {
+                    "positionClass": "toast-top-right",
+                });
+                return;
+            }
+            var Slug = bodauTiengViet(Name);
+
+            $.ajax({
+                type: 'post',
+                timeout:30*1000,
+                url: "/Admin/AddCategory",
+                data: { ParentID: Parent, Name: Name, Priority: Priority, Color: Color, Slug: Slug, Level: Level },
+                success: function (data) {
+                    if (data == 1) {
+                        toastr.success("Thêm thành công!", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                        $('#exampleModal').modal('toggle');
+                        $('#gridCategories').data('kendoTreeList').dataSource.read();
+                        $('#gridCategories').data('kendoTreeList').refresh();
+                    } else {
+                        toastr.error("Thêm thật bại!", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                    }
+                },
+                error: function () {
+                    toastr.error("Lỗi!", "Thông báo", {
+                        "positionClass": "toast-top-right",
+                    });
+                }
+            })
         });
     </script>
 }
@@ -213,7 +319,7 @@
     <!--/Card image-->
     <!--Card content-->
     <div class="card-body text-left">
-        <button class="btn btn-indigo btn-sm btn-rounded waves-effect waves-light" id="btnAddView"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>
+        <button class="btn btn-indigo btn-md btn-rounded waves-effect waves-light" id="btnAddView"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>
     
 
             @*<div class="text-center">
@@ -236,17 +342,15 @@
                     <div class="modal-body">
                         <div class="text-left">
                             <div class="row" id="formAddCategory">
-                                <div class="col-md-12 mb-1">
-                                    <div class="md-form  mb-1">
-
-                                        <input type="text" name="Parent" placeholder="Danh mục cha" class="form-control" title="Nêu thêm cha khỏi chọn cái này.">
-
+                                <div class="col-md-12 mb-1" data-toggle="tooltip" data-placement="bottom" title="Nêu thêm cha khỏi chọn cái này.">
+                                    <div class="md-form  mb-1" >
+                                        <input type="text" name="Parent" class="form-control" title="" data-toggle="tooltip" data-placement="bottom">
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-1">
                                     <div class="md-form  mb-1">
                                        
-                                        <input type="text" name="Name" placeholder="Tiêu đề" class="form-control">
+                                        <input type="text" name="Name" placeholder="Tiêu đề (bắt buộc)" class="form-control validate" data-error="Tiêu đề bắt buộc." data-success="Ok!">
                                       
                                     </div>
                                 </div>
@@ -256,7 +360,7 @@
                                             <div class="col-md-5">
                                                 <input type="text" name="Priority" placeholder="Thứ tự" class="form-control mr-3">
                                             </div>
-                                            <div class="col-md-5 mt-3">
+                                            <div class="col-md-5">
                                                 <input type="text" name="Color" placeholder="Màu sắc" class="form-control">
                                             </div>
                                         </div>
@@ -274,8 +378,8 @@
 
                     <!--Footer-->
                     <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-info btn-rounded btn-sm waves-effect waves-light"><i class="fa fa-check"></i>&nbsp; Hoàn tất</button>
-                        <button type="button" class="btn btn-outline-primary btn-rounded btn-sm  waves-effect " data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</button>
+                        <button type="button" class="btn btn-info btn-rounded btn-md waves-effect waves-light" id="btnSubmitAdd"><i class="fa fa-check"></i>&nbsp; Hoàn tất</button>
+                        <button type="button" class="btn btn-outline-primary btn-rounded btn-md  waves-effect " data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Đóng</button>
                     </div>
                 </div>
                 <!--/.Content-->

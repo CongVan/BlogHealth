@@ -17,11 +17,23 @@ namespace BlogHealth.Controllers
         {
             return View();
         }
-        public ActionResult GetCategories()
+        public ActionResult GetCategories(int kind=1)
         {
             using (var ctx = new BlogHealthEntities())
             {
-                return Json(ctx.Categories.OrderBy(c=>c.Priority).ToList(), JsonRequestBehavior.AllowGet);
+               
+                if (kind == 1)//get all
+                {
+                  //   var result = ctx.Categories.OrderBy(c => c.Priority).ToList();
+                    return Json(ctx.Categories.OrderBy(c => c.Priority).ToList(), JsonRequestBehavior.AllowGet);
+                }
+                else if(kind==2)//get parent title,id
+                {
+                   // var result = ctx.Categories.Select(c => new { ID=c.ID, Name=c.Name }).OrderBy(c => c.ID).ToList();
+                    return Json(ctx.Categories.Where(c=>c.Level==1 || c.ParentID==null).Select(c => new { ID = c.ID, Name = c.Name }).OrderBy(c => c.ID).ToList(), JsonRequestBehavior.AllowGet);
+                }
+                return Json("", JsonRequestBehavior.AllowGet);
+               // return Json(result, JsonRequestBehavior.AllowGet);
             }
 
         }
@@ -76,6 +88,20 @@ namespace BlogHealth.Controllers
 
               
             }     
+        }
+        [HttpPost]
+        public ActionResult AddCategory(Categories model)
+        {
+            if (String.IsNullOrEmpty(model.Name))
+            {
+                return Json("0", JsonRequestBehavior.AllowGet);
+            }
+            using(var ctx=new BlogHealthEntities())
+            {
+                ctx.Categories.Add(model);
+                ctx.SaveChanges();
+            }
+            return Json("1",JsonRequestBehavior.AllowGet);
         }
     }
 }
