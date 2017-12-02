@@ -13,6 +13,9 @@ namespace BlogHealth.Controllers
         {
             return View();
         }
+        #region Categories
+
+
         public ActionResult Categories()
         {
             return View();
@@ -31,6 +34,11 @@ namespace BlogHealth.Controllers
                 {
                    // var result = ctx.Categories.Select(c => new { ID=c.ID, Name=c.Name }).OrderBy(c => c.ID).ToList();
                     return Json(ctx.Categories.Where(c=>c.Level==1 || c.ParentID==null).Select(c => new { ID = c.ID, Name = c.Name }).OrderBy(c => c.ID).ToList(), JsonRequestBehavior.AllowGet);
+                }
+                else if (kind == 3)//get child title,id
+                {
+                    // var result = ctx.Categories.Select(c => new { ID=c.ID, Name=c.Name }).OrderBy(c => c.ID).ToList();
+                    return Json(ctx.Categories.Where(c => c.Level == 2 || c.ParentID != null).Select(c => new { ID = c.ID, Name = c.Name }).OrderBy(c => c.ID).ToList(), JsonRequestBehavior.AllowGet);
                 }
                 return Json("", JsonRequestBehavior.AllowGet);
                // return Json(result, JsonRequestBehavior.AllowGet);
@@ -103,5 +111,17 @@ namespace BlogHealth.Controllers
             }
             return Json("1",JsonRequestBehavior.AllowGet);
         }
+        #endregion
+
+        #region Post
+        public ActionResult Posts()
+        {
+            return View();
+        }
+        public ActionResult AddPost()
+        {
+            return View();
+        }
+        #endregion
     }
 }

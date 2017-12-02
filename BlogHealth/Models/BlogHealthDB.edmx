@@ -17,8 +17,26 @@
           <Property Name="Level" Type="int" />
           <Property Name="Priority" Type="int" />
         </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" />
+          <Property Name="IDCategory" Type="int" />
+          <Property Name="Likes" Type="int" />
+          <Property Name="Views" Type="int" />
+          <Property Name="Shares" Type="int" />
+          <Property Name="Comments" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Update" Type="datetime" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="300" />
+          <Property Name="Rates" Type="int" />
+        </EntityType>
         <EntityContainer Name="BlogHealthModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -38,7 +56,25 @@
         </EntityType>
         <EntityContainer Name="BlogHealthEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Posts" EntityType="BlogHealthModel.Posts" />
         </EntityContainer>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IDCategory" Type="Int32" />
+          <Property Name="Likes" Type="Int32" />
+          <Property Name="Views" Type="Int32" />
+          <Property Name="Shares" Type="Int32" />
+          <Property Name="Comments" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Update" Type="DateTime" Precision="3" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Rates" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -55,6 +91,24 @@
                 <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="ParentID" ColumnName="ParentID" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="BlogHealthModel.Posts">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="Rates" ColumnName="Rates" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Update" ColumnName="Update" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Shares" ColumnName="Shares" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

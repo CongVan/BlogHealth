@@ -26,5 +26,6 @@ namespace BlogHealth.Models
         }
     
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Posts> Posts { get; set; }
     }
 }

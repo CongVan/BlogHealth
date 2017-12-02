@@ -147,6 +147,71 @@
     <Content Include="AdminAsset\js\Myscript.js" />
     <Content Include="AdminAsset\js\popper.min.js" />
     <Content Include="AdminAsset\js\ResizeSensor.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\css\fileinput-rtl.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\css\fileinput-rtl.min.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\css\fileinput.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\css\fileinput.min.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\img\loading-sm.gif" />
+    <Content Include="bootstrap-fileinput-4.4.6\img\loading.gif" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\fileinput.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\fileinput.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\ar.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\az.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\bg.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\ca.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\cr.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\cs.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\da.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\de.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\el.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\es.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\et.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\fa.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\fi.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\fr.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\gl.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\hu.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\id.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\it.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\ja.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\kr.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\kz.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\LANG.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\lt.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\nl.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\no.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\pl.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\pt-BR.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\pt.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\ro.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\ru.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\sk.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\sl.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\sv.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\th.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\tr.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\uk.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\vi.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\zh-TW.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\locales\zh.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\plugins\piexif.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\plugins\piexif.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\plugins\purify.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\plugins\purify.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\plugins\sortable.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\js\plugins\sortable.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer-fa\theme.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer-fa\theme.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer-fa\theme.min.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer-fa\theme.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer\theme.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer\theme.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer\theme.min.css" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\explorer\theme.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\fa\theme.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\fa\theme.min.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\gly\theme.js" />
+    <Content Include="bootstrap-fileinput-4.4.6\themes\gly\theme.min.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -1158,6 +1223,7 @@
     <Content Include="ckfinder\_samples\skin_v1.html" />
     <Content Include="ckfinder\_samples\standalone.html" />
     <Content Include="ckfinder\_samples\standalone_v1.html" />
+    <Content Include="Database\v1.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="HomeAsset\css\bootstrap.css" />
@@ -1292,6 +1358,9 @@
     <Compile Include="Models\Categories.cs">
       <DependentUpon>BlogHealthDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Posts.cs">
+      <DependentUpon>BlogHealthDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1412,6 +1481,8 @@
     <Content Include="Views\Shared\LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Categories.cshtml" />
+    <Content Include="Views\Admin\Posts.cshtml" />
+    <Content Include="Views\Admin\AddPost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

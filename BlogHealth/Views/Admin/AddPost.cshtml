@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Viết bài";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+@section css{
+    
+<link href="~/bootstrap-fileinput-4.4.6/css/fileinput.css" rel="stylesheet" />
+
+<link href="~/bootstrap-fileinput-4.4.6/themes/explorer/theme.css" rel="stylesheet" />
+}
+@section js{
+@*<script src="~/bootstrap-fileinput-4.4.6/js/plugins/sortable.min.js"></script>
+<script src="~/bootstrap-fileinput-4.4.6/js/plugins/purify.min.js"></script>
+<script src="~/bootstrap-fileinput-4.4.6/js/plugins/piexif.min.js"></script>*@
+<script src="~/bootstrap-fileinput-4.4.6/js/fileinput.min.js"></script>
+<script src="~/bootstrap-fileinput-4.4.6/js/locales/vi.js"></script>
+<script src="~/bootstrap-fileinput-4.4.6/themes/explorer/theme.min.js"></script>
+    <script>
+        var editor = CKEDITOR.replace('Content');
+        CKFinder.setupCKEditor(editor, '/ckfinder/');
+        function bodauTiengViet(str) {
+            str = str.toLowerCase();
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+            str = str.replace(/đ/g, 'd');
+            str = str.replace(/\W+/g, ' ');
+            str = str.replace(/\s/g, '-');
+            return str;
+        }
+        $('#frmAddPost input[name="IDCategory"]').kendoDropDownList({
+            dataTextField: "Name",
+            dataValueField: "ID",
+            autoClose: false,
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "/Admin/GetCategories?kind=3"
+                }
+            },
+            optionLabel: "Chọn danh mục",
+        });
+        $('#frmAddPost input[name="Title"]').keydown( function () {
+            $('#frmAddPost input[name="Slug"]').val(bodauTiengViet($(this).val()));
+        });
+        $("#imageUp").fileinput({
+            uploadUrl: "/Account/UpImage/",
+            theme: "explorer",
+            language: 'vi',
+            minFileSize: '1',
+            maxFileSize: '900',
+            resizeImage: true,
+            maxImageWidth: 300,
+            maxImageHeight: 300,
+            resizePreference: 'width',
+            validateInitialCount: true,
+            uploadAsync: false,
+            minFileCount: '3',
+            accept: 'image/*',
+            maxFileCount: '6',
+            previewFileIcon: '<i class="fa fa-file"></i>',
+            allowedPreviewTypes: ['image'], // allow only preview of image & text files
+            allowedFileExtensions: ['jpg', 'gif', 'png'],
+            previewFileIconSettings: {
+                'docx': '<i class="fa fa-file-word-o text-primary"></i>',
+                'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+                'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+                'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+                'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+            },
+            previewSettings: {
+                image: { width: "300px", height: "150px" },
+            }
+        });
+    </script>
+}
+<!--Card-->
+<div class="card card-cascade">
+
+    <!--Card image-->
+    <div class="view gradient-card-header blue-gradient p-1">
+        <h2 class="h2-responsive">Đăng bài</h2>
+
+    </div>
+    <!--/Card image-->
+    <!--Card content-->
+    <div class="card-body text-left ">
+
+
+        <form id="frmAddPost" method="post" action="">
+            <!--First row-->
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="md-form">
+                        <i class="fa fa-bookmark-o prefix glyphicon glyphicon-upload"></i>
+                        <input type="text" name="Title"  class="form-control input-char-counter" placeholder="Tiêu đề (tối đa 300 ký tự)" length="300">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="md-form">
+                        <i class="fa fa-link prefix"></i>
+                        <input type="text" name="Slug" class="form-control" placeholder="Slug" readonly>
+                    </div>
+                </div>
+              
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <div class="md-form">
+                           
+                            <input type="text" name="IDCategory" class="form-control" placeholder="Danh mục">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <div class="md-form">
+                            <i class="fa fa-bookmark-o prefix"></i>
+                            <input type="text" name="Tag" class="form-control" placeholder="Tags (Mỗi tag cách nhau bằng dấu , )">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="md-form">
+                       
+                           
+                            <input id="imageUp" name="files" multiple="multiple" type="file" class="form-control">
+
+                       
+                    </div>
+                </div>
+            </div>
+            <!--/.First row-->
+            
+            <!--Second row-->
+            <div class="row">
+                <!--First column-->
+                <div class="col-md-12">
+
+                    <div class="md-form">
+                        
+                        <textarea type="text" id="Content" class="md-textarea"></textarea>
+
+                    </div>
+
+                </div>
+            </div>
+           
+         
+        </form>
+
+    </div>
+    <!--/.Card content-->
+
+</div>
+<!--/.Card-->
+

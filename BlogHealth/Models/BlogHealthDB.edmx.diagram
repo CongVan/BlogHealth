@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d1c7cafe5421429192d573d0dc525518" Name="Diagram1">
         <EntityTypeShape EntityType="BlogHealthModel.Categories" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogHealthModel.Posts" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

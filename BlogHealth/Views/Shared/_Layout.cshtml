@@ -115,8 +115,9 @@
 
                         <!-- Dropdown -->
                         <li class="nav-item dropdown ml-1">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu dropdown-primary p-1" aria-labelledby="navbarDropdownMenuLink" style="font-weight:400!important">
+                            <a data-href="@Url.Action("Index","Home")" href="@Url.Action("Index","Home")" class="nav-link" data-toggle="dropdown">Dropdown</a>
+                            
+                            <div class="dropdown-menu dropdown-primary p-1"  style="font-weight:400!important">
                                 <a class="dropdown-item p-1" href="#">Action</a>
                                 <a class="dropdown-item p-1" href="#">Another action</a>
                                 <a class="dropdown-item p-1" href="#">Something else here</a>
@@ -816,6 +817,9 @@
 
 <script>
     $(document).ready(function () {
+        $('.nav-link').on('click', function () {
+            window.location.href = $(this).data("href");
+        });
         $('.MainContent, .SideBar').theiaStickySidebar({
             // Settings
             additionalMarginTop: 45
