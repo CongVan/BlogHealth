@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BlogHealth.Models;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace BlogHealth.Controllers
 {
@@ -128,7 +129,7 @@ namespace BlogHealth.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddPost(Posts model)
+        public async Task<ActionResult> AddPost(Posts model)
         {
 
             IEnumerable<HttpPostedFileBase> files = TempData["ListImage"] as IEnumerable<HttpPostedFileBase>;
@@ -146,17 +147,19 @@ namespace BlogHealth.Controllers
                     {
                         if (file.ContentLength > 0 && file != null)
                         {
-                            string pathOfFile = Path.Combine(targetDirPath, post.Slug+$"_images_{i++}.jpg");
-                            file.SaveAs(pathOfFile);
+                            string pathOfFile = Path.Combine(targetDirPath, post.Slug+$"-images-{i++}.jpg");
+                              file.SaveAs(pathOfFile);
                         }
                     }
                     TempData["Status"] = "Success";
+                    TempData["ID"] = post.ID;
+                    return  View();
                 }
                 catch (Exception ex)
                 {
                     TempData["Error"] = "Lỗi đăng bài. " + ex.Message;
                     TempData["Status"] = "Error";
-                    TempData["ID"] = post.ID;
+                   
                     return View();
                 }
                 

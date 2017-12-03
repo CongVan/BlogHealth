@@ -57,7 +57,7 @@
                 },
                 optionLabel: "Chọn danh mục",
             });
-            $('#frmAddPost input[name="Title"]').keydown(function () {
+            $('#frmAddPost input[name="Title"]').keyup(function () {
                 $('#frmAddPost input[name="Slug"]').val(bodauTiengViet($(this).val()));
             });
             $('#imageUp').on('filebatchuploadcomplete', function (event, files, extra) {
@@ -66,8 +66,6 @@
             });
             $('#imageUp').on('change', function (event) {
                 console.log('change');
-                
-
             });
             $("#imageUp").fileinput({
                 uploadUrl: "/Admin/UpImagePost/",
@@ -94,7 +92,7 @@
                 }
             });
 
-            var status = ""+ @(ViewBag.Status) +"";
+            var status = @Html.Raw(Json.Encode(ViewBag.Status));
             if (status == "Success") {
                 $('#Step1').addClass('disabled');
                 $('#frmAddPost input').attr('disabled');
@@ -103,7 +101,7 @@
                 
                 $('#collapseTwo').addClass('show');
                 $('#frmContentPost input[name="Content"]').removeAttr('disabled');
-                $('#frmContentPost input[name="ID"]').val(""+ @(ViewBag.ID) +"");
+                $('#frmContentPost input[name="ID"]').val(@Html.Raw(Json.Encode(ViewBag.ID)));
             }
             //$("#frmAddPost input[name='files']").kendoUpload({
             //    async: {
