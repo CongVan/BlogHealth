@@ -115,8 +115,8 @@
                     template: "<span class='#: data.Color # font-weight-normal'>#: data.Color #<span>",
                 },
                 {
-                    title: "Thao tác", command: [{ name: "edit", text: "Chỉnh sửa", className: "btn-outline-blue btn-rounded", },
-                        { name: "destroy", text: "Xóa", className: "btn-outline-danger btn-rounded", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
+                    title: "Thao tác", command: [{ name: "edit", text: " ", className: "btn-outline-blue btn-rounded", },
+                        { name: "destroy", text: " ", className: "btn-outline-danger btn-rounded", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
                 },
             ],
             save: function (e) {
@@ -154,6 +154,7 @@
                 console.log("remove");
                 console.log(e);
                 if (!confirm("Xác nhận xóa !")) {
+                    e.preventdefault();
                     return;
                 }
 

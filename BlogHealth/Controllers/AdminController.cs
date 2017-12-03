@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlogHealth.Models;
+using System.IO;
+
 namespace BlogHealth.Controllers
 {
     public class AdminController : Controller
@@ -120,7 +122,84 @@ namespace BlogHealth.Controllers
         }
         public ActionResult AddPost()
         {
+            ViewBag.Status = TempData["Status"]!=null? TempData["Status"].ToString():" ";
+            ViewBag.Error = TempData["Error"] !=null? TempData["Error"].ToString():null;
+            ViewBag.ID = TempData["ID"] !=null? TempData["ID"].ToString():null;
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddPost(Posts model)
+        {
+
+            IEnumerable<HttpPostedFileBase> files = TempData["ListImage"] as IEnumerable<HttpPostedFileBase>;
+            using (var ctx =new BlogHealthEntities())
+            {
+                var post = ctx.Posts.Add(model);
+                try
+                {
+                    ctx.SaveChanges();
+                    string auDirPath = Server.MapPath("~/Images/Posts");
+                    string targetDirPath = Path.Combine(auDirPath, post.ID.ToString());
+                    Directory.CreateDirectory(targetDirPath);
+                    int i = 0;
+                    foreach (var file in files)
+                    {
+                        if (file.ContentLength > 0 && file != null)
+                        {
+                            string pathOfFile = Path.Combine(targetDirPath, post.Slug+$"_images_{i++}.jpg");
+                            file.SaveAs(pathOfFile);
+                        }
+                    }
+                    TempData["Status"] = "Success";
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Lỗi đăng bài. " + ex.Message;
+                    TempData["Status"] = "Error";
+                    TempData["ID"] = post.ID;
+                    return View();
+                }
+                
+                
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult UpImagePost(HttpPostedFileBase[] files)
+        {
+            List<HttpPostedFileBase> allFiles = Enumerable.Range(0, Request.Files.Count)
+                                                .Select(x => Request.Files[x])
+                                                .Where(x => !string.IsNullOrEmpty(x.FileName))
+                                                .ToList();
+
+            
+            TempData["ListImage"] = allFiles;
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult UpdateContentPost(int ID,string Content)
+        {
+            using(var ctx=new BlogHealthEntities())
+            {
+                var post = ctx.Posts.Where(c => c.ID == ID).FirstOrDefault();
+                if (post == null)
+                {
+                    TempData["Error"] = "Không tìm thấy bài viết. Thử lại!";
+                    return RedirectToAction("AddPost", "Admin");
+                }
+                post.Content = Content;
+                ctx.Entry(post).State = System.Data.Entity.EntityState.Modified;
+                try
+                {
+                    ctx.SaveChanges();
+                    TempData["Success"] = "Đăng thành công!";
+                    return RedirectToAction("AddPost", "Admin");
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Lỗi đăng bài. " + ex.Message;
+                    return RedirectToAction("AddPost", "Admin");
+                }
+            }
         }
         #endregion
     }
