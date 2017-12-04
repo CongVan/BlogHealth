@@ -1317,7 +1317,15 @@
     <Content Include="HomeAsset\font\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="HomeAsset\font\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="Kendo\css\all.css" />
+    <Content Include="Kendo\css\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Kendo\css\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Kendo\css\images\back.png" />
+    <Content Include="Kendo\css\images\kendoui.svg" />
+    <Content Include="Kendo\css\images\wp8_icons.png" />
+    <Content Include="Kendo\css\images\wp8_inverseicons.png" />
     <Content Include="Kendo\css\kendo.bootstrap-v4.min.css" />
+    <Content Include="Kendo\css\kendo.common.core.min.css" />
     <Content Include="Kendo\css\kendo.common.min.css" />
     <Content Include="Kendo\css\kendo.material.min.css" />
     <Content Include="Kendo\css\kendo.material.mobile.min.css" />
@@ -1488,6 +1496,27 @@
     <Content Include="Models\BlogHealthDB.edmx.diagram">
       <DependentUpon>BlogHealthDB.edmx</DependentUpon>
     </Content>
+    <Content Include="Kendo\css\images\kendoui.ttf" />
+    <Content Include="Kendo\css\images\kendoui.woff" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Kendo\css\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Kendo\css\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Kendo\css\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Kendo\css\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.woff" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
