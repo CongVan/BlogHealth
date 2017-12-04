@@ -31,7 +31,7 @@
 		LicenseKey = "5D53UV648RFQFJPKH9DF59FPYGGLRPPQ";
 
 		// The base URL used to reach files in CKFinder through the browser.
-		BaseUrl = "/Images/";
+		BaseUrl = "/Images/Posts";
 
 		// The phisical directory in the server where the file will end up. If
 		// blank, CKFinder attempts to resolve BaseUrl.
@@ -40,7 +40,7 @@
 		// Optional: enable extra plugins (remember to copy .dll files first).
 		Plugins = new string[] {
 			// "CKFinder.Plugins.FileEditor, CKFinder_FileEditor",
-			// "CKFinder.Plugins.ImageResize, CKFinder_ImageResize",
+			 "CKFinder.Plugins.ImageResize, CKFinder_ImageResize",
 			// "CKFinder.Plugins.Watermark, CKFinder_Watermark"
 		};
 		// Settings for extra plugins.
