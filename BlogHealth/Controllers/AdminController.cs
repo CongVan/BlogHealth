@@ -123,9 +123,10 @@ namespace BlogHealth.Controllers
         }
         public ActionResult AddPost()
         {
-            ViewBag.Status = TempData["Status"]!=null? TempData["Status"].ToString():" ";
+            ViewBag.Status = TempData["Status"]!=null? TempData["Status"].ToString():"";
             ViewBag.Error = TempData["Error"] !=null? TempData["Error"].ToString():null;
             ViewBag.ID = TempData["ID"] !=null? TempData["ID"].ToString():null;
+            ViewBag.ID = TempData["Success"] != null ? TempData["Success"].ToString() : null;
             return View();
         }
         [HttpPost]
@@ -153,19 +154,19 @@ namespace BlogHealth.Controllers
                     }
                     TempData["Status"] = "Success";
                     TempData["ID"] = post.ID;
-                    return  View();
+                    return  RedirectToAction("AddPost","Admin");
                 }
                 catch (Exception ex)
                 {
                     TempData["Error"] = "Lỗi đăng bài. " + ex.Message;
                     TempData["Status"] = "Error";
-                   
-                    return View();
+
+                    return RedirectToAction("AddPost", "Admin");
                 }
                 
                 
             }
-            return View();
+            return RedirectToAction("AddPost", "Admin");
         }
         [HttpPost]
         public ActionResult UpImagePost(HttpPostedFileBase[] files)
@@ -179,6 +180,7 @@ namespace BlogHealth.Controllers
             TempData["ListImage"] = allFiles;
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public ActionResult UpdateContentPost(int ID,string Content)
         {
             using(var ctx=new BlogHealthEntities())

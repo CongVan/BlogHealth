@@ -62,7 +62,7 @@
             });
             $('#imageUp').on('filebatchuploadcomplete', function (event, files, extra) {
                 console.log("upload");
-                
+
             });
             $('#imageUp').on('change', function (event) {
                 console.log('change');
@@ -92,16 +92,16 @@
                 }
             });
 
-            var status = @Html.Raw(Json.Encode(ViewBag.Status));
+            var status = "@ViewBag.Status";
             if (status == "Success") {
                 $('#Step1').addClass('disabled');
                 $('#frmAddPost input').attr('disabled');
                 $('#Step2').removeClass('disabled');
                 $('#collapseOne').removeClass('show');
-                
+
                 $('#collapseTwo').addClass('show');
                 $('#frmContentPost input[name="Content"]').removeAttr('disabled');
-                $('#frmContentPost input[name="ID"]').val(@Html.Raw(Json.Encode(ViewBag.ID)));
+                $('#frmContentPost input[name="ID"]').val("@ViewBag.ID");
             }
             //$("#frmAddPost input[name='files']").kendoUpload({
             //    async: {
@@ -115,16 +115,12 @@
     </script>
 }
 <!--Card-->
-<div class="card card-cascade">
+<div class="card">
 
-    <!--Card image-->
-    <div class="view gradient-card-header blue-gradient p-1">
-        <h2 class="h2-responsive">Đăng bài</h2>
-
-    </div>
-    <!--/Card image-->
+    <h3 class="card-header blue-text py-1 border-primary">Đăng bài</h3>
     <!--Card content-->
-    <div class="card-body text-left ">
+    <div class="card-body text-left px-3">
+        
         <div class="row">
             <div class="col"></div>
             @if (ViewBag.Error != null)
@@ -164,7 +160,7 @@
                 <!-- Card header -->
                 <div class="card-header" role="tab" id="headingOne">
                     <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <h5 class="mb-0">
+                        <h5 class="mb-0"><i class="fa fa-info-circle"></i>
                             Thông tin bài viết <i class="fa fa-angle-down rotate-icon"></i>
                         </h5>
                     </a>
@@ -175,41 +171,50 @@
                     <div class="card-body">
                         <form id="frmAddPost" method="post" action="@Url.Action("AddPost","Admin")" enctype="multipart/form-data">
                             <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="row">
 
-                                <div class="col-md-12">
-                                    <div class="md-form">
-                                        <i class="fa fa-bookmark-o prefix glyphicon glyphicon-upload"></i>
-                                        <input type="text" name="Title" class="form-control input-char-counter" placeholder="Tiêu đề (tối đa 300 ký tự)" length="300">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="md-form">
-                                        <i class="fa fa-link prefix"></i>
-                                        <input type="text" name="Slug" class="form-control" placeholder="Slug" readonly>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="md-form">
-                                        <div class="md-form">
-
-                                            <input type="text" name="IDCategory" class="form-control" placeholder="Danh mục">
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <i class="fa fa-bookmark-o prefix glyphicon glyphicon-upload"></i>
+                                                <input type="text" name="Title" class="form-control input-char-counter" placeholder="Tiêu đề (tối đa 300 ký tự)" length="300">
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="md-form">
-                                        <div class="md-form">
-                                            <i class="fa fa-bookmark-o prefix"></i>
-                                            <input type="text" name="Tag" class="form-control" placeholder="Tags (Mỗi tag cách nhau bằng dấu , )">
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <i class="fa fa-link prefix"></i>
+                                                <input type="text" name="Slug" class="form-control" placeholder="Slug" readonly>
+                                            </div>
                                         </div>
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <div class="md-form">
+                                                    <i class="fa fa-bookmark-o prefix"></i>
+                                                    <input type="text" name="Tag" class="form-control" placeholder="Tags (Mỗi tag cách nhau bằng dấu , )">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <div class="md-form">
+
+                                                    <input type="text" name="IDCategory" class="form-control" placeholder="Danh mục">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-2">
-                                    <input id="imageUp" name="files" multiple type="file" class="form-control"  data-preview-file-type="text">
+                                <div class="col-lg-7">
+                                    <div class="col-md-12 mb-2">
+                                        <input id="imageUp" name="files" multiple type="file" class="form-control" data-preview-file-type="icon">
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-md">Tiếp tục</button>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success btn-md" >Tiếp tục</button>
+                            
+                            
                         </form>
                     </div>
                 </div>
@@ -220,9 +225,9 @@
             <div class="card disabled" id="Step2">
 
                 <!-- Card header -->
-                <div class="card-header" role="tab" id="headingTwo">
+                <div class="card-header " role="tab" id="headingTwo">
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h5 class="mb-0">
+                        <h5 class="mb-0"><i class="fa fa-pencil-square-o"></i>
                             Nội dung bài viết<i class="fa fa-angle-down rotate-icon"></i>
                         </h5>
                     </a>
@@ -232,7 +237,7 @@
                 <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="card-body">
                         <form id="frmContentPost" method="post" action="@Url.Action("UpdateContentPost","Admin")">
-                            <input type="text" name="ID" value="@ViewBag.ID" class="form-control"/>
+                            <input type="text" name="ID" value="@ViewBag.ID" class="form-control" readonly placeholder="Mã bài viết"/>
                             <div class="row">
                                 <!--First column-->
                                 <div class="col-md-12">
