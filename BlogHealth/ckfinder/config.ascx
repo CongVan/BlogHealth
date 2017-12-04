@@ -31,7 +31,7 @@
 		LicenseKey = "5D53UV648RFQFJPKH9DF59FPYGGLRPPQ";
 
 		// The base URL used to reach files in CKFinder through the browser.
-		BaseUrl = "/Images/Posts";
+		BaseUrl = "/SourceImages/";
 
 		// The phisical directory in the server where the file will end up. If
 		// blank, CKFinder attempts to resolve BaseUrl.
@@ -48,6 +48,9 @@
 		PluginSettings.Add("ImageResize_smallThumb", "90x90" );
 		PluginSettings.Add("ImageResize_mediumThumb", "120x120" );
 		PluginSettings.Add("ImageResize_largeThumb", "180x180" );
+        PluginSettings.Add("ImageResize_Size1", "400x300" );
+        PluginSettings.Add("ImageResize_Size2", "640x480" );
+        PluginSettings.Add("ImageResize_Size3", "800x600" );
 		// Name of the watermark image in plugins/watermark folder
 		PluginSettings.Add("Watermark_source", "logo.gif" );
 		PluginSettings.Add("Watermark_marginRight", "5" );
@@ -58,9 +61,9 @@
 		// Thumbnail settings.
 		// "Url" is used to reach the thumbnails with the browser, while "Dir"
 		// points to the physical location of the thumbnail files in the server.
-		Thumbnails.Url = BaseUrl + "_thumbs/";
+		Thumbnails.Url = BaseUrl + "thumbs/";
 		if ( BaseDir != "" ) {
-			Thumbnails.Dir = BaseDir + "_thumbs/";
+			Thumbnails.Dir = BaseDir + "thumbs/";
 		}
 		Thumbnails.Enabled = true;
 		Thumbnails.DirectAccess = false;
