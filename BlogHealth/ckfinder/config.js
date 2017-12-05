@@ -14,5 +14,5 @@ CKFinder.customConfig = function( config )
 	 config.language = 'vi';
 	// config.removePlugins = 'basket';
 	 config.skin = 'bootstrap';
-	 config.rememberLastFolder = true;
+	 
 };
