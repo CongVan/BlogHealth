@@ -48,9 +48,7 @@
 		PluginSettings.Add("ImageResize_smallThumb", "90x90" );
 		PluginSettings.Add("ImageResize_mediumThumb", "120x120" );
 		PluginSettings.Add("ImageResize_largeThumb", "180x180" );
-        PluginSettings.Add("ImageResize_Size1", "400x300" );
-        PluginSettings.Add("ImageResize_Size2", "640x480" );
-        PluginSettings.Add("ImageResize_Size3", "800x600" );
+
 		// Name of the watermark image in plugins/watermark folder
 		PluginSettings.Add("Watermark_source", "logo.gif" );
 		PluginSettings.Add("Watermark_marginRight", "5" );
@@ -65,11 +63,11 @@
 		if ( BaseDir != "" ) {
 			Thumbnails.Dir = BaseDir + "thumbs/";
 		}
-		Thumbnails.Enabled = true;
+		Thumbnails.Enabled = false;
 		Thumbnails.DirectAccess = false;
-		Thumbnails.MaxWidth = 100;
+		Thumbnails.MaxWidth = 180;
 		Thumbnails.MaxHeight = 100;
-		Thumbnails.Quality = 80;
+		Thumbnails.Quality = 60;
 
 		// Set the maximum size of uploaded images. If an uploaded image is
 		// larger, it gets scaled down proportionally. Set to 0 to disable this
