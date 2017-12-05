@@ -5,28 +5,11 @@
 }
 @section css{
 
-    <link href="~/bootstrap-fileinput-4.4.6/css/fileinput.css" rel="stylesheet" />
-    <style>
-        .btn[class*=btn-outline-] {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-        }
-
-        .input-group-btn {
-            margin-left: .5rem !important;
-        }
-    </style>
-    @*<link href="~/bootstrap-fileinput-4.4.6/themes/explorer/theme.css" rel="stylesheet" />*@
 }
 @section js{
-    <script src="~/bootstrap-fileinput-4.4.6/js/plugins/sortable.min.js"></script>
-        <script src="~/bootstrap-fileinput-4.4.6/js/plugins/purify.min.js"></script>
-        <script src="~/bootstrap-fileinput-4.4.6/js/plugins/piexif.min.js"></script>
-    <script src="~/bootstrap-fileinput-4.4.6/js/fileinput.min.js"></script>
-    <script src="~/bootstrap-fileinput-4.4.6/js/locales/vi.js"></script>
-    @*<script src="~/bootstrap-fileinput-4.4.6/themes/explorer/theme.min.js"></script>*@
-    <script src="~/bootstrap-fileinput-4.4.6/themes/fa/theme.js"></script>
 
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckfinder/ckfinder.js"></script>
     <script>
 
         $(document).ready(function () {
@@ -60,49 +43,7 @@
             $('#frmAddPost input[name="Title"]').keyup(function () {
                 $('#frmAddPost input[name="Slug"]').val(bodauTiengViet($(this).val()));
             });
-            $('#imageUp').on('filebatchuploadcomplete', function (event, files, extra) {
-                console.log("upload");
-
-            });
-            $('#imageUp').on('change', function (event) {
-                console.log('change');
-            });
-            $("#imageUp").fileinput({
-                uploadUrl: "/Admin/UpImagePost/",
-                theme: "fa",
-                language: 'vi',
-                resizeImage: true,
-                resizePreference: 'width',
-                validateInitialCount: true,
-                uploadAsync: false,
-                accept: 'image/*',
-                maxFileCount: '6',
-                previewFileIcon: '<i class="fa fa-file"></i>',
-                allowedPreviewTypes: ['image'], // allow only preview of image & text files
-                allowedFileExtensions: ['jpg', 'gif', 'png'],
-                previewFileIconSettings: {
-                    'docx': '<i class="fa fa-file-word-o text-primary"></i>',
-                    'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
-                    'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
-                    'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
-                    'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
-                },
-                previewSettings: {
-                    image: { width: "300px", height: "150px" },
-                }
-            });
-
-            var status = "@ViewBag.Status";
-            if (status == "Success") {
-                $('#Step1').addClass('disabled');
-                $('#frmAddPost input').attr('disabled');
-                $('#Step2').removeClass('disabled');
-                $('#collapseOne').removeClass('show');
-
-                $('#collapseTwo').addClass('show');
-                $('#frmContentPost textarea[name="Content"]').removeAttr('disabled');
-                $('#frmContentPost input[name="ID"]').val("@ViewBag.ID");
-            }
+           
             //$("#frmAddPost input[name='files']").kendoUpload({
             //    async: {
             //        saveUrl: "save",
@@ -171,7 +112,7 @@
                     <div class="card-body">
                         <form id="frmAddPost" method="post" action="@Url.Action("AddPost","Admin")" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-lg-5">
+                                <div class="col-lg-10 ">
                                     <div class="row">
 
                                         <div class="col-md-12">
@@ -194,24 +135,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        
+                                        <div class="col-md-8 pl-5">
                                             <div class="md-form">
-                                                <div class="md-form">
-
-                                                    <input type="text" name="IDCategory" class="form-control" placeholder="Danh mục">
-                                                </div>
+                                                <i class="fa fa-list prefix"></i>
+                                               <input type="text" name="IDCategory" class="form-control" placeholder="Danh mục">
                                             </div>
                                         </div>
                                         
-                                        
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <textarea type="text" id="Content" name="Content" class="md-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-success" type="submit">Đăng bài</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-7">
-                                    <div class="col-md-12 mb-2">
-                                        <input id="imageUp" name="files" multiple type="file" class="form-control" data-preview-file-type="icon">
-                                    </div>
-                                    <button type="submit" class="btn btn-success btn-md">Tiếp tục</button>
-                                </div>
+                                
                             </div>
                             
                             
@@ -219,40 +159,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Accordion card -->
             <!-- Accordion card -->
             
-            <div class="card " id="Step2">
-
-                <!-- Card header -->
-                <div class="card-header grey lighten-3" role="tab" id="headingTwo">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h5 class="mb-0"><i class="fa fa-pencil-square-o"></i>
-                            Nội dung bài viết<i class="fa fa-angle-down rotate-icon"></i>
-                        </h5>
-                    </a>
-                </div>
-
-                <!-- Card body -->
-                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="card-body">
-                        <form id="frmContentPost" method="post" action="@Url.Action("UpdateContentPost","Admin")">
-                            <input type="text" name="ID" value="@ViewBag.ID" class="form-control" readonly placeholder="Mã bài viết"/>
-                            <div class="row">
-                                <!--First column-->
-                                <div class="col-md-12">
-                                    <div class="md-form">
-                                        <textarea type="text" id="Content" name="Content" class="md-textarea"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check-circle-o"></i> Đăng bài </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Accordion card -->
-
         </div>
         <!--/.Accordion wrapper-->
 

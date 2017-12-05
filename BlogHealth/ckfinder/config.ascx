@@ -28,10 +28,10 @@
         // Paste your license name and key here. If left blank, CKFinder will
         // be fully functional, in Demo Mode.
         LicenseName = "CongVan";
-        LicenseKey = "LMNLDV8SG44TJCJW282F1MRLFQ1G18HT";
+        LicenseKey = "FLABQDBW96NWEA8QKEYJGJCXQGP4KW2C";
 
         // The base URL used to reach files in CKFinder through the browser.
-        BaseUrl = "/SourceImages/";
+        BaseUrl = "/ckfinder/userfiles/";
 
         // The phisical directory in the server where the file will end up. If
         // blank, CKFinder attempts to resolve BaseUrl.
@@ -39,33 +39,32 @@
 
         // Optional: enable extra plugins (remember to copy .dll files first).
         Plugins = new string[] {
-             //"CKFinder.Plugins.FileEditor, CKFinder_FileEditor",
-             "CKFinder.Plugins.ImageResize, CKFinder_ImageResize",
-             //"CKFinder.Plugins.Watermark, CKFinder_Watermark"
+			// "CKFinder.Plugins.FileEditor, CKFinder_FileEditor",
+			 "CKFinder.Plugins.ImageResize, CKFinder_ImageResize",
+			 //"CKFinder.Plugins.Watermark, CKFinder_Watermark"
         };
         // Settings for extra plugins.
         PluginSettings = new Hashtable();
         PluginSettings.Add("ImageResize_smallThumb", "90x90" );
-        PluginSettings.Add("ImageResize_mediumThumb", "120x120" );
-        PluginSettings.Add("ImageResize_largeThumb", "320x240" );
-
+        PluginSettings.Add("ImageResize_mediumThumb", "180x120" );
+        PluginSettings.Add("ImageResize_largeThumb", "320x320" );
         // Name of the watermark image in plugins/watermark folder
         PluginSettings.Add("Watermark_source", "logo.gif" );
         PluginSettings.Add("Watermark_marginRight", "5" );
         PluginSettings.Add("Watermark_marginBottom", "5" );
         PluginSettings.Add("Watermark_quality", "90" );
-        PluginSettings.Add("Watermark_transparency", "0" );
+        PluginSettings.Add("Watermark_transparency", "80" );
 
         // Thumbnail settings.
         // "Url" is used to reach the thumbnails with the browser, while "Dir"
         // points to the physical location of the thumbnail files in the server.
-        Thumbnails.Url = BaseUrl + "thumbs/";
+        Thumbnails.Url = BaseUrl + "_thumbs/";
         if ( BaseDir != "" ) {
-            Thumbnails.Dir = BaseDir + "thumbs/";
+            Thumbnails.Dir = BaseDir + "_thumbs/";
         }
         Thumbnails.Enabled = false;
         Thumbnails.DirectAccess = false;
-        Thumbnails.MaxWidth = 180;
+        Thumbnails.MaxWidth = 100;
         Thumbnails.MaxHeight = 100;
         Thumbnails.Quality = 80;
 
