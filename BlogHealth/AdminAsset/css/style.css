@@ -3,7 +3,13 @@
     src: url(../font/Opensans/OpenSans-Regular.ttf);
     font-weight: 500;
 }
-
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #bdbdbd !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #bdbdbd!important;
+   opacity:  1;
+}
 body {
     font-family: OpenSans !important; /*Roboto,sans-serif*/
 }
