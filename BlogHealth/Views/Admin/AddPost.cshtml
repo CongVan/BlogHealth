@@ -7,7 +7,7 @@
 
 }
 @section js{
-
+<script src="~/AdminAsset/js/speakingurl.min.js"></script>
 <script src="~/ckeditor/ckeditor.js"></script>
 <script src="~/ckfinder/ckfinder.js"></script>
     <script>
@@ -15,7 +15,9 @@
         $(document).ready(function () {
             var editor = CKEDITOR.replace('Content');
             CKFinder.setupCKEditor(editor, '/ckfinder/');
+            
             function bodauTiengViet(str) {
+
                 str = str.toLowerCase();
                 str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
                 str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
@@ -40,9 +42,14 @@
                 },
                 optionLabel: "Chọn danh mục",
             });
-            $('#frmAddPost input[name="Title"]').bind('keyup change keydown ',function () {
+            $('#frmAddPost input[name="Title"]').bind(' keyup change keydown ', function () {
+            
                 $('#frmAddPost input[name="Slug"]').val(bodauTiengViet($(this).val()));
             });
+            var slug = getSlug("Mỗi bài viết", {
+                lang: 'vn' // lang: "en" is default, just to clarify
+            });
+            console.log(slug);
             //$('#frmAddPost input[name="Title"]').change(function () {
             //    $('#frmAddPost input[name="Slug"]').val(bodauTiengViet($(this).val()));
             //});
@@ -119,8 +126,8 @@
 
                                         <div class="col-md-12">
                                             <div class="md-form">
-                                                <i class="fa fa-bookmark-o prefix glyphicon glyphicon-upload"></i>
-                                                <input type="text" name="Title" class="form-control input-char-counter" placeholder="Tiêu đề (tối đa 300 ký tự)" length="300">
+                                                <i class="fa fa-bookmark-o prefix "></i>
+                                                <input type="text" name="Title" class="form-control" placeholder="Tiêu đề (tối đa 300 ký tự)" >
                                             </div>
                                         </div>
                                         <div class="col-md-12">
