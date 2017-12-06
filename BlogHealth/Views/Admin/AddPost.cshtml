@@ -50,16 +50,33 @@
                 lang: 'vn' // lang: "en" is default, just to clarify
             });
             console.log(slug);
-            //$('#frmAddPost input[name="Title"]').change(function () {
-            //    $('#frmAddPost input[name="Slug"]').val(bodauTiengViet($(this).val()));
-            //});
-            //$("#frmAddPost input[name='files']").kendoUpload({
-            //    async: {
-            //        saveUrl: "save",
-            //        removeUrl: "remove",
-            //        autoUpload: true
-            //    }
-            //});
+            $('#frmAddPost').on('submit', function (e) {
+                var slug = $('#frmAddPost input[name="Slug"]').val();
+                var check = 1;
+                $.ajax({
+                    async: false,
+                    url: "/Admin/CheckImageThumbs?slug=" + slug,
+                    method: 'post',
+                    success: function (data) {
+                        if (data.ret == "Fail") {
+                            toastr.error(data.msg, "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
+                            check = 0;
+                        }
+                    },
+                    error: function () {
+                        toastr.error("Lỗi", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                        check = 0;
+                    }
+                });
+                if (check == 0) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
         });
 
     </script>
@@ -136,7 +153,7 @@
                                                 <input type="text" name="Slug" class="form-control" placeholder="Slug" readonly>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="md-form">
                                                 <div class="md-form">
                                                     <i class="fa fa-bookmark-o prefix"></i>
@@ -145,7 +162,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-8 pl-5">
+                                        <div class="col-md-6 pl-5 pt-3">
                                             
                                             <div class="md-form">
                                                 

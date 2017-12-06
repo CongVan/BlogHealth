@@ -124,96 +124,87 @@ namespace BlogHealth.Controllers
         
         public ActionResult AddPost()
         {
-            ViewBag.Status = TempData["Status"]!=null? TempData["Status"].ToString():"";
+          
             ViewBag.Error = TempData["Error"] !=null? TempData["Error"].ToString():null;
-            ViewBag.ID = TempData["ID"] !=null? TempData["ID"].ToString():null;
+            
             ViewBag.Success = TempData["Success"] != null ? TempData["Success"].ToString() : null;
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
         public async Task<ActionResult> AddPost(Posts model)
         {
-
-            IEnumerable<HttpPostedFileBase> files = TempData["ListImage"] as IEnumerable<HttpPostedFileBase>;
+           
             using (var ctx =new BlogHealthEntities())
             {
-                var post = ctx.Posts.Add(model);
+                ctx.Posts.Add(model);
+
                 try
                 {
                     ctx.SaveChanges();
-                    string auDirPath = Server.MapPath("~/Images/Posts");
-                    string targetDirPath = Path.Combine(auDirPath, post.ID.ToString());
-                    Directory.CreateDirectory(targetDirPath);
-                    int i = 0;
-                    foreach (var file in files)
-                    {
-                        if (file.ContentLength > 0 && file != null)
-                        {
-                            string pathOfFile = Path.Combine(targetDirPath, post.Slug+$"-images-{i++}.jpg");
-                              file.SaveAs(pathOfFile);
-                        }
-                    }
-
-                    TempData["Status"] = "Success";
-                    TempData["ID"] = post.ID;
+                    TempData["Success"] = "Đăng thành công!";
                     return  RedirectToAction("AddPost","Admin");
                 }
-                catch (Exception ex)
+                catch (Exception ex)    
                 {
+                    var post = ctx.Posts.Where(c => c.ID == model.ID).FirstOrDefault();
                     if(post != null)
                     {
                         ctx.Posts.Remove(post);
                         ctx.SaveChanges();
                     }
                     TempData["Error"] = "Lỗi đăng bài. " + ex.Message;
-                    TempData["Status"] = "Error";
-
                     return RedirectToAction("AddPost", "Admin");
                 }
-                
-                
             }
-            return RedirectToAction("AddPost", "Admin");
-        }
-        [HttpPost]
-        public ActionResult UpImagePost(HttpPostedFileBase[] files)
-        {
-            List<HttpPostedFileBase> allFiles = Enumerable.Range(0, Request.Files.Count)
-                                                .Select(x => Request.Files[x])
-                                                .Where(x => !string.IsNullOrEmpty(x.FileName))
-                                                .ToList();
 
-            
-            TempData["ListImage"] = allFiles;
-            return Json(true, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult UpdateContentPost(int ID,string Content)
+        
+        public ActionResult CheckImageThumbs(string slug)
         {
-            using(var ctx=new BlogHealthEntities())
+            //check did create thumbnail
+            string Path1 = @"/HinhAnh/BaiViet/images/Thumbs/" + slug + "_medium.jpg";
+            string Path11 = @"/HinhAnh/BaiViet/images/Thumbs/" + slug + "_medium.png";
+            string Path2 = @"/HinhAnh/BaiViet/images/Thumbs/" + slug + "_large.jpg";
+            string Path22 = @"/HinhAnh/BaiViet/images/Thumbs/" + slug + "_large.png";
+            if (System.IO.File.Exists(Server.MapPath(Path1))==false )
             {
-                var post = ctx.Posts.Where(c => c.ID == ID).FirstOrDefault();
-                if (post == null)
+                if(System.IO.File.Exists(Server.MapPath(Path11)) == false)
                 {
-                    TempData["Error"] = "Không tìm thấy bài viết. Thử lại!";
-                    return RedirectToAction("AddPost", "Admin");
-                }
-                post.Content = Content;
-                ctx.Entry(post).State = System.Data.Entity.EntityState.Modified;
-                try
-                {
-                    ctx.SaveChanges();
-                    TempData["Success"] = "Đăng thành công!";
-                    return RedirectToAction("AddPost", "Admin");
-                }
-                catch (Exception ex)
-                {
-                    TempData["Error"] = "Lỗi đăng bài. " + ex.Message;
-                    return RedirectToAction("AddPost", "Admin");
+                    return Json(new { ret = "Fail", msg = "Chưa upload hình thumbnail nhỏ" }, JsonRequestBehavior.AllowGet);
                 }
             }
+            if (System.IO.File.Exists(Server.MapPath(Path2))==false )
+            {
+                if(System.IO.File.Exists(Server.MapPath(Path22)) == false)
+                {
+                return Json(new { ret = "Fail", msg = "Chưa upload hình thumbnail lớn" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(new { ret = "Ok", msg = "" }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetPosts()
+        {
+            using(var ctx= new BlogHealthEntities())
+            {
+                var posts = ctx.Posts.Join(ctx.Categories,c=>c.IDCategory,b=>b.ID,
+                    (c,b)=>new {
+                        Title=c.Title,
+                        Slug=c.Slug,
+                        CateName=b.Name,
+                        Likes=c.Likes,
+                        Views=c.Views,
+                        Shares=c.Shares,
+                        Comments=c.Comments,
+                        CreateDate=c.CreateDate,
+                        Tag=c.Tag,
+                        Rates=c.Rates
+                    }).ToList();
+                return Json(posts, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         #endregion
     }
 }

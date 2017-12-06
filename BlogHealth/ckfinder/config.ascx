@@ -31,7 +31,7 @@
         LicenseKey = "FLABQDBW96NWEA8QKEYJGJCXQGP4KW2C";
 
         // The base URL used to reach files in CKFinder through the browser.
-        BaseUrl = "/ckfinder/userfiles/";
+        BaseUrl = "/HinhAnh/BaiViet/";
 
         // The phisical directory in the server where the file will end up. If
         // blank, CKFinder attempts to resolve BaseUrl.

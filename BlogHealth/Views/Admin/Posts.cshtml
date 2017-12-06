@@ -3,6 +3,14 @@
     ViewBag.Title = "Danh sách bài Viết";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
+@section css{
+<style>
+    .k-grid td {
+        border-width: 0 0px 2px 1px;
+    }
+
+    </style>    
+}
 @section js{
     <script>
         $('#gridPosts').kendoGrid({
@@ -26,41 +34,99 @@
                 
                 pageSize: 20,
             },
-            height: 400,
-            editable: {
-                mode: "inline",
-                //template: kendo.template($("#popup-editor").html())
-            },
-            groupable: false,
+            height: 600,
+            scrollable: true,
+            groupable: true,
             sortable: true,
             selectable: true,
+            resizable: true,
             pageable: {
                 refresh: true,
                 pageSizes: true,
                 buttonCount: 5,
             },
+            editable: {
+                mode: "inline",
+                confirmation:false,
+            },
             autoBind: true,
+            dataBound: function (e) {
+                console.log("dataBound");
+                $(".btn").removeClass('k-button');
+            },
             columns: [
-
                 {
-                    field: "Title", title: "Tiêu đề", width: 40,
-                    headerAttributes: { "class": "white-text primary-color-dark" },
-                    template: "#if (data.Level==1) {#<span class='font-weight-bold'>#: data.Name #<span> #}else {# <span class='font-weight-normal'>#: data.Name #<span> #} #",
+                    title: "Thao tác", command: [
+                        //{ name: "edit", text: " ", className: "btn-outline-blue btn-rounded m-2", },
+                        //{ name: "destroy", text: " ", className: "btn-outline-danger btn-rounded m-2", },
+                        {
+                            name: "destroy",
+                            text: "Xóa",
+                            iconClass: "fa fa-trash mr-1",
+                            className: "btn btn-danger btn-rounded btn-md p-2",
+                            
+                        }
+                    ], width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" }
                 },
-                { field: "Slug", title: "Slug", width: 40, headerAttributes: { "class": "white-text primary-color-dark" } },
-                { field: "Priority", title: "Thứ tự", width: 20, headerAttributes: { "class": "white-text primary-color-dark" } },
                 {
-                    field: "Color", title: "Màu", width: 40, headerAttributes: { "class": "white-text primary-color-dark" },
-                    template: "<span class='#: data.Color # font-weight-normal'>#: data.Color #<span>",
+                    field: "Title", title: "Tiêu đề", width: 200,
+                    headerAttributes: { "class": "white-text primary-color-dark p-3" },
                 },
-                {
-                    title: "Thao tác", command: [{ name: "edit", text: " ", className: "btn-outline-blue btn-rounded", },
-                        { name: "destroy", text: " ", className: "btn-outline-danger btn-rounded", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
-                },
+                { field: "Slug", title: "Slug", width: 200, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "CateName", title: "Danh mục", width: 150, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "Likes", title: "Thích", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "Views", title: "Lượt xem", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "Shares", title: "Chia sẻ", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "Comments", title: "Comment", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "Rates", title: "Đánh giá", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "Tag", title: "Tags", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
+                { field: "CreateDate", title: "Ngày tạo", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" }, format:"{0:dd/mm/yyyy}",type:"date" },
+               
+                
             ],
-          
+            remove: function (e) {
+                console.log("remove");
+                console.log(e);
+                //if (!confirm("Xác nhận xóa !")) {
+                //    e.preventdefault();
+                //    return;
+                //}
+                var c = 1;
+                $.ajax({
+                    async:false,
+                    url: '/Admin/DeletePost?ID=' + e.model.ID,
+                    type: 'post',
+                    success: function (data) {
+                        if (data.result == 1 && data.error == "") {
+                            toastr.success("Xóa thành công!", "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
+                            //  alert('Xóa thành công!');
+                        } else {
+                            toastr.error("Xóa thất bại!", "Thông báo", {
+                                "positionClass": "toast-top-right",
+                            });
+                            // alert('');
+                            c = 0;
+                           
+                        }
+                    },
+                    error: function () {
+                        toastr.error("Lỗi", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                        c = 0;
+                       
+                        //alert("Error Delete Categories!");
+                    }
+                });
+                if (c == 0) {
+                    e.preventdefault();
+                    return;
+                }
+            }
         });
-        
+       
     </script>
                 
 }
