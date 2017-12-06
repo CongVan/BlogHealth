@@ -30,28 +30,6 @@
     </style>    
 }
 @section js{
-    <script id="popup-editor" type="text/x-kendo-template">
-        <div class="row">
-         
-            <div class="col-md-6">
-                <div class="md-form">
-                  
-                    <input type="email" id="form81" class="form-control " name="Name">
-       
-                </div>
-            </div>
-
-            <!--Second column-->
-            <div class="col-md-6">
-                <div class="md-form">
-                   
-                    <input type="password" id="form82" class="form-control " name="Color">
-                 
-                </div>
-            </div>
-        </div>
-    
-</script>
     <script>
         $('#gridCategories').kendoTreeList({
             dataSource: {
@@ -313,12 +291,8 @@
     </script>
 }
 <div class="card card-cascade ">
-
-    <!--Card image-->
-    <div class="view gradient-card-header blue-gradient p-1">
-        <h2 class="h2-responsive">Danh mục</h2>
-    </div>
-    <!--/Card image-->
+    <h3 class="card-header blue-text py-1 border-primary"><i class="fa fa-th"></i> Danh mục</h3>
+    
     <!--Card content-->
     <div class="card-body text-left">
         <button class="btn btn-indigo btn-md btn-rounded waves-effect waves-light" id="btnAddView"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>

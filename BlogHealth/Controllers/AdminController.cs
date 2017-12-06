@@ -121,6 +121,7 @@ namespace BlogHealth.Controllers
         {
             return View();
         }
+        
         public ActionResult AddPost()
         {
             ViewBag.Status = TempData["Status"]!=null? TempData["Status"].ToString():"";

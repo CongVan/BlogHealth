@@ -1,8 +1,83 @@
 ﻿
 @{
-    ViewBag.Title = "Bài Viết";
+    ViewBag.Title = "Danh sách bài Viết";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
+@section js{
+    <script>
+        $('#gridPosts').kendoGrid({
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: "/Admin/GetPosts",
+                    update: function (e) { },
+                    destroy: function (e) { },
+                    //parameterMap: function (options, operation) {
+                    //    if (operation !== "read" && options.models) {
+                    //        return { models: kendo.stringify(options.models) };
+                    //    }
+                    //}
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                
+                pageSize: 20,
+            },
+            height: 400,
+            editable: {
+                mode: "inline",
+                //template: kendo.template($("#popup-editor").html())
+            },
+            groupable: false,
+            sortable: true,
+            selectable: true,
+            pageable: {
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5,
+            },
+            autoBind: true,
+            columns: [
 
+                {
+                    field: "Title", title: "Tiêu đề", width: 40,
+                    headerAttributes: { "class": "white-text primary-color-dark" },
+                    template: "#if (data.Level==1) {#<span class='font-weight-bold'>#: data.Name #<span> #}else {# <span class='font-weight-normal'>#: data.Name #<span> #} #",
+                },
+                { field: "Slug", title: "Slug", width: 40, headerAttributes: { "class": "white-text primary-color-dark" } },
+                { field: "Priority", title: "Thứ tự", width: 20, headerAttributes: { "class": "white-text primary-color-dark" } },
+                {
+                    field: "Color", title: "Màu", width: 40, headerAttributes: { "class": "white-text primary-color-dark" },
+                    template: "<span class='#: data.Color # font-weight-normal'>#: data.Color #<span>",
+                },
+                {
+                    title: "Thao tác", command: [{ name: "edit", text: " ", className: "btn-outline-blue btn-rounded", },
+                        { name: "destroy", text: " ", className: "btn-outline-danger btn-rounded", }], width: 60, headerAttributes: { "class": "white-text primary-color-dark" }
+                },
+            ],
+          
+        });
+        
+    </script>
+                
+}
+<div class="card card-cascade ">
+    <h3 class="card-header blue-text py-1 border-primary"><i class="fa fa-th"></i> Danh sách bài viết</h3>
+
+    <!--Card content-->
+    <div class="card-body text-left">
+        
+        <div id="gridPosts">
+
+        </div>
+        
+
+    </div>
+    <!--/.Card content-->
+
+</div>
 
 
