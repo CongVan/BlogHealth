@@ -34,6 +34,7 @@
           <Property Name="Tag" Type="nvarchar" MaxLength="300" />
           <Property Name="Rates" Type="int" />
           <Property Name="Slug" Type="varchar" MaxLength="300" />
+          <Property Name="ShortContent" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="BlogHealthModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
@@ -76,6 +77,7 @@
           <Property Name="Tag" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Rates" Type="Int32" />
           <Property Name="Slug" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ShortContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -99,6 +101,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="BlogHealthModel.Posts">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="ShortContent" ColumnName="ShortContent" />
                 <ScalarProperty Name="Slug" ColumnName="Slug" />
                 <ScalarProperty Name="Rates" ColumnName="Rates" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />

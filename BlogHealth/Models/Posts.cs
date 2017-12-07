@@ -27,5 +27,6 @@ namespace BlogHealth.Models
         public string Tag { get; set; }
         public Nullable<int> Rates { get; set; }
         public string Slug { get; set; }
+        public string ShortContent { get; set; }
     }
 }
