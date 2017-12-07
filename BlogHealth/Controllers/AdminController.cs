@@ -137,6 +137,8 @@ namespace BlogHealth.Controllers
            
             using (var ctx =new BlogHealthEntities())
             {
+                model.CreateDate = DateTime.Now;
+                
                 ctx.Posts.Add(model);
 
                 try
@@ -188,23 +190,48 @@ namespace BlogHealth.Controllers
         {
             using(var ctx= new BlogHealthEntities())
             {
-                var posts = ctx.Posts.Join(ctx.Categories,c=>c.IDCategory,b=>b.ID,
-                    (c,b)=>new {
+                var posts = ctx.Posts.Join(ctx.Categories, c => c.IDCategory, b => b.ID,
+                      (c, b) => new {
+                          Row = 0,
+                        ID=c.ID,
                         Title=c.Title,
                         Slug=c.Slug,
                         CateName=b.Name,
-                        Likes=c.Likes,
-                        Views=c.Views,
-                        Shares=c.Shares,
-                        Comments=c.Comments,
+                        Likes=c.Likes??0,
+                        Views=c.Views ?? 0,
+                        Shares=c.Shares ?? 0,
+                        Comments=c.Comments ?? 0,
                         CreateDate=c.CreateDate,
                         Tag=c.Tag,
-                        Rates=c.Rates
-                    }).ToList();
+                        Rates=c.Rates??0
+                    }).OrderByDescending(c=>c.CreateDate ).ToList();
+                
                 return Json(posts, JsonRequestBehavior.AllowGet);
             }
         }
 
+        [HttpPost]
+        public ActionResult DeletePost(int? ID)
+        {
+            if (!ID.HasValue)
+            {
+                return Json(new { result = 0, msg = "Không tồn tại mã!" }, JsonRequestBehavior.AllowGet);
+            }
+            using(var ctx=new BlogHealthEntities())
+            {
+                try
+                {
+                    var post = ctx.Posts.Where(c => c.ID == ID.Value).FirstOrDefault();
+                    ctx.Posts.Remove(post);
+                    ctx.SaveChanges();
+                    return Json(new { result = 1, msg = "Thành công" }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { result = 0, msg = ex.Message}, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
         #endregion
     }
 }

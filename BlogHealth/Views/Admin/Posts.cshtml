@@ -18,21 +18,22 @@
                 type: "json",
                 transport: {
                     read: "/Admin/GetPosts",
-                    update: function (e) { },
-                    destroy: function (e) { },
-                    //parameterMap: function (options, operation) {
-                    //    if (operation !== "read" && options.models) {
-                    //        return { models: kendo.stringify(options.models) };
-                    //    }
-                    //}
-                    parameterMap: function (options, operation) {
-                        if (operation !== "read" && options.models) {
-                            return { models: kendo.stringify(options.models) };
+                    
+                },
+                schema: {
+                    model: {
+                        id: "ID",
+                        fields: {
+                            Title: { editable: false }, Slug: { editable: false }, CateName: { editable: false },
+                            Likes: { editable: false }, Views: { editable: false }, Shares: { editable: false },
+                            Comment: { editable: false }, Rates: { editable: false }, Tag: { editable: false },
+                            
+                            CreateDate: { editable: false, type: "date", },
+                            //Update: { editable: false, type: "date", },
                         }
                     }
                 },
-                
-                pageSize: 20,
+                pageSize: 100,
             },
             height: 600,
             scrollable: true,
@@ -42,21 +43,22 @@
             resizable: true,
             pageable: {
                 refresh: true,
-                pageSizes: true,
+                pageSizes: [50,100,200],
                 buttonCount: 5,
             },
             editable: {
                 mode: "inline",
-                confirmation:false,
+                confirmation: true,
             },
-            autoBind: true,
+            //autoBind: true,
             dataBound: function (e) {
                 console.log("dataBound");
                 $(".btn").removeClass('k-button');
             },
             columns: [
                 {
-                    title: "Thao tác", command: [
+                    title: "Thao tác",
+                    command: [
                         //{ name: "edit", text: " ", className: "btn-outline-blue btn-rounded m-2", },
                         //{ name: "destroy", text: " ", className: "btn-outline-danger btn-rounded m-2", },
                         {
@@ -64,7 +66,7 @@
                             text: "Xóa",
                             iconClass: "fa fa-trash mr-1",
                             className: "btn btn-danger btn-rounded btn-md p-2",
-                            
+                            //click:DeletePost,
                         }
                     ], width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" }
                 },
@@ -80,35 +82,37 @@
                 { field: "Comments", title: "Comment", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
                 { field: "Rates", title: "Đánh giá", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
                 { field: "Tag", title: "Tags", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "CreateDate", title: "Ngày tạo", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" }, format:"{0:dd/mm/yyyy}",type:"date" },
+                { field: "CreateDate", title: "Ngày tạo", width: 160, headerAttributes: { "class": "white-text primary-color-dark p-3" }, format:"{0:dd/mm/yyyy hh:mm:ss tt}",type:"date" },
                
                 
             ],
             remove: function (e) {
-                console.log("remove");
-                console.log(e);
+                //console.log("remove");
+                //console.log(e);
                 //if (!confirm("Xác nhận xóa !")) {
                 //    e.preventdefault();
-                //    return;
+                //    return false;
                 //}
                 var c = 1;
                 $.ajax({
-                    async:false,
+                    async: false,
                     url: '/Admin/DeletePost?ID=' + e.model.ID,
                     type: 'post',
                     success: function (data) {
-                        if (data.result == 1 && data.error == "") {
-                            toastr.success("Xóa thành công!", "Thông báo", {
+                        if (data.result == 1) {
+                            toastr.success(data.msg, "Thông báo", {
                                 "positionClass": "toast-top-right",
                             });
+                            $('#gridPosts').data('kendoGrid').dataSource.read();
+                            $('#gridPosts').data('kendoGrid').refresh();
                             //  alert('Xóa thành công!');
                         } else {
-                            toastr.error("Xóa thất bại!", "Thông báo", {
+                            toastr.error(data.msg, "Thông báo", {
                                 "positionClass": "toast-top-right",
                             });
                             // alert('');
                             c = 0;
-                           
+
                         }
                     },
                     error: function () {
@@ -116,17 +120,19 @@
                             "positionClass": "toast-top-right",
                         });
                         c = 0;
-                       
+
                         //alert("Error Delete Categories!");
                     }
                 });
                 if (c == 0) {
-                    e.preventdefault();
+                    //e.preventdefault();
                     return;
                 }
             }
         });
-       
+        function DeletePost(e) {
+            
+        }
     </script>
                 
 }
