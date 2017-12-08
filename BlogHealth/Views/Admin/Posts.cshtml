@@ -4,12 +4,11 @@
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 @section css{
-<style>
-    .k-grid td {
-        border-width: 0 0px 2px 1px;
-    }
-
-    </style>    
+    <style>
+        .k-grid td {
+            border-width: 0 0px 2px 1px;
+        }
+    </style>
 }
 @section js{
     <script>
@@ -18,7 +17,7 @@
                 type: "json",
                 transport: {
                     read: "/Admin/GetPosts",
-                    
+
                 },
                 schema: {
                     model: {
@@ -27,7 +26,7 @@
                             Title: { editable: false }, Slug: { editable: false }, CateName: { editable: false },
                             Likes: { editable: false }, Views: { editable: false }, Shares: { editable: false },
                             Comment: { editable: false }, Rates: { editable: false }, Tag: { editable: false },
-                            
+
                             CreateDate: { editable: false, type: "date", },
                             //Update: { editable: false, type: "date", },
                         }
@@ -37,13 +36,13 @@
             },
             height: 1000,
             scrollable: true,
-            groupable: true,
+            groupable: false,
             sortable: true,
             selectable: true,
             resizable: true,
             pageable: {
                 refresh: true,
-                pageSizes: [50,100,200],
+                pageSizes: [50, 100, 200],
                 buttonCount: 5,
             },
             editable: {
@@ -82,9 +81,9 @@
                 { field: "Comments", title: "Comment", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
                 { field: "Rates", title: "Đánh giá", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
                 { field: "Tag", title: "Tags", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "CreateDate", title: "Ngày tạo", width: 160, headerAttributes: { "class": "white-text primary-color-dark p-3" }, format:"{0:dd/mm/yyyy hh:mm:ss tt}",type:"date" },
-               
-                
+                { field: "CreateDate", title: "Ngày tạo", width: 160, headerAttributes: { "class": "white-text primary-color-dark p-3" }, format: "{0:dd/mm/yyyy hh:mm:ss tt}", type: "date" },
+
+
             ],
             remove: function (e) {
                 //console.log("remove");
@@ -130,25 +129,48 @@
                 }
             }
         });
-        function DeletePost(e) {
-            
-        }
+        
     </script>
-                
+
 }
 <div class="card card-cascade ">
     <h3 class="card-header blue-text py-1 border-primary"><i class="fa fa-th"></i> Danh sách bài viết</h3>
 
     <!--Card content-->
-    <div class="card-body text-left">
-        
-        <div id="gridPosts">
+    <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
 
+        <!-- Accordion card -->
+        <div class="card" id="Step1">
+            <div class="card-body text-left">
+                <div class="card-header grey lighten-3" role="tab" id="headingOne">
+                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h5 class="mb-0">
+                            <i class="fa fa-filter"></i>
+                            Lọc tìm kiếm <i class="fa fa-angle-down rotate-icon"></i>
+                        </h5>
+                    </a>
+                </div>
+                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-body">
+                        <div class="col-md-6">
+                            <div class="md-form">
+                                <i class="fa fa-th prefix "></i>
+                                <input type="text" name="Category" class="form-control" placeholder="Danh mục">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="gridPosts">
+
+                </div>
+
+
+            </div>
         </div>
-        
-
     </div>
-    <!--/.Card content-->
+
+
 
 </div>
 
