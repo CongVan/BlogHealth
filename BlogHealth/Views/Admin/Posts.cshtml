@@ -8,6 +8,13 @@
         .k-grid td {
             border-width: 0 0px 2px 1px;
         }
+
+        .k-multiselect-wrap li.k-button span:first-child {
+            padding-right: 2em;
+        }
+        .k-picker-wrap .k-select{
+            padding:0.1rem!important;
+        }
     </style>
 }
 @section js{
@@ -16,8 +23,7 @@
             dataSource: {
                 type: "json",
                 transport: {
-                    read: "/Admin/GetPosts",
-
+                    read: "/Admin/GetPosts?IDCate=&?fDate=&tDate=",
                 },
                 schema: {
                     model: {
@@ -129,46 +135,88 @@
                 }
             }
         });
-        
+        $('#fCategory').kendoMultiSelect({
+            placeholder: "Chọn danh mục...",
+            dataTextField: "Name",
+            dataValueField: "ID",
+            autoBind: false,
+            dataSource: {
+                type: "json",
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        url: "/Admin/GetCategories?kind=3",
+                    }
+                }
+            },
+        });
+        $("#fDate").kendoDatePicker({
+            format: "dd/MM/yyyy",
+            value: new Date(),
+           dateInput: true
+        });
+        $("#tDate").kendoDatePicker({
+            format: "dd/MM/yyyy",
+            value: new Date(),
+            dateInput: true
+        });
     </script>
 
 }
-<div class="card card-cascade ">
+<div class="card  ">
     <h3 class="card-header blue-text py-1 border-primary"><i class="fa fa-th"></i> Danh sách bài viết</h3>
 
-    <!--Card content-->
-    <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+    <div class="card-body pb-0">
+        <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
 
-        <!-- Accordion card -->
-        <div class="card" id="Step1">
-            <div class="card-body text-left">
+            <!-- Accordion card -->
+            <div class="card" id="Step1">
+
+                <!-- Card header -->
                 <div class="card-header grey lighten-3" role="tab" id="headingOne">
                     <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <h5 class="mb-0">
                             <i class="fa fa-filter"></i>
-                            Lọc tìm kiếm <i class="fa fa-angle-down rotate-icon"></i>
+                            Lọc tìm kiếm  <i class="fa fa-angle-down rotate-icon"></i>
                         </h5>
                     </a>
                 </div>
+
+                <!-- Card body -->
                 <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                     <div class="card-body">
-                        <div class="col-md-6">
-                            <div class="md-form">
-                                <i class="fa fa-th prefix "></i>
-                                <input type="text" name="Category" class="form-control" placeholder="Danh mục">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="blue-text font-weight-bold"><i class="fa fa-th"></i> Danh mục</label>
+                                    <input type="text" id="fCategory" class="form-control" placeholder="Danh mục">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="blue-text font-weight-bold"><i class="fa fa-calendar-minus-o"></i> Từ ngày</label>
+                                    <input type="text" id="fDate" class="form-control" placeholder="Từ ngày">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="blue-text font-weight-bold"><i class="fa fa-calendar-plus-o"></i> Đến ngày</label>
+                                    <input type="text" id="tDate" class="form-control" placeholder="Đến ngày">
+                                </div>
                             </div>
                         </div>
-
+                        
                     </div>
                 </div>
-                <div id="gridPosts">
-
-                </div>
-
-
             </div>
+            <!-- Accordion card -->
+
+        </div>
+        <div id="gridPosts">
+
         </div>
     </div>
+
 
 
 

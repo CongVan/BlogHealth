@@ -186,25 +186,31 @@ namespace BlogHealth.Controllers
             return Json(new { ret = "Ok", msg = "" }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetPosts()
+        public ActionResult GetPosts(string IDCate,DateTime? fDate,DateTime? tDate)
         {
             using(var ctx= new BlogHealthEntities())
             {
+
                 var posts = ctx.Posts.Join(ctx.Categories, c => c.IDCategory, b => b.ID,
                       (c, b) => new {
-                          Row = 0,
+                          
                         ID=c.ID,
                         Title=c.Title,
                         Slug=c.Slug,
-                        CateName=b.Name,
+                        IDCate = b.ID,
+                        CateName =b.Name,
                         Likes=c.Likes??0,
                         Views=c.Views ?? 0,
                         Shares=c.Shares ?? 0,
                         Comments=c.Comments ?? 0,
                         CreateDate=c.CreateDate,
                         Tag=c.Tag,
-                        Rates=c.Rates??0
-                    }).OrderByDescending(c=>c.CreateDate ).ToList();
+                        Rates=c.Rates??0,
+
+                    }).Where(c=>fDate.HasValue?c.CreateDate>=fDate:true
+                    && tDate.HasValue?c.CreateDate<=tDate:true
+                    && IDCate!=""?IDCate.Contains(c.IDCate.ToString()):true
+                    ).OrderByDescending(c=>c.CreateDate ).ToList();
                 
                 return Json(posts, JsonRequestBehavior.AllowGet);
             }
