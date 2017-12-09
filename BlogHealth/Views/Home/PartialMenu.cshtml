@@ -1,0 +1,28 @@
+﻿@using BlogHealth.Models
+@using BlogHealth.Utility
+@model List<Categories>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    if (!CheckTool.CheckMenuHasChild(Model[i].ID))
+    {
+        <li class="nav-item @(i==0?"active":"") ml-1">
+            <a class="nav-link" href="#">@Model[i].Name</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item dropdown ml-1">
+            <a data-href="@Url.Action("Index","Home")" href="@Url.Action("Index","Home")" class="nav-link" data-toggle="dropdown">@Model[i].Name</a>
+
+            <div class="dropdown-menu dropdown-primary p-1" style="font-weight:400!important">
+                @Html.Action("PartialMenuChild", "Home", new { id = @Model[i].ID })
+                @*@Html.Partial("PartialMenuChild",new {id= @Model[i].ID })*@
+                @*<a class="dropdown-item p-1" href="#">Action</a>
+                <a class="dropdown-item p-1" href="#">Another action</a>
+                <a class="dropdown-item p-1" href="#">Something else here</a>*@
+            </div>
+        </li>
+    }
+
+}

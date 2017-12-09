@@ -1,0 +1,7 @@
+﻿@using BlogHealth.Models
+@model List<Categories>
+
+@foreach (var item in Model)
+{
+    <a class="dropdown-item p-1" href="#">@item.Name</a>
+}

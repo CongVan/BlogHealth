@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogHealth.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,6 +15,22 @@ namespace BlogHealth.Controllers
         {
             var t = DateTime.Now.ToString("ddd MMM YYYYY", CultureInfo.CreateSpecificCulture("vi-VN"));
             return View();
+        }
+        public ActionResult PartialMenu()
+        {
+            using(var ctx=new BlogHealthEntities())
+            {
+                var cates = ctx.Categories.Where(c => c.Level == 1).ToList();
+                return PartialView(cates);
+            }
+        }
+        public ActionResult PartialMenuChild(int id)
+        {
+            using (var ctx = new BlogHealthEntities())
+            {
+                var cates = ctx.Categories.Where(c => c.ParentID==id).ToList();
+                return PartialView(cates);
+            }
         }
 
         public ActionResult Post()

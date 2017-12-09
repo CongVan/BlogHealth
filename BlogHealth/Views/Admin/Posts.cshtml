@@ -5,6 +5,12 @@
 }
 @section css{
     <style>
+        .k-filter-row th, .k-grid-header th.k-header {
+            padding: 0.5em !important;
+            /*padding-bottom: 0.5em !important;
+            padding-left: 0.5em !important;
+            padding-top: 0.5em !important;*/
+        }
         .k-grid td {
             border-width: 0 0px 1px 1px;
         }
@@ -12,20 +18,34 @@
         .k-multiselect-wrap li.k-button span:first-child {
             padding-right: 2em;
         }
-        .k-picker-wrap .k-select{
-            padding:0.1rem!important;
+
+        .k-picker-wrap .k-select {
+            padding: 0.1rem !important;
         }
     </style>
 }
 @section js{
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckfinder/ckfinder.js"></script>
     <script>
+        var editor = CKEDITOR.replace('Content');
+        CKFinder.setupCKEditor(editor, '/ckfinder/');
         var rownumber = 0;
         $('#gridPosts').kendoGrid({
             dataSource: {
+
                 type: "json",
                 transport: {
                     read: "/Admin/GetPosts?IDCate=&?fDate=&tDate=",
+                    update: function (e) { },
+                    destroy: function (e) { },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    },
                 },
+                batch: true,
                 schema: {
                     model: {
                         id: "ID",
@@ -33,8 +53,8 @@
                             Title: { editable: false }, Slug: { editable: false }, CateName: { editable: false },
                             Likes: { editable: false }, Views: { editable: false }, Shares: { editable: false },
                             Comment: { editable: false }, Rates: { editable: false }, Tag: { editable: false },
-
-                            CreateDate: { editable: false, type: "date", },
+                            Rows: { editable: false, filterable: false, sortable:false},
+                            CreateDate: { editable: false, type: "date", }, Update: { editable: false, type: "date", },
                             //Update: { editable: false, type: "date", },
                         }
                     }
@@ -44,13 +64,27 @@
             height: 600,
             scrollable: true,
             groupable: false,
-            sortable: true,
+            sortable: false,
             selectable: true,
             resizable: true,
             pageable: {
                 refresh: true,
                 pageSizes: [50, 100, 200],
                 buttonCount: 5,
+                messages: {
+                    itemsPerPage: "dòng / trang",
+                    display: "Hiển thị {0} - {1} / {2}",
+                    empty: "Không tìm thấy dữ liệu"
+                }
+            },
+            filterable: {
+                extra: false,
+                messages: { and: "và", or: "hoặc", filter: "Lọc", clear: "Hủy lọc", info: "" },
+                operators: {
+                    string: { eq: "Bằng", neq: "Khác", startswith: "Bắt đầu từ", contains: "Chứa", doesnotcontain: "Không chứa", endswith: "Kết thúc bằng" }
+                    , number: { eq: "=", neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
+                    , date: { neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
+                }
             },
             editable: {
                 mode: "inline",
@@ -58,8 +92,10 @@
             },
             //autoBind: true,
             dataBound: function (e) {
-              //  console.log("dataBound");
+
+                //  console.log("dataBound");
                 $(".btn").removeClass('k-button');
+                rownumber = 0;
                 var items = e.sender.items();
                 var c = 0;
                 items.each(function (idx, item) {
@@ -67,17 +103,17 @@
                         $(item).addClass('white');
                         c = 1;
                     } else {
-                        $(item).addClass(' blue lighten-4');
+                        $(item).addClass('lime lighten-4');
                         c = 0;
                     }
-                    
+
                 });
             },
             columns: [
                 {
-                    field: "Rows", title: "#", width: 60,
+                    field: "", title: "#", width: 60,
                     headerAttributes: { "class": "white-text primary-color-dark p-3" },
-                    template: "#= ++rownumber #",
+                    template: "#= ++rownumber#",
                     className: "px-0",
                 },
                 {
@@ -88,28 +124,37 @@
                         {
                             name: "destroy",
                             text: "Xóa",
-                            iconClass: "fa fa-trash mr-1",
+                            iconClass: "fa fa-trash mr-2",
                             className: "btn btn-danger btn-rounded btn-md p-2",
                             //click:DeletePost,
-                        }
-                    ], width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" }
+                        },
+                        //{
+                        //    name: "Update", text: "",
+                        //    iconClass: "fa fa-edit ",
+                        //    className: "btn btn-primary btn-rounded btn-md p-2",
+                        //    click: LoadDetailPost,
+                        //}
+                    ], width: 100, headerAttributes: { "class": "white-text primary-color-dark " }
                 },
-                
+
                 {
                     field: "Title", title: "Tiêu đề", width: 200,
-                    headerAttributes: { "class": "white-text primary-color-dark p-3" },
+                    headerAttributes: { "class": "white-text primary-color-dark " },
+                    template: "<a href='javascript:;' onclick='LoadDetailPost(#=ID#)'>#=Title#</a>",
+                    attributes: {
+                        "class": "blue-text"
+                    }
                 },
-                { field: "Slug", title: "Slug", width: 200, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "CateName", title: "Danh mục", width: 150, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "Likes", title: "Thích", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "Views", title: "Lượt xem", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "Shares", title: "Chia sẻ", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "Comments", title: "Comment", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "Rates", title: "Đánh giá", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "Tag", title: "Tags", width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" } },
-                { field: "CreateDate", title: "Ngày tạo", width: 160, headerAttributes: { "class": "white-text primary-color-dark p-3" }, format: "{0:dd/mm/yyyy hh:mm:ss tt}", type: "date" },
-
-
+                { field: "Slug", title: "Slug", width: 200, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "CateName", title: "Danh mục", width: 150, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "Likes", title: "Thích", width: 120, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "Views", title: "Lượt xem", width: 150, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "Shares", title: "Chia sẻ", width: 120, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "Comments", title: "Comment", width: 150, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "Rates", title: "Đánh giá", width: 120, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "Tag", title: "Tags", width: 150, headerAttributes: { "class": "white-text primary-color-dark " } },
+                { field: "CreateDate", title: "Ngày đăng", width: 160, headerAttributes: { "class": "white-text primary-color-dark " }, format: "{0:dd/MM/yyyy hh:mm:ss tt}", type: "date" },
+                { field: "Update", title: "Ngày cập nhật", width: 160, headerAttributes: { "class": "white-text primary-color-dark pt-0" }, format: "{0:dd/MM/yyyy hh:mm:ss tt}", type: "date" },
             ],
             remove: function (e) {
                 //console.log("remove");
@@ -120,7 +165,7 @@
                 //}
                 var c = 1;
                 $.ajax({
-                    async: false,
+                    async: true,
                     url: '/Admin/DeletePost?ID=' + e.model.ID,
                     type: 'post',
                     success: function (data) {
@@ -172,15 +217,15 @@
         });
         $("#fDate").kendoDatePicker({
             format: "dd/MM/yyyy",
-            value: "1/" + (new Date().getMonth()+1) + "/" + new Date().getFullYear(),
+            value: "1/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear(),
             dateInput: true,
-         
+
         });
         $("#tDate").kendoDatePicker({
             format: "dd/MM/yyyy",
             value: new Date(),
             dateInput: true,
-        
+
         });
         $('#btnFilter').on('click', function () {
             var fCategory = $('#fCategory').val();
@@ -205,10 +250,10 @@
                     // Download progress
                     xhr.addEventListener("progress", function (evt) {
                         if (evt.lengthComputable) {
-                            var percentComplete = Math.round((evt.loaded / evt.total)*100);
+                            var percentComplete = Math.round((evt.loaded / evt.total) * 100);
                             // Do something with download progress
                             $('#ProgressDownload').attr("aria-valuenow", "" + percentComplete + "");
-                            $('#ProgressDownload').css("width", ""+percentComplete+"%")
+                            $('#ProgressDownload').css("width", "" + percentComplete + "%")
                             console.log(percentComplete);
                         }
                     }, false);
@@ -218,10 +263,10 @@
                 url: "/Admin/GetPosts",
                 data: { IDCate: fCategory, fDate: fDate, tDate: tDate },
                 beforeSend: function () {
-                    
+
                 },
                 complete: function () {
-                   
+
                 },
                 success: function (result) {
                     var dataSource = new kendo.data.DataSource({
@@ -230,7 +275,7 @@
                     var grid = $("#gridPosts").data("kendoGrid");
                     grid.setDataSource(dataSource);
                     //$('#gridPosts').data('kendoGrid').dataSource.read();
-                  
+
                     grid.refresh();
                     $('#ProgressDownload').attr("aria-valuenow", "" + 0 + "");
                     $('#ProgressDownload').css("width", "" + 0 + "%")
@@ -241,21 +286,101 @@
 
             });
         });
-       
+        function LoadDetailPost(id) {
+            //alert(id);
+            $.ajax({
+                async: false,
+                url: "/Admin/GetPostAndCate?ID=" + id,
+                success: function (data) {
+                    if (data.post == "" || data.cates == "") {
+                        toastr.success("Load thất bại!", "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                        return false;
+                    }
+                    console.log(data);
+                    //$('#Header').text(data.post.Title);
+                    $('#ModalUpdate').find('input[name="ID"]').val(id);
+                    $('#ModalUpdate').find('input[name="Title"]').val(data.post.Title);
+                    $('#ModalUpdate').find('textarea[name="ShortContent"]').val(data.post.ShortContent);
+                    $('#ModalUpdate').find('input[name="Slug"]').val(data.post.Slug);
+                    $('#ModalUpdate').find('input[name="Tag"]').val(data.post.Tag);
+                    CKEDITOR.instances['Content'].setData(data.post.Content);
+
+                    $('#ModalUpdate').find('input[name = "IDCategory"]').kendoDropDownList({
+                        dataTextField: "Name",
+                        dataValueField: "ID",
+                        value: data.post.IDCategory,
+                        autoClose: true,
+                        dataSource: data.cates,
+                        optionLabel: "Chọn danh mục...",
+                    });
+                    //$('#ModalUpdate').find('textarea[name="Content"]').val(data.post.Content);
+                    //$('#ModalUpdate').find('input[name="Title"]').val(data.post.Title);
+                    //$('#ModalUpdate').find('input[name="Title"]').val(data.post.Title);
+                    //$('#ModalUpdate').find('input[name="Title"]').val(data.post.Title);
+
+                    $('#ModalUpdate').modal('toggle');
+                },
+                error: function () {
+                    toastr.error("Load thất bại!", "Thông báo", {
+                        "positionClass": "toast-top-right",
+                    });
+                    return;
+                }
+
+            })
+
+        }
+        $('#btnSubmitUpdate').on('click', function () {
+            var ID = $('#ModalUpdate').find('input[name="ID"]').val();
+            var Title = $('#ModalUpdate').find('input[name="Title"]').val();
+            var ShortContent = $('#ModalUpdate').find('textarea[name="ShortContent"]').val();
+            var Slug = $('#ModalUpdate').find('input[name="Slug"]').val();
+            var Tag = $('#ModalUpdate').find('input[name="Tag"]').val();
+            var IDCategory = $('#ModalUpdate').find('input[name="IDCategory"]').val();
+            var Content = $('#ModalUpdate').find('input[name="Content"]').val();
+            $.ajax({
+                url: "/Admin/UpdatePost",
+                data: {
+                    ID: ID, Title, Title, ShortContent: ShortContent,
+                    Slug: Slug, Tag: Tag, IDCategory: IDCategory, Content: Content
+                },
+                success: function (data) {
+                    if (data.result == "1") {
+                        toastr.success(data.msg, "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                        $('#gridPosts').data('kendoGrid').dataSource.read();
+                        $('#gridPosts').data('kendoGrid').refresh();
+                    } else {
+                        toastr.error(data.msg, "Thông báo", {
+                            "positionClass": "toast-top-right",
+                        });
+                    }
+                    $('#ModalUpdate').modal('toggle');
+                },
+                error: function () {
+                    toastr.error("Lỗi!", "Thông báo", {
+                        "positionClass": "toast-top-right",
+                    });
+                }
+            })
+        });
     </script>
 
 }
 <div class="card  ">
     <h3 class="card-header blue-text py-1 border-primary"><i class="fa fa-th"></i> Danh sách bài viết</h3>
 
-    <div class="card-body pb-0">
+    <div class="card-body pb-0 ">
         <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
 
             <!-- Accordion card -->
             <div class="card" id="Step1">
 
                 <!-- Card header -->
-                <div class="card-header grey lighten-3" role="tab" id="headingOne">
+                <div class="card-header white py-2" role="tab" id="headingOne">
                     <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <h5 class="mb-0">
                             <i class="fa fa-filter"></i>
@@ -271,7 +396,7 @@
                                 <div class="progress-bar bg-danger" id="ProgressDownload" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <div class="col-md-6">
-                              
+
                                 <div class="form-group">
                                     <label class="blue-text font-weight-bold"><i class="fa fa-th"></i> Danh mục</label>
                                     <input type="text" id="fCategory" class="form-control" placeholder="Danh mục">
@@ -290,7 +415,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success" id="btnFilter"><i class="fa fa-check"></i> Lọc</button>
+                                <button class="btn btn-outline-primary" id="btnFilter"><i class="fa fa-check"></i> Lọc</button>
                             </div>
                         </div>
                     </div>
@@ -303,10 +428,77 @@
 
         </div>
     </div>
-
-
-
-
 </div>
+<!-- Central Modal Medium Success -->
+<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#ModalUpdate">Central Modal</button>
+<div class="modal " id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-fluid modal-notify px-5" role="document">
+        <!--Content-->
+        <div class="modal-content pb-0">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead blue-text" id="Header"><i class="fa fa-edit mr-1"></i>Cập nhật bài viết</p>
 
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="blue-text">&times;</span>
+                </button>
+            </div>
 
+            <!--Body-->
+            <div class="modal-body px-5 pb-0">
+                <div class="row">
+                    <input type="hidden" name="ID" />
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <i class="fa fa-bookmark-o prefix "></i>
+                            <input type="text" name="Title" class="form-control" placeholder="Tiêu đề (tối đa 300 ký tự)">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <i class="fa fa-bookmark prefix "></i>
+                            <textarea rows="4" name="ShortContent" class=" md-textarea pt-0" placeholder="Nội dung rút gọn."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <i class="fa fa-link prefix"></i>
+                            <input type="text" name="Slug" class="form-control" placeholder="Slug" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <div class="md-form">
+                                <i class="fa fa-tags prefix"></i>
+                                <input type="text" name="Tag" class="form-control" placeholder="Tags (Mỗi tag cách nhau bằng dấu , )">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 pl-5 pt-3">
+
+                        <div class="md-form">
+
+                            <input type="text" name="IDCategory" class="form-control" placeholder="Danh mục">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <textarea type="text" id="Content" name="Content" class="md-textarea"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center py-0">
+                <button id="btnSubmitUpdate" type="button" class="btn btn-info waves-effect"><i class="fa fa-edit mr-1"></i>Cập nhật</button>
+                <button type="button" class="btn btn-outline-primary  waves-effect" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Central Modal Medium Success-->

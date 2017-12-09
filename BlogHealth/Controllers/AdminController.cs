@@ -209,10 +209,11 @@ namespace BlogHealth.Controllers
                         CreateDate=c.CreateDate,
                         Tag=c.Tag,
                         Rates=c.Rates??0,
+                        Update=c.Update,
                     }).Where(c=>fDate.HasValue?c.CreateDate>=fDate:true
                     && tDate.HasValue?c.CreateDate<=tDate:true
                     && IDCate!=""?IDCate.Contains(c.IDCate.ToString()):true
-                    ).OrderByDescending(c=>c.CreateDate ).ToList();
+                    ).OrderByDescending(c=>c.CreateDate ).Take(100).ToList();
              
                 
                 return Json(posts, JsonRequestBehavior.AllowGet);
@@ -239,6 +240,54 @@ namespace BlogHealth.Controllers
                 {
                     return Json(new { result = 0, msg = ex.Message}, JsonRequestBehavior.AllowGet);
                 }
+            }
+        }
+        public ActionResult GetPostAndCate(int? ID)
+        {
+            if (!ID.HasValue)
+            {
+                return Json(new { post = "", cates = "" }, JsonRequestBehavior.AllowGet);
+            }
+            using(var ctx=new BlogHealthEntities())
+            {
+                var post = ctx.Posts.Where(c => c.ID == ID.Value).FirstOrDefault();
+                var cates = ctx.Categories.ToList();
+                if (post == null || cates==null)
+                {
+                    return Json(new { post = "", cates = "" }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { post = post, cates = cates }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult UpdatePost(Posts model)
+        {
+            using (var ctx = new BlogHealthEntities())
+            {
+                var post = ctx.Posts.Where(c => c.ID == model.ID).FirstOrDefault();
+                if (post == null)
+                {
+                    return Json(new { result = "0", msg = "Bài viết không tồn tại!" }, JsonRequestBehavior.AllowGet);
+                }
+                try
+                {
+                    post.Title = model.Title;
+                    post.Slug = model.Slug;
+                    post.IDCategory = model.IDCategory;
+                    post.ShortContent = model.ShortContent;
+                    post.Content = model.Content;
+                    post.Tag = model.Tag;
+                    post.Update = DateTime.Now;
+                    ctx.Entry(post).State = System.Data.Entity.EntityState.Modified;
+                    ctx.SaveChanges();
+                    return Json(new { result = "1", msg = "Cập nhật thành công!" }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+
+                    return Json(new { result = "0", msg = ex.Message }, JsonRequestBehavior.AllowGet);
+                }
+                
+                
             }
         }
         #endregion

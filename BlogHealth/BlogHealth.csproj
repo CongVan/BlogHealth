@@ -1008,6 +1008,7 @@
       <DependentUpon>BlogHealthDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\CheckTool.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1114,8 +1115,6 @@
     <Content Include="Models\BlogHealthDB.edmx.diagram">
       <DependentUpon>BlogHealthDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Kendo\css\images\kendoui.ttf" />
-    <Content Include="Kendo\css\images\kendoui.woff" />
     <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-Bold.ttf" />
     <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
     <Content Include="Kendo\css\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
@@ -1135,6 +1134,8 @@
     <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.eot" />
     <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.ttf" />
     <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.woff" />
+    <Content Include="Kendo\css\images\kendoui.ttf" />
+    <Content Include="Kendo\css\images\kendoui.woff" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1147,6 +1148,8 @@
     <Content Include="Views\Admin\Categories.cshtml" />
     <Content Include="Views\Admin\Posts.cshtml" />
     <Content Include="Views\Admin\AddPost.cshtml" />
+    <Content Include="Views\Home\PartialMenu.cshtml" />
+    <Content Include="Views\Home\PartialMenuChild.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
