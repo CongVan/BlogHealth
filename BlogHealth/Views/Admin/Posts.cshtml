@@ -6,7 +6,7 @@
 @section css{
     <style>
         .k-grid td {
-            border-width: 0 0px 2px 1px;
+            border-width: 0 0px 1px 1px;
         }
 
         .k-multiselect-wrap li.k-button span:first-child {
@@ -19,6 +19,7 @@
 }
 @section js{
     <script>
+        var rownumber = 0;
         $('#gridPosts').kendoGrid({
             dataSource: {
                 type: "json",
@@ -40,7 +41,7 @@
                 },
                 pageSize: 100,
             },
-            height: 1000,
+            height: 600,
             scrollable: true,
             groupable: false,
             sortable: true,
@@ -57,10 +58,28 @@
             },
             //autoBind: true,
             dataBound: function (e) {
-                console.log("dataBound");
+              //  console.log("dataBound");
                 $(".btn").removeClass('k-button');
+                var items = e.sender.items();
+                var c = 0;
+                items.each(function (idx, item) {
+                    if (c == 0) {
+                        $(item).addClass('white');
+                        c = 1;
+                    } else {
+                        $(item).addClass(' blue lighten-4');
+                        c = 0;
+                    }
+                    
+                });
             },
             columns: [
+                {
+                    field: "Rows", title: "#", width: 60,
+                    headerAttributes: { "class": "white-text primary-color-dark p-3" },
+                    template: "#= ++rownumber #",
+                    className: "px-0",
+                },
                 {
                     title: "Thao tác",
                     command: [
@@ -75,6 +94,7 @@
                         }
                     ], width: 100, headerAttributes: { "class": "white-text primary-color-dark p-3" }
                 },
+                
                 {
                     field: "Title", title: "Tiêu đề", width: 200,
                     headerAttributes: { "class": "white-text primary-color-dark p-3" },
@@ -152,14 +172,76 @@
         });
         $("#fDate").kendoDatePicker({
             format: "dd/MM/yyyy",
-            value: new Date(),
-           dateInput: true
+            value: "1/" + (new Date().getMonth()+1) + "/" + new Date().getFullYear(),
+            dateInput: true,
+         
         });
         $("#tDate").kendoDatePicker({
             format: "dd/MM/yyyy",
             value: new Date(),
-            dateInput: true
+            dateInput: true,
+        
         });
+        $('#btnFilter').on('click', function () {
+            var fCategory = $('#fCategory').val();
+            var fDate = $('#fDate').val();
+            var tDate = $('#tDate').val();
+            if (fCategory == "" && fDate == "" && tDate == "") {
+                return;
+            }
+            $.ajax({
+                xhr: function () {
+                    var xhr = new window.XMLHttpRequest();
+
+                    // Upload progress
+                    xhr.upload.addEventListener("progress", function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            //Do something with upload progress
+                            console.log(percentComplete);
+                        }
+                    }, false);
+
+                    // Download progress
+                    xhr.addEventListener("progress", function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = Math.round((evt.loaded / evt.total)*100);
+                            // Do something with download progress
+                            $('#ProgressDownload').attr("aria-valuenow", "" + percentComplete + "");
+                            $('#ProgressDownload').css("width", ""+percentComplete+"%")
+                            console.log(percentComplete);
+                        }
+                    }, false);
+
+                    return xhr;
+                },
+                url: "/Admin/GetPosts",
+                data: { IDCate: fCategory, fDate: fDate, tDate: tDate },
+                beforeSend: function () {
+                    
+                },
+                complete: function () {
+                   
+                },
+                success: function (result) {
+                    var dataSource = new kendo.data.DataSource({
+                        data: result
+                    });
+                    var grid = $("#gridPosts").data("kendoGrid");
+                    grid.setDataSource(dataSource);
+                    //$('#gridPosts').data('kendoGrid').dataSource.read();
+                  
+                    grid.refresh();
+                    $('#ProgressDownload').attr("aria-valuenow", "" + 0 + "");
+                    $('#ProgressDownload').css("width", "" + 0 + "%")
+                },
+                error: function () {
+
+                }
+
+            });
+        });
+       
     </script>
 
 }
@@ -181,12 +263,15 @@
                         </h5>
                     </a>
                 </div>
-
                 <!-- Card body -->
-                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="card-body">
+                <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-body pb-0">
                         <div class="row">
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" id="ProgressDownload" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                             <div class="col-md-6">
+                              
                                 <div class="form-group">
                                     <label class="blue-text font-weight-bold"><i class="fa fa-th"></i> Danh mục</label>
                                     <input type="text" id="fCategory" class="form-control" placeholder="Danh mục">
@@ -204,8 +289,10 @@
                                     <input type="text" id="tDate" class="form-control" placeholder="Đến ngày">
                                 </div>
                             </div>
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-success" id="btnFilter"><i class="fa fa-check"></i> Lọc</button>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BlogHealth.Models;
 using System.IO;
 using System.Threading.Tasks;
+using System.Dynamic;
 
 namespace BlogHealth.Controllers
 {
@@ -188,12 +189,14 @@ namespace BlogHealth.Controllers
 
         public ActionResult GetPosts(string IDCate,DateTime? fDate,DateTime? tDate)
         {
+
             using(var ctx= new BlogHealthEntities())
             {
-
+               
                 var posts = ctx.Posts.Join(ctx.Categories, c => c.IDCategory, b => b.ID,
                       (c, b) => new {
-                          
+                        
+                        Rows=0,
                         ID=c.ID,
                         Title=c.Title,
                         Slug=c.Slug,
@@ -206,11 +209,11 @@ namespace BlogHealth.Controllers
                         CreateDate=c.CreateDate,
                         Tag=c.Tag,
                         Rates=c.Rates??0,
-
                     }).Where(c=>fDate.HasValue?c.CreateDate>=fDate:true
                     && tDate.HasValue?c.CreateDate<=tDate:true
                     && IDCate!=""?IDCate.Contains(c.IDCate.ToString()):true
                     ).OrderByDescending(c=>c.CreateDate ).ToList();
+             
                 
                 return Json(posts, JsonRequestBehavior.AllowGet);
             }
