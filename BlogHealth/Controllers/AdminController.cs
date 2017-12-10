@@ -213,7 +213,7 @@ namespace BlogHealth.Controllers
                     }).Where(c=>fDate.HasValue?c.CreateDate>=fDate:true
                     && tDate.HasValue?c.CreateDate<=tDate:true
                     && IDCate!=""?IDCate.Contains(c.IDCate.ToString()):true
-                    ).OrderByDescending(c=>c.CreateDate ).Take(100).ToList();
+                    ).OrderByDescending(c=>c.CreateDate ).Take(10).ToList();
              
                 
                 return Json(posts, JsonRequestBehavior.AllowGet);

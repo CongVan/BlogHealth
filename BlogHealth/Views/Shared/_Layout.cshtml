@@ -18,7 +18,7 @@
 
     @RenderSection("css", false)
 </head>
-<body>
+<body class="" style="overflow-x:hidden">
     <header>
         <div class="container-fluid p-0 grey lighten-4" id="header">
             <nav class="navbar navbar-expand-lg navbar-light scrolling-navbar grey lighten-5 hidden-sm p-0" style="box-shadow: 0 1px 0px 0 rgba(0,0,0,.16)!important;">
@@ -298,7 +298,6 @@
         </div>
     </header>
 
-
     <div class="container-fluid " id="main-content" >
         @*<div class="col-xl-12 my-2 ">
 
@@ -317,11 +316,14 @@
         <div class="row mt-3 " id="">
             @RenderBody()
 
-            <div class="col-xl-3 px-1 SideBar " id="" >
+            <div class="col-xl-3 px-2 SideBar " id="" >
                 @*id="scroller-anchor"*@
             <div class="row theiaStickySidebar">
                 @*id="scroller"*@
                 <div class="col-xl-12 mb-2">
+                    <div class="my-1 text-center">
+                        <a class="text-center " href="http://member.civi.vn/cpc/?sid=25224&bid=10033905" target="_blank"><img src="http://member.civi.vn/imp/b/?sid=25224&bid=10033905" /></a>
+                    </div>
                     <ul class="nav nav-tabs nav-justified pb-1 pt-0 px-0 blue">
                         <li class="nav-item  waves-effect waves-dark m-0">
                             <a class="nav-link active p-1 white darken-1" data-toggle="tab" href="#panelHot" role="tab">
@@ -333,234 +335,13 @@
 
                     </ul>
 
-                    <div class="tab-content card px-1">
+                    <div class="tab-content card px-1 rounded-top">
                         <!--Panel 1-->
                         <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
 
                             <section class="section extra-margins pb-3 text-center text-lg-left">
 
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
-                                        <!--Featured image-->
-                                        <div class="view overlay hm-black-light">
-                                            @*<img src="~/Images/3-35-324x235.png" />*@
-                                            <img src="~/Images/3-35-324x235.png" class="img-fluid" alt="First sample image">
-                                            <a href="#">
-                                                <div class="mask"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--Grid column-->
-                                    <!--Grid column-->
-                                    <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
-
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <small class="text-muted red-text"><strong>Sức khỏe</strong></small>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
-                                        </div>
-                                        <a href="#" class="text-dark"> <h6 class="mb-2"><strong>Bộ tranh tình yêu hạnh phúc khiến dân FA gato “chết đi được”</strong></h6></a>
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
-                                            <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-
-
-                                <hr class="mx-1 mb-1 mt-0">
-
-
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
-                                        <!--Featured image-->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
-                                            <a href="#">
-                                                <div class="mask"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--Grid column-->
-                                    <!--Grid column-->
-                                    <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
-
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <small class="text-muted red-text">Sức khỏe</small>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
-                                        </div>
-                                        <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
-                                            <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-
-
-                                <hr class="mx-1 mb-1 mt-0">
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
-                                        <!--Featured image-->
-                                        <div class="view overlay hm-white-slight">
-                                            <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
-                                            <a href="#">
-                                                <div class="mask"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--Grid column-->
-                                    <!--Grid column-->
-                                    <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
-
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <small class="text-muted red-text">Sức khỏe</small>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
-                                        </div>
-                                        <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
-                                            <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-
-
-                                <hr class="mx-1 mb-1 mt-0">
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
-                                        <!--Featured image-->
-                                        <div class="view overlay hm-white-slight ">
-                                            <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
-                                            <a href="#">
-                                                <div class="mask"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--Grid column-->
-                                    <!--Grid column-->
-                                    <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
-
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <small class="text-muted red-text">Sức khỏe1</small>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
-                                        </div>
-                                        <a href="#" class="text-dark "> <h6 class="mb-3 MyTitle"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
-                                            <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-
-
-                                <hr class="mx-1 mb-1 mt-0">
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
-                                        <!--Featured image-->
-                                        <div class="view overlay hm-white-slight z-depth-1-half">
-                                            <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
-                                            <a href="#">
-                                                <div class="mask"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--Grid column-->
-                                    <!--Grid column-->
-                                    <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
-
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <small class="text-muted red-text">Sức khỏe</small>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
-                                        </div>
-                                        <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
-                                            <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-
-
-                                <hr class="mx-1 mb-1 mt-0">
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
-                                        <!--Featured image-->
-                                        <div class="view overlay hm-white-slight z-depth-1-half">
-                                            <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
-                                            <a href="#">
-                                                <div class="mask"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!--Grid column-->
-                                    <!--Grid column-->
-                                    <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
-
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <small class="text-muted red-text">Sức khỏe</small>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
-                                        </div>
-                                        <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
-                                            <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
-                                            <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-
-
-
-
-
-
+                                @Html.Action("PartialMostViewPosts", "Home")
 
                             </section>
                         </div>
@@ -584,7 +365,7 @@
 
                     </ul>
 
-                    <div class="tab-content card px-1">
+                    <div class="tab-content card px-1 rounded-top">
 
                         <div class="tab-pane fade in show active " id="panelSocial" role="tabpanel">
                             <div class="text-center">
@@ -633,7 +414,7 @@
 
                     </ul>
 
-                    <div class="tab-content card px-1">
+                    <div class="tab-content card px-1 rounded-top">
 
                         <div class="tab-pane fade in show active " id="panelSocial" role="tabpanel">
                             <div class="row">

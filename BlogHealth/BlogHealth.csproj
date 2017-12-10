@@ -859,6 +859,9 @@
     <Content Include="Database\v1.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="HinhAnh\BaiViet\images\bai-thuoc-tri-chung-benh-hay-gap-khi-chuyen-mua.jpg" />
+    <Content Include="HinhAnh\BaiViet\images\Thumbs\chuyen-mua-va-bai-thuoc-tri-3-benh-thuong-gap_large.jpg" />
+    <Content Include="HinhAnh\BaiViet\images\Thumbs\chuyen-mua-va-bai-thuoc-tri-3-benh-thuong-gap_medium.jpg" />
     <Content Include="HomeAsset\css\bootstrap.css" />
     <Content Include="HomeAsset\css\bootstrap.min.css" />
     <Content Include="HomeAsset\css\mdb.css" />
@@ -1004,6 +1007,7 @@
     <Compile Include="Models\Categories.cs">
       <DependentUpon>BlogHealthDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PostCate.cs" />
     <Compile Include="Models\Posts.cs">
       <DependentUpon>BlogHealthDB.tt</DependentUpon>
     </Compile>
@@ -1150,6 +1154,7 @@
     <Content Include="Views\Admin\AddPost.cshtml" />
     <Content Include="Views\Home\PartialMenu.cshtml" />
     <Content Include="Views\Home\PartialMenuChild.cshtml" />
+    <Content Include="Views\Home\PartialMostViewPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1159,6 +1164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HinhAnh\BaiViet\_thumbs\Images\Thumbs\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

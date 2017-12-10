@@ -14,7 +14,28 @@ namespace BlogHealth.Controllers
         public ActionResult Index()
         {
             var t = DateTime.Now.ToString("ddd MMM YYYYY", CultureInfo.CreateSpecificCulture("vi-VN"));
-            return View();
+            using (var ctx=new BlogHealthEntities())
+            {
+                var posts = ctx.Posts.Join(ctx.Categories, c => c.IDCategory, b => b.ID,
+                      (c, b) => new  PostCate{
+                          ID = c.ID,
+                          Title = c.Title,
+                          Slug = c.Slug,
+                          IDCate = b.ID,
+                          CateName = b.Name,
+                          CateColor=b.Color,
+                          Likes = c.Likes ?? 0,
+                          Views = c.Views ?? 0,
+                          Shares = c.Shares ?? 0,
+                          Comments = c.Comments ?? 0,
+                          Rates = c.Rates ?? 0,
+                          CreateDate = c.CreateDate,
+                          Update = c.Update,
+                          ShortContent =c.ShortContent,
+                      }).OrderByDescending(c => new { c.Update, c.CreateDate }).Take(10).ToList();
+                
+                return View(posts);
+            }
         }
         public ActionResult PartialMenu()
         {
@@ -32,7 +53,29 @@ namespace BlogHealth.Controllers
                 return PartialView(cates);
             }
         }
-
+        public ActionResult PartialMostViewPosts()
+        {
+            using (var ctx = new BlogHealthEntities())
+            {
+                var posts = ctx.Posts.Join(ctx.Categories, c => c.IDCategory, b => b.ID,
+                      (c, b) => new PostCate
+                      {
+                          ID = c.ID,
+                          Title = c.Title,
+                          Slug = c.Slug,
+                          IDCate = b.ID,
+                          CateName = b.Name,
+                          CateColor = b.Color,
+                          Likes = c.Likes ?? 0,
+                          Views = c.Views ?? 0,
+                          Rates = c.Rates ?? 0,
+                          CreateDate = c.CreateDate,
+                          Update = c.Update,
+                         
+                      }).OrderByDescending(c => new { c.Views }).Take(5).ToList();
+                return PartialView(posts);
+            }
+        }
         public ActionResult Post()
         {
             return View();

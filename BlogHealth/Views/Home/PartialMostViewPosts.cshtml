@@ -1,0 +1,54 @@
+﻿@using BlogHealth.Models
+@model List<PostCate>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    if (i != 0)
+    {
+        <hr class="mx-1 mb-1 mt-0">
+    }
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
+            <!--Featured image-->
+            <div class="view overlay hm-black-light">
+                @*<img src="~/Images/3-35-324x235.png" />*@
+                <img src="~/HinhAnh/BaiViet/images/Thumbs/@(Model[i].Slug)_large.jpg" class="img-fluid" alt="First sample image">
+                <a href="#">
+                    <div class="mask"></div>
+                </a>
+            </div>
+        </div>
+        <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
+
+            <div class="d-flex w-100 justify-content-between">
+                <small class="text-muted @Model[i].CateColor">@Model[i].CateName</small>
+                @if (Model[i].Update != null)
+                {
+                    <small class="text-muted ml-2"><i class="fa fa-clock-o"></i>@Model[i].Update.Value.ToString("hh:mm, dd/MM/")</small>
+                }
+                else
+                {
+                    <small class="text-muted ml-2"><i class="fa fa-clock-o"></i>@Model[i].CreateDate.Value.ToString("hh:mm, dd/MM ")</small>
+                }
+                @*<small class="text-muted"><i class="fa fa-clock-o"></i>@Model[i].CreateDate</small>*@
+            </div>
+            <a href="#" class="text-dark"> <h6 class="mb-2"><strong>@Model[i].Title</strong></h6></a>
+            <div class="d-flex flex-row-reverse">
+                @*<small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>*@
+                <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                @*<small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>*@
+                <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
+            </div>
+
+
+        </div>
+        <!--Grid column-->
+
+    </div>
+}
+
