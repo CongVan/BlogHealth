@@ -1,14 +1,281 @@
-﻿
+﻿@using BlogHealth.Models
+@model PostCate
 @{
     ViewBag.Title = "Bài viết";
 }
+<div class="col-xl-3 px-1 hidden-sm-down MainContent " id="">
+    @*<h4 class="text-success section-heading h4">Bài viết nổi bật</h4>*@
+    <div class="row">
+        <div class="col-xl-12 mb-1 ">
+            <ul class="nav nav-tabs nav-justified pb-1 pt-0 px-0 blue">
+                <li class="nav-item  waves-effect waves-dark m-0">
+                    <a class="nav-link active p-1 white darken-1" data-toggle="tab" href="#panelHot" role="tab">
+                        <h5 class="blue-text section-heading h5 m-0">
+                            <i class="fa fa-arrow-up"></i>&nbsp; Nổi bật
+                        </h5>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- Tab panels -->
+            <div class="tab-content card px-1 rounded-top">
+                <!--Panel 1-->
+                <div class="tab-pane fade in show active" id="panelHot" role="tabpanel">
+                    <section class="section extra-margins pb-3 text-center text-lg-left">
+
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-lg-1 pr-md-1 px-sm-5">
+                                <!--Featured image-->
+                                <div class="view overlay hm-white-slight z-depth-1-half">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                    <a href="#">
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
+
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted red-text">Sức khỏe</small>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
+                                </div>
+                                <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
+                                <div class="d-flex flex-row-reverse">
+                                    <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
+                                    <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
+                                </div>
 
 
-<div class="col-xl-9  pl-lg-4 pl-xl-4 pr-lg-2 pr-xl-2 MainContent" id="left" >
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+
+
+                        <hr class="mx-1 mb-1 mt-0">
+
+
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
+                                <!--Featured image-->
+                                <div class="view overlay hm-white-slight z-depth-1-half">
+                                    <img src="/Images/Postsimages/Posts/Trends_medium.jpg" class="img-fluid" alt="First sample image">
+                                    <a href="#">
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
+
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted red-text">Sức khỏe</small>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
+                                </div>
+                                <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
+                                <div class="d-flex flex-row-reverse">
+                                    <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
+                                    <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
+                                </div>
+
+
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+
+
+                        <hr class="mx-1 mb-1 mt-0">
+
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
+                                <!--Featured image-->
+                                <div class="view overlay hm-white-slight z-depth-1-half">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                    <a href="#">
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
+
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted red-text">Sức khỏe</small>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
+                                </div>
+                                <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
+                                <div class="d-flex flex-row-reverse">
+                                    <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
+                                    <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
+                                </div>
+
+
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+
+
+                        <hr class="mx-1 mb-1 mt-0">
+
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
+                                <!--Featured image-->
+                                <div class="view overlay hm-white-slight z-depth-1-half">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                    <a href="#">
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
+
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted red-text">Sức khỏe</small>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
+                                </div>
+                                <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
+                                <div class="d-flex flex-row-reverse">
+                                    <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
+                                    <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
+                                </div>
+
+
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+
+
+                        <hr class="mx-1 mb-1 mt-0">
+
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-lg-5 col-sm-12 col-xs-12 mb-1 pr-1">
+                                <!--Featured image-->
+                                <div class="view overlay hm-white-slight z-depth-1-half">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg" class="img-fluid" alt="First sample image">
+                                    <a href="#">
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-lg-7 mb-1 pl-xl-0 pl-sm-5 ">
+
+                                <div class="d-flex w-100 justify-content-between">
+                                    <small class="text-muted red-text">Sức khỏe</small>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>12:12 10/10</small>
+                                </div>
+                                <a href="#" class="text-dark"> <h6 class="mb-3"><strong>This is title of the news This is title of the news This is title of the news</strong></h6></a>
+                                <div class="d-flex flex-row-reverse">
+                                    <small class="text-muted ml-2"><i class="fa fa-comment-o"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</small>
+                                    <small class="text-muted ml-2"><i class="fa fa-share-alt"></i>100</small>
+                                    <small class="text-muted "><i class="fa fa-thumbs-o-up"></i>100</small>
+                                </div>
+
+
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+
+
+
+
+
+
+                    </section>
+
+                </div>
+                <!--/.Panel 1-->
+
+            </div>
+        </div>
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-xl-12">
+
+                    <!-- Card -->
+                    <div class="card card-image mb-3 view rounded" style="background-image: url('../../Images/hv.jpg');">
+
+                        <!-- Content -->
+                        <div class="text-white  rgba-black-strong pt-3">
+                            <div class="col-xl-12 mb-r">
+
+                                <div class="card-body">
+                                    <h4 class="text-white section-heading h4 ">
+                                        <i class="fa fa-heart-o"></i>&nbsp; Đăng ký nhận tin tức mới nhất
+                                    </h4>
+                                    <!--Body-->
+                                    <div class="md-form text-white">
+                                        <i class="fa fa-user prefix "></i>
+                                        <input type="text" id="orangeForm-name" class="form-control text-white">
+                                        <label for="orangeForm-name" class="">Tên của bạn</label>
+                                    </div>
+                                    <div class="md-form text-white">
+                                        <i class="fa fa-envelope prefix "></i>
+                                        <input type="text" id="orangeForm-email" class="form-control text-white">
+                                        <label for="orangeForm-email">Email của bạn</label>
+                                    </div>
+
+
+                                    <div class="text-center">
+                                        <button class="btn btn-deep-orange waves-effect waves-light">Đăng ký <i class="fa fa-paper-plane-o"></i></button>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <!-- Content -->
+                    </div>
+                    <!-- Card -->
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div class="col-xl-6  pl-lg-4 pl-xl-4 pr-lg-2 pr-xl-2 MainContent" id="left" >
     <div class="card mb-2 theiaStickySidebar" >
         <div class="card-body">
             <div class="card-title text-danger text-center">
-                <h2> Cựu sáng lập Thế Giới Di Động mơ có 1.000 shop giày, bán hàng như Zara</h2>
+                <h2> @Model.Title</h2>
 
             </div>
             <div class="mb-2">
@@ -20,13 +287,20 @@
                         <i class="fa fa-facebook"> </i>
                     </button>*@
                 <div class=" text-center">
-                    <span class="indigo-text"><strong>Sống khỏe </strong></span>
+                    <span class="@Model.CateColor"><strong>@Model.CateName</strong></span>
                 </div>
                 <div class=" text-center">
-                    <span class="text-muted ml-2"><i class="fa fa-clock-o"></i>12:12 PM 10/10/2012,</span>
-                    <span class="text-muted ml-3"><i class="fa fa-comment-o"></i>100</span>
+                    @if (Model.Update.HasValue)
+                    {
+                        <span class="text-muted ml-2"><i class="fa fa-clock-o"></i>@Model.Update.Value.ToString("hh:mm tt dd/MM/yyyy")</span>
+                    }
+                    else
+                    {
+                        <span class="text-muted ml-2"><i class="fa fa-clock-o"></i>@Model.CreateDate.Value.ToString("hh:mm tt dd/MM/yyyy ")</span>
+                    }
+                    @*<span class="text-muted ml-3"><i class="fa fa-comment-o"></i>100</span>
                     <span class="text-muted ml-2"><i class="fa fa-eye" aria-hidden="true"></i>100</span>
-                    <span class="text-muted ml-2"><i class="fa fa-star" aria-hidden="true"></i>4</span>
+                    <span class="text-muted ml-2"><i class="fa fa-star" aria-hidden="true"></i>4</span>*@
                 </div>
                 <div class=" text-center mb-2">
                     <a class=" align-content-end btn-floating  btn-sm  btn-fb waves-effect waves-light m-0 p-0">
@@ -43,113 +317,45 @@
 
 
             </div>
+            <p class="my-2 font-weight-bold">
+                @Model.ShortContent
+            </p>
             <p class="px-lg-5 mb-2" style=" text-align: justify;text-justify: inter-word;">
-
-                Chia sẻ về cái duyên với thị trường giày, ông Đinh Anh Huân, người sáng lập Công ty cổ phần Seedcom, đơn vị đang đầu tư phát triển thương hiệu giày Juno, cho rằng đây là thị trường nhiều cơ hội đầu tư, “thấy không ai làm thì mình làm thôi”. Tham vọng của Juno là mở đến 1.000 cửa hàng để bán giày Việt cho phụ nữ Việt.
-
-                - Là người ngoại đạo với lĩnh vực này, ông đã quyết định đầu tư ra sao?
-
-                - Tôi thấy cơ hội thị trường lớn mà hầu như chưa có ai làm bài bản nên nghĩ là phải làm thôi. Tôi tin thị trường tiềm năng này, dù khởi động ra sao lúc đó tôi cũng chưa biết (cười).
-
-                Tôi bắt đầu đi tìm hiểu, vào các xưởng giày xem cách sản xuất, ra chợ xem người ta bán hàng, nghiên cứu hành vi mua hàng online của khách, sau đó mới quyết đầu tư.
-
-                Lúc đầu ra thị trường, sản phẩm của chúng tôi cũng bị khách hàng phản hồi nhiều lắm, nào là da quá cứng, mẫu mã chưa đẹp, chưa đa dạng. Dần dần mọi tồn tại được khắc phục. Nhờ vào góp ý của khách và chúng tôi liên tục cải tiến, phản hồi bây giờ đã ngược lại.
-
-                Cuu sang lap The Gioi Di Dong mo co 1.000 shop giay, ban hang nhu Zara hinh anh 1
-                "Tôi đi bán giày thời trang nữ chỉ đơn giản vì thấy thị trường này lớn mà chưa ai làm". Ảnh: H. An
-                Chúng tôi đã mở được khoảng 60 cửa hàng tại TP.HCM, Hà Nội và một số tỉnh thành lớn. Cuối năm nay số cửa hàng sẽ nâng lên khoảng 90. Chúng tôi chú trọng vào giày thời trang nữ ở phân khúc bình dân, trên dưới 400.000 đồng/đôi.
-
-                - Vai trò của Seedcom ở đây có đơn thuần là nhà đầu tư tài chính như với những startup ông vẫn đầu tư?
-
-                - Ở Juno chúng tôi không phải là quỹ đầu tư mà trực tiếp tham gia điều hành, sản xuất, bán hàng. Chúng tôi mới đầu tư từ 2015 thôi, khi nhận thấy tiềm năng thị trường giày thời trang nữ Việt Nam rất lớn.
-
-                "Doanh thu không nên coi là điều quan trọng nhất mà lớn nhất là giá trị mang lại. Mình sẽ làm được những gì mình thích, mình muốn. Cuối ngày, sau khi đã làm hết sức thì chúng ta sẽ thấy thỏa mãn".
-
-                Chúng ta có tới 20 triệu phụ nữ nhưng dường như chưa có một thương hiệu giày nào đủ lớn cung cấp cho thị trường này. Phân khúc giá trung bình, phù hợp với thu nhập và nhu cầu mua sắm của đa số phụ nữ hầu hết là giày Trung Quốc, một số là giày Việt Nam xuất khẩu.
-
-                Trên thị trường cũng có khá nhiều thương hiệu, nhưng đa phần giày thể thao, giày thời trang nữ số lượng không đáng kể.
-
-                Ở thời điểm đó, Juno mỗi tháng bán khoảng 3.000 đôi giày, tức một năm khoảng 36.000 đôi. Sau 2 năm đầu tư, dự kiến con số bán ra năm 2017 của chúng tôi sẽ là 1 triệu đôi.
-
-                - Tại sao ít tìm thấy hàng "xịn" trên kệ giày của Juno?
-
-                - Tìm hiểu tâm lý khách hàng, tôi nhận ra rằng phụ nữ Việt vẫn giữ thói quen mua 3-4 đôi giày giá rẻ hơn là mua một đôi đắt tiền.
-
-                Riêng phân khúc tầm giá 300.000-400.000 đồng/đôi, trên thị trường chỉ có vài thương hiệu trong nước tham gia với thị phần rất nhỏ, hầu hết là hàng Trung Quốc không có thương hiệu.
-
-                Tính toán của chúng tôi, nếu trung bình một phụ nữ mua 3-4 đôi giày thì riêng phân khúc này, mỗi năm thị trường cần khoảng 30-40 triệu đôi. Nhu cầu là rất lớn so với khả năng đáp ứng hiện nay.
-
-                Cuu sang lap The Gioi Di Dong mo co 1.000 shop giay, ban hang nhu Zara hinh anh 2
-                Cựu sáng lập viên Thế Giới Di Động tự tin khẳng định sẽ đánh bật hàng Trung Quốc ở phân khúc giày thời trang nữ. Ảnh: H. An.
-                Tôi cũng có kinh nghiệm bán lẻ, và thấy rằng chuỗi cung ứng Việt Nam có cơ hội cạnh tranh tốt phân khúc này nên tập trung phát triển. Mục tiêu của tôi trước mắt là phải có 300-400 cửa hàng, để chị em ở đâu cũng có thể mua được giày Made in Vietnam giá vừa phải.
-
-                Năm sau chúng tôi sẽ đầu tư thêm nhà máy công suất lớn hơn, để đảm bảo sản lượng 150.000-200.000 đôi giày mỗi tháng. Khi chuỗi cung ứng hoàn thiện hơn, tốc độ ra mẫu mới sẽ nhanh hơn.
-
-                -Thực tế ở phân khúc tầm trung, thị trường giày dép Việt đã có một số thương hiệu có tiếng, dù không phát triển ồ ạt như Juno?
-
-                - Việt Nam có gần 100 triệu dân. Khách hàng chúng tôi nhắm tới là phụ nữ 18-40, họ chiếm khoảng 25% dân số nữ, ước khoảng hơn 10 triệu thôi thì con số này có lớn không?
-
-                Phụ nữ mỗi năm lại mua ít nhất vài đôi giày, nếu nhân lên thì thị trường cần 40-50 triệu đôi mỗi năm, các thương hiệu khác hiện cũng chỉ đáp ứng 1-2% thôi.
-
-                Mà có các thương hiệu khác cũng là điều chúng tôi rất cần. Có Vascara, Bitit's sẽ tốt cho Juno chứ. Chúng tôi buôn có bạn, bán có phường, cùng hỗ trợ nhau tạo uy tín cho giày Việt.
-
-                Ở phân khúc giày thời trang nữ bình dân, tôi tự tin sẽ đánh bật hàng Trung Quốc.
-
-                Riêng tại Hà Nội, nơi người tiêu dùng luôn tìm kiếm hàng trong nước chất lượng thì lại tràn ngập giày dép Trung Quốc. Tôi khát khao mang sản phẩm thuần Việt chất lượng tốt đến phục vụ người dùng. Ở phân khúc giày thời trang nữ bình dân, tôi tự tin sẽ đánh bật hàng Trung Quốc.
-
-                - Ông nhìn thấy thị trường Hà Nội tiềm năng, như vậy chiến lược của Juno có phải là đẩy mạnh hơn nữa tại khu vực này?
-
-                - Chúng tôi tập trung phát triển mạnh tại Hà Nội, TP.HCM và mở rộng cả nước. Nhưng thực tế hiện nay vẫn ưu tiên thị trường phía Nam, vì gần nhà máy, vận chuyện dễ hơn. TP.HCM gọi đúng nghĩa là thị trường bao la, phải mở vài trăm cửa hàng mới đủ đáp ứng.
-
-                Cuu sang lap The Gioi Di Dong mo co 1.000 shop giay, ban hang nhu Zara hinh anh 3
-                Ông Đinh Anh Huân và các cộng sự, những người điều hành các dự án khởi nghiệp dưới sự đầu tư của Seedcom. Ảnh: DNSG.
-                Với Hà Nội, 9 cửa hàng đã có gần như phủ hết từ trung tâm thành phố đến Hà Đông rồi. Các tuyến đường chính ở Hà Nội đều có cửa hàng. Sắp tới chúng tôi mở thêm 1-2 cửa hàng nữa thì gần như mọi người đi đâu cũng thấy cửa hàng của chúng tôi.
-
-                Phương châm của chúng tôi là khách hàng ở đâu chúng tôi ở đó. Khách thích mua online, chúng tôi bán online, khách muốn tới cửa hàng tôi có sản phẩm ở cửa hàng. Còn họ thích gọi điện thoại đặt hàng tôi sẽ bán qua điện thoại.
-
-                - Nếu như vậy phải huy động lực lượng nhân viên hùng hậu?
-
-                - Bán lẻ hiện đại không ai dùng sức người để chuyển tải tất cả các vấn đề mà phải ứng dựng công nghệ mới hiệu quả. Và công nghệ là lợi thế của chúng tôi.
-
-                Chúng tôi đầu tư rất nhiều vào công nghệ từ thiết kế, sản xuất đến bán hàng. Công nghệ giúp chúng tôi có hệ thống dữ liệu tốt, giúp phân phối hàng từ kho trung tâm đến các cửa hàng, tồn kho, đáp ứng nhu cầu khách ra sao... Để tối ưu lợi nhuận tốt nhất mà sản phẩm đến tay khách hàng giá hợp lý nhất thì chỉ có công nghệ.
-
-                Ngay khi gia nhập thị trường, chúng tôi cũng xác định thế mạnh của mình là online và tập trung phát triển, cũng là cách hợp lý để ứng dụng công nghệ. Đây là kênh giúp chúng tôi tiếp cận khách hàng nhanh, hiệu quả nhất. Bởi dù tốc độ mở cửa hàng nhanh, nhưng mình không thể một sớm một chiều phủ được 63 tỉnh thành.
-
-                Cũng có nhiều người cho rằng, mô hình của chúng tôi không phải bán lẻ, mà là công ty công nghệ.
-
-                Bán lẻ hiện đại không ai dùng sức người để tối ưu lợi nhuận tốt nhất mà phải có công nghệ.
-
-                Tôi muốn chia sẻ thực, góc nhìn của Juno là làm sao học được cách mà Zara đã và đang làm. Thương hiệu thời trang này nổi tiếng thế giới không phải về mẫu mã hay giá cả, mà nổi tiếng về sự phát triển sản phẩm, vận hành hệ thống, phát triển công nghệ bán hàng, trải nghiệm sản phẩm của khách hàng...
-
-                - Vậy ông có dự định đưa Juno ra nước ngoài như Zara đang làm không?
-
-                - Tại sao không? Việt Nam có lợi thế cạnh tranh rất nhiều trong sản xuất giày dép. Chúng ta cũng đã có kinh nghiệm gia công giày cho rất nhiều hãng lớn trên thế giới. Thống kê hiện 40% giày Nike sản xuất tại Việt Nam, Adidas cũng vậy. Chúng ta có nhân công, có đội ngũ thiết kế giỏi, tại sao không làm được.
-
-                Có mơ ước và dám làm thì sẽ làm được thôi. Mục tiêu của Juno trong năm nay là bán 1 triệu đôi giày, năm sau sẽ là 2 triệu đôi và tiếp tục nhân lên. Chúng tôi cũng đầu tư nhà máy đủ lớn để đáp ứng sản phẩm cho cửa hàng.
-
-                Hệ thống nhà máy này cũng sẽ sản xuất, cung ứng sản phẩm cho các chuỗi cửa hàng ở nước ngoài sau này, đồng thời cũng sẽ tham gia gia công sản phẩm cho các doanh nghiệp nước ngoài khác.
-
-                - Nhiều thương hiệu giày đình đám một thời cũng hụt hơi, rất ít thương hiệu giữ được sức sống lâu bền. Ông có lo lắng điều này?
-
-                - Thị trường đang rất rộng thì không có lý do gì chúng tôi lo lắng. Tuy nhiên, không phải thị trường lớn thì ai muốn nhảy vào làm cũng thuận lợi.
-
-                Giữa cạnh tranh, những doanh nghiệp nào phù hợp, có chiến lược phát triển riêng và biết nắm bắt cơ hội sẽ thắng thôi. Giống như điện máy, những năm gần đây liên tục nhiều đơn vị đóng cửa, nhưng cửa hàng mới cũng liên tục ra đời. Cơ hội thị trường sẽ dành cho ai biết làm và làm đúng thời điểm.
-
-                Chúng tôi khẳng định mình là doanh nghiệp duy nhất hiện nay biết làm ra sản phẩm và bán sản phẩm, mang sản phẩm của mình bán được từ cửa hàng trực tiếp đến online.
-
-                Trong 5 năm tới, chúng tôi vẫn tập trung đầu tư vào giày thời trang nữ ở phân khúc bình dân. Số lượng cửa hàng tôi dự kiến mở phải ở mức 1.000 mới đáp ứng nhu cầu thị trường.
+                @Html.Raw( Model.Content)
+                
             </p>
             <div class="">
                 <i class="fa fa-tags fa-2x red-text"></i>
-                <div class="chip mb-0 mr-1">
+                @{ 
+                    var tags = Model.Tags.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList() ;
+
+                }
+                @foreach (var item in tags)
+                {
+                    <div class="chip mb-0 mr-1 black-text">
+                        <a>@item</a>
+                    </div>
+                }
+
+                <div class="my-2 text-right border border-danger border-top-0 border-bottom-0 border-left-0" style="border-width:3px!important">
+                    
+                        <h5 class="pr-3">
+                            <i class="fa fa-eye-slash red-text"></i> Lượt xem <span class="badge red mr-5">100</span>
+                            <i class="fa fa-thumbs-up red-text"></i>Lượt thích <span class="badge red">100</span>
+                        </h5>
+
+                  
+                   
+
+                </div>
+                
+                
+                @*<div class="chip mb-0 mr-1">
                     <a>Tag1</a>
                 </div>
                 <div class="chip mb-0 mr-1">
                     <a>Tag1</a>
-                </div>
-                <div class="chip mb-0 mr-1">
-                    <a>Tag1</a>
-                </div>
+                </div>*@
             </div>
 
 

@@ -25,5 +25,8 @@ namespace BlogHealth.Models
         public string CateSlug { get; set; }
 
         public string ShortContent { get; set; }
+
+        public string Content { get; set; }
+        public string Tags { get; set; }
     }
 }
