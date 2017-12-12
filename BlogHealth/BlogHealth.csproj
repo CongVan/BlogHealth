@@ -897,6 +897,8 @@
     <Content Include="HomeAsset\js\ResizeSensor.js" />
     <Content Include="HomeAsset\js\ResizeSensor1.js" />
     <Content Include="HomeAsset\js\theia-sticky-sidebar.js" />
+    <Content Include="Images\12.png" />
+    <Content Include="Images\123.png" />
     <Content Include="Images\3-35-324x235.png" />
     <Content Include="Images\hv.jpg" />
     <Content Include="HomeAsset\font\roboto\Roboto-Bold.eot" />
@@ -952,6 +954,7 @@
     <Content Include="HomeAsset\font\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="HomeAsset\font\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="HomeAsset\font\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Images\logo %282%29.png" />
     <Content Include="Kendo\css\fonts\DejaVu\LICENSE.txt" />
     <Content Include="Kendo\css\fonts\glyphs\KendoUIGlyphs.svg" />
     <Content Include="Kendo\css\fonts\glyphs\WebComponentsIcons.svg" />

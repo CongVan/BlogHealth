@@ -310,13 +310,13 @@
                                             <!--Featured image-->
                                             <div class="view mb-2 rounded-top">
                                                 <img src="~/HinhAnh/BaiViet/images/Thumbs/@(item.Slug)_large.jpg" class="img-fluid" alt="First sample image">
-                                                <a>
+                                                <a href="@Url.Action("Post","Home",new { id=item.IDCate})">
                                                     <div class="mask"></div>
                                                 </a>
                                             </div>
                                             <div class="p-1">
                                                 <!--Excerpt-->
-                                                <h4 class="mb-1">@item.Title</h4>
+                                                <a href="@Url.Action("Post","Home",new { id=item.IDCate})"><h4 class="mb-1" >@item.Title</h4></a>
                                                 @*<a href="" class="pink-text"><h6 class="my-1"><i class="fa fa-map "></i><strong> Adventure</strong></h6></a>*@
                                                 <span class="text-muted @item.CateColor"><strong>@item.CateName</strong></span>
                                                 <div class=" text-center">

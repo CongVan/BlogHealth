@@ -76,9 +76,43 @@ namespace BlogHealth.Controllers
                 return PartialView(posts);
             }
         }
-        public ActionResult Post()
+        public ActionResult Post(int? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return View();
+            }
+            using (var ctx = new BlogHealthEntities())
+            {
+                var post = ctx.Posts.Join(ctx.Categories, c => c.IDCategory, b => b.ID,
+                      (c, b) => new PostCate
+                      {
+                          ID = c.ID,
+                          Title = c.Title,
+                          Slug = c.Slug,
+                          IDCate = b.ID,
+                          CateName = b.Name,
+                          CateColor = b.Color,
+                          Likes = c.Likes ?? 0,
+                          Views = c.Views ?? 0,
+                          Shares = c.Shares ?? 0,
+                          Comments = c.Comments ?? 0,
+                          Rates = c.Rates ?? 0,
+                          CreateDate = c.CreateDate,
+                          Update = c.Update,
+                          ShortContent = c.ShortContent,
+                          Content = c.Content,
+                          Tags = c.Tag,
+                      }).FirstOrDefault();
+                if (post == null)
+                {
+                    return View();
+                }
+                return View(post);
+                
+            }
+            //return View();
+
         }
         public ActionResult Posts()
         {
