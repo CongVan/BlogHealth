@@ -988,6 +988,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DealController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1158,6 +1159,8 @@
     <Content Include="Views\Home\PartialMenu.cshtml" />
     <Content Include="Views\Home\PartialMenuChild.cshtml" />
     <Content Include="Views\Home\PartialMostViewPosts.cshtml" />
+    <Content Include="Views\Shared\LayoutDeal.cshtml" />
+    <Content Include="Views\Deal\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
