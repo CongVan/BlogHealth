@@ -88,67 +88,143 @@
             </nav>
             <!--Navbar-->
 
-            <div class=" row my-1 ">
-                <div class="col-md-3 text-center">
-                    <a>
-                        <img src="~/Images/123.png" />
-                    </a>
+            <div class="row my-1 ">
+                <div class="col-md-3 text-center view overlay hm-blue-light">
+                  
+                        <img src="~/Images/123.png"  />
+                    
+                    <div class="mask flex-center">
+                        <p class="white-text">Light overlay</p>
+                    </div>
                 </div>
                 <div class="col-md-9">
                     <a href="http://member.civi.vn/cpc/?sid=25224&bid=10036214" target="_blank"><img src="http://member.civi.vn/imp/b/?sid=25224&bid=10036214" /></a>
 
                 </div>
             </div>
-
             
-            <nav class="navbar navbar-expand-lg hidden-md-down navbar-light white black-text py-0  px-lg-5 px-xl-5 px-md-5 px-sm-0  " id="nav-fix-top" style="font-weight:400;">
-
-                <!-- Navbar brand -->
-                @*<a class="navbar-brand" href="#">Navbar</a>*@
-
-                <!-- Collapse button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuContent" aria-controls="navbarMenuContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Collapsible content -->
-                <div class="collapse navbar-collapse justify-content-md-center" id="navbarMenuContent">
-
-                    <!-- Links -->
-                    <ul class="navbar-nav  justify-content-md-center">
-                        @Html.Action("PartialMenu", "Home")
-                        
-                        @*<li class="nav-item active ml-1">
-                                <a class="nav-link" href="#">Home </a>
-                            </li>
-                            <li class="nav-item ml-1">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item ml-1">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-
-
-                            <li class="nav-item dropdown ml-1">
-                                <a data-href="@Url.Action("Index","Home")" href="@Url.Action("Index","Home")" class="nav-link" data-toggle="dropdown">Dropdown</a>
-
-                                <div class="dropdown-menu dropdown-primary p-1"  style="font-weight:400!important">
-                                    <a class="dropdown-item p-1" href="#">Action</a>
-                                    <a class="dropdown-item p-1" href="#">Another action</a>
-                                    <a class="dropdown-item p-1" href="#">Something else here</a>
-                                </div>
-                            </li>*@
+            <div class="row px-3">
+                <div class="col-lg-3 pr-0">
+                    <ul class="nav nav-tabs nav-justified pb-1 pt-0 px-0 blue">
+                        <li class="nav-item  waves-effect waves-dark m-0" id="HeaderCategories">
+                            <a class="nav-link active p-1 white darken-1" data-toggle="tab" href="#panelHot" role="tab">
+                                <h5 class="blue-text section-heading h5 m-0">
+                                    <i class="fa fa-th"></i>&nbsp; DANH MỤC
+                                </h5>
+                            </a>
+                        </li>
 
                     </ul>
-                    <!-- Links -->
+                    <div class="tab-content card px-1 rounded-top pt-2 pb-1" style="display:block" id="ViewCate">
+                        <!--Panel 1-->
+                        <div class="tab-pane fade in show active" id="panelHot" role="tabpanel">
+                            
+                            <ul class="list-group my-4">
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center waves-effect waves-dark mb-1">
+                                        <a class="">
+                                            <p class="mb-0">Travel</p>
 
+                                        </a>
 
+                                        <span class="badge badge-red badge-pill font-small white-text">4</span>
+                                    </li>
+                                }
+                                
+                                
+                            </ul>
+                        </div>
+                        <!--/.Panel 1-->
 
+                    </div>
+                    
                 </div>
-                <!-- Collapsible content -->
+                <div class="col-lg-9 pl-1">
+                    <div class="row mx-2">
+                        <nav class="col-lg-12 navbar navbar-expand-lg hidden-md-down navbar-light white black-text py-0  px-0  " id="nav-fix-top" style="font-weight:400;">
 
-            </nav>
+                            <!-- Navbar brand -->
+                            @*<a class="navbar-brand" href="#">Navbar</a>*@
+
+                            <!-- Collapse button -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuContent" aria-controls="navbarMenuContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <!-- Collapsible content -->
+                            <div class="collapse navbar-collapse " id="navbarMenuContent">
+
+                                <!-- Links -->
+                                <ul class="navbar-nav  justify-content-md-center">
+                                    @Html.Action("PartialMenu", "Home")
+
+                                    @*<li class="nav-item active ml-1">
+                        <a class="nav-link" href="#">Home </a>
+                    </li>
+                    <li class="nav-item ml-1">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item ml-1">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+
+
+                    <li class="nav-item dropdown ml-1">
+                        <a data-href="@Url.Action("Index","Home")" href="@Url.Action("Index","Home")" class="nav-link" data-toggle="dropdown">Dropdown</a>
+
+                        <div class="dropdown-menu dropdown-primary p-1"  style="font-weight:400!important">
+                            <a class="dropdown-item p-1" href="#">Action</a>
+                            <a class="dropdown-item p-1" href="#">Another action</a>
+                            <a class="dropdown-item p-1" href="#">Something else here</a>
+                        </div>
+                    </li>*@
+
+                                </ul>
+                                <!-- Links -->
+
+
+
+                            </div>
+                            <!-- Collapsible content -->
+
+                        </nav>
+                    </div>
+                    
+                    <div class="row mx-2">
+                        
+
+                  
+                        @for (int i = 1; i <= 6; i++)
+                        {
+                            <div class="col-lg-4 col-md-4 m-0 p-2">
+                                <!--Image -->
+                                <div class="view hm-zoom hm-white-light z-depth-1">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/product1.jpg" class="img-fluid" alt="sample image">
+                                    <div class="mask waves-light waves-effect waves-light">
+                                        <div class="dark-grey-text d-flex align-items-center pt-1 ml-lg-0 pl-lg-0 pl-md-0">
+                                            <div>
+                                                @*<a><span class="badge badge-danger">bestseller</span></a>*@
+                                                <h6 class="card-title font-bold pt-1 mb-0"><strong>This is news title</strong></h6>
+                                                <p class="hidden show-ud-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                                <a class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block waves-effect waves-light"> Read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Image -->
+                            </div>
+
+                        }
+                        
+
+                    </div>
+                    
+                </div>
+            </div>
+            
 
             <nav class="navbar navbar-expand-md navbar-dark double-nav red darken-2 fixed-top hidden-lg hidden-md py-0 px-5">
 
@@ -624,6 +700,18 @@
                 // Settings
                 additionalMarginTop: 45
             });
+            //$('#HeaderCategories').on('click', function () {
+            //    if ($('#panelHot').hasClass('fade in show active')) {
+            //        $('#panelHot').removeClass('fade in show active');
+            //        $('#panelHot').addClass('fade out');
+            //        $('#ViewCate').css('display', 'none');
+            //    } else {
+            //        $('#panelHot').removeClass('fade out');
+            //        $('#panelHot').addClass('fade in show active');
+            //        $('#ViewCate').css('display', 'block');
+            //    }
+            //});
+            
         });
         //var elements = $('.sticky');
         //Stickyfill.add(elements);
@@ -677,7 +765,7 @@
         });
 
     </script>
-
+    
     @RenderSection("js", false)
 </body>
 </html>
